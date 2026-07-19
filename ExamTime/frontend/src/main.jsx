@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { store } from './store'
 import App from './App.jsx'
 import './index.css'
+import './components/components.css';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

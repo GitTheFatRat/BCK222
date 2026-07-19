@@ -44,5 +44,105 @@ export default function SpeakingRecorder({ cueCard }) {
     useEffect(() => {
         if (phase !== 'RECORDING') return;
 
-    })
+        let isCancelled = false;
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                if (isCancelled) {
+                    stream.getTracks().forEach((track) => track.stop());
+                    return;
+                }
+
+                streamRef.current = stream;
+                chunksRef.current = [];
+
+                const recorder = new MediaRecorder(stream);
+                mediaRecorderRef.current = recorder;
+
+                recorder.ondataavailable = (e) => {
+                    if (e.data.size > 0) chunksRef.current.push(e.data);
+                };
+
+                recorder.onstop = () => {
+                    const blob = new Blob(chunksRef.current, { type: 'audio/webm' });
+                    const url = URL.createObjectURL(blob);
+                    dispatch(setSpeakingRecording(url));
+                    streamRef.current?.getTracks().forEach((track) => track.stop());
+                    setPhase('DONE');
+                };
+
+                recorder.start();
+                setCountdown(cueCard.talkSeconds);
+
+                autoStopTimeoutRef.current = setTimeout(() => {
+                    recorder.stop();
+                }, cueCard.talkSeconds * 1000);
+            } catch (err) {
+                setErrorMessage('Cannot access to microphone. Please allow access and try again.');
+                setPhase('ERROR');
+            } finally {
+                isCancelled = true;
+            }
+        }
+        startRecording();
+    }, [phase])
+
+    useEffect(() => {
+        return () => {
+            clearInterval(countdownIntervalRef.current)
+            clearTimeout(autoStopTimeoutRef.current)
+            streamRef.current?.getTracks().forEach((track) => track.stop())
+        }
+    }, [])
+
+    function handleRetry() {
+        setErrorMessage('')
+        setPhase('PREP')
+        setCountdown(cueCard.prepSeconds);
+    }
+
+    return (
+        <div className="speaking-recorder">
+            <h3>Part 2: Cue Card</h3>
+            <p className="cue-card-text">{cueCard.cueCard}</p>
+
+            {phase === 'PREP' && (
+                <div className="phase-prep">
+                    <p>Preparing to talk:</p>
+                    <div className="countdown-display">{countdown}s</div>
+                </div>
+            )}
+
+            {phase === 'RECORDING' && (
+                <div className="phase-recording">
+                    <p className="recording-indicator">Recording ...</p>
+                    <div className="countdown-display">{countdown}s</div>
+                    <button onClick={stopRecording} className="btn btn-danger">
+                        Stop Recording
+                    </button>
+                </div>
+            )}
+
+            {phase === 'DONE' && (
+                <div className="phase-done">
+                    <p>Recorded Successfully. You can listen again before submitting.</p>
+                    <button onClick={handleRetry} className="btn btn-secondary">
+                        Record Again
+                    </button>
+                </div>
+            )}
+
+            {phase === 'ERROR' && (
+                <div className="phase-error">
+                    <p className="form-error">{errorMessage}</p>
+                    <button onClick={handleRetry} className="btn btn-primary">
+                        Retry
+                    </button>
+                </div>
+            )}
+        </div>
+    );
+
+
 }
