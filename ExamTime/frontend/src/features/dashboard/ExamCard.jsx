@@ -1,0 +1,38 @@
+import { Link } from 'react-router-dom';
+
+const SKILLS = [
+    { key: 'listening', label: 'Listening' },
+    { key: 'reading', label: 'Reading' },
+    { key: 'writing-task1', label: 'Writing T1' },
+    { key: 'writing-task2', label: 'Writing T2' },
+    { key: 'speaking', label: 'Speaking' }
+];
+
+export default function ExamCard({ exam }) {
+    return (
+        <div className="exam-card">
+            <div className="exam-card-header">
+                <h3>{exam.title}</h3>
+                <span className={exam.isCompleted ? 'badge badge-done' : 'badge badge-pending'}>
+                    {exam.isCompleted ? `Completed - Band ${exam.bestBand ?? '--'}` : 'Not Yet'}
+                </span>
+            </div>
+
+            <div className="exam-card-skills">
+                {SKILLS.map((skill) => (
+                    <div key={skill.key} className="exam-card-skill-row">
+                        <span>{skill.label}</span>
+                        <div className="exam-card-actions">
+                            <Link to={`/practice/${exam.examId}/${skill.key}`} className="btn btn-secondary">
+                                Practice
+                            </Link>
+                            <Link to={`/exam/${exam.examId}/${skill.key}`} className="btn btn-primary">
+                                Mock Test
+                            </Link>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
