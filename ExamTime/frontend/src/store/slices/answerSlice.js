@@ -3,7 +3,7 @@ const initialState = {
     byQuestionId: {},
     writingTask1: '',
     writingTask2: '',
-    speakingRecordBlobUrl: null,
+    speakingRecordingBlobUrl: null,
 };
 
 const answerSlice = createSlice({
@@ -11,11 +11,11 @@ const answerSlice = createSlice({
     initialState,
     reducers: {
         setAnswer(state, action) {
-            const { questionId, value } = action.payload
-            state.byQuestionId[questionId] = value
+            const { qId, value } = action.payload
+            state.byQuestionId[qId] = value
         },
         setWritingContent(state, action) {
-            const { questionId, value } = action.payload
+            const { task, value } = action.payload
             if (task === 'Task1') {
                 state.writingTask1 = value;
             } else if (task === 'Task2') {

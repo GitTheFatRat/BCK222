@@ -9,7 +9,7 @@ import './components/components.css';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
-    throw new Errow(
+    throw new Error(
         'cannot find <div id="root">'
     )
 }

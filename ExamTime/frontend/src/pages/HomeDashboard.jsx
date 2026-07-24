@@ -34,5 +34,16 @@ export default function HomeDashboard() {
         return <p className="loading-state">Loading ExamBanks...</p>;
     }
 
-
+    return (
+        <div className="dashboard-container">
+            <h2>IELTS Exam Practice</h2>
+            <div className="exams-grid">
+                {exams.map(exam => (
+                    <ExamCard key={exam.examId} exam={exam} />
+                ))}
+            </div>
+            <h2>Result History</h2>
+            <ResultHistory results={results} />
+        </div>
+    );
 }

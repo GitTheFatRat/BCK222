@@ -1,8 +1,8 @@
-import { createSlice } from 'reduxt/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     examId: null,
     skill: null,
-    remainingSecond: 0,
+    remainingSeconds: 0,
     status: 'IDLE',
     cheatingLog: [],
 };
@@ -12,21 +12,21 @@ const examSessionSlice = createSlice({
     initialState,
     reducers: {
         startSession(state, action) {
-            const { examnId, skill, remainingSecond } = action.payload;
-            state.examId = examnId;
+            const { examId, skill, remainingSeconds } = action.payload;
+            state.examId = examId;
             state.skill = skill;
-            state.remainingSecond = remainingSecond;
+            state.remainingSeconds = remainingSeconds;
             state.status = 'IN_PROGRESS';
             state.cheatingLog = [];
         },
         tick(state) {
             if (state.status !== 'IN_PROGRESS') return;
 
-            if (state.remainingSecond > 0) {
-                state.remainingSecond -= 1;
+            if (state.remainingSeconds > 0) {
+                state.remainingSeconds -= 1;
             }
-            if (state.remainingSecond <= 0) {
-                state.status = 'TIME_UP';
+            if (state.remainingSeconds <= 0) {
+                state.status = 'SUBMITTED';
             }
 
         },
@@ -37,7 +37,7 @@ const examSessionSlice = createSlice({
             });
         },
         endSession(state) {
-            state.status = 'SUBMITED'
+            state.status = 'SUBMITTED'
         },
         resetSession() {
             return initialState;
