@@ -6,12 +6,14 @@ const SALT_ROUNDS = 10;
 const TOKEN_EXPIRY = '7d';
 
 function signToken(user) {
-    return jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
+    return jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
+        expiresIn: TOKEN_EXPIRY,
+    });
 }
 
 export async function register(req, res) {
     try {
-        const { username, email, password, role } = req.body;
+        const { username, email, password } = req.body;
 
         if (!username || !email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
@@ -28,13 +30,10 @@ export async function register(req, res) {
         const salt = await bcrypt.genSalt(SALT_ROUNDS);
         const password_hash = await bcrypt.hash(password, salt);
 
-        const userRole = role || 'student';
-
         const newUser = new User({
             username,
             email,
             password_hash,
-            role: userRole
         });
 
         await newUser.save();

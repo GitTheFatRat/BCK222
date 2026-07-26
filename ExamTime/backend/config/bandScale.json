@@ -1,0 +1,146 @@
+{
+    "listening": [
+        {
+            "minCorrect": 39,
+            "maxCorrect": 40,
+            "band": 9.0
+        },
+        {
+            "minCorrect": 37,
+            "maxCorrect": 38,
+            "band": 8.5
+        },
+        {
+            "minCorrect": 35,
+            "maxCorrect": 36,
+            "band": 8.0
+        },
+        {
+            "minCorrect": 32,
+            "maxCorrect": 34,
+            "band": 7.5
+        },
+        {
+            "minCorrect": 30,
+            "maxCorrect": 31,
+            "band": 7.0
+        },
+        {
+            "minCorrect": 26,
+            "maxCorrect": 29,
+            "band": 6.5
+        },
+        {
+            "minCorrect": 23,
+            "maxCorrect": 25,
+            "band": 6.0
+        },
+        {
+            "minCorrect": 18,
+            "maxCorrect": 22,
+            "band": 5.5
+        },
+        {
+            "minCorrect": 16,
+            "maxCorrect": 17,
+            "band": 5.0
+        },
+        {
+            "minCorrect": 13,
+            "maxCorrect": 15,
+            "band": 4.5
+        },
+        {
+            "minCorrect": 10,
+            "maxCorrect": 12,
+            "band": 4.0
+        },
+        {
+            "minCorrect": 6,
+            "maxCorrect": 9,
+            "band": 3.5
+        },
+        {
+            "minCorrect": 4,
+            "maxCorrect": 5,
+            "band": 3.0
+        },
+        {
+            "minCorrect": 0,
+            "maxCorrect": 3,
+            "band": 2.5
+        }
+    ],
+    "reading": [
+        {
+            "minCorrect": 39,
+            "maxCorrect": 40,
+            "band": 9.0
+        },
+        {
+            "minCorrect": 37,
+            "maxCorrect": 38,
+            "band": 8.5
+        },
+        {
+            "minCorrect": 35,
+            "maxCorrect": 36,
+            "band": 8.0
+        },
+        {
+            "minCorrect": 33,
+            "maxCorrect": 34,
+            "band": 7.5
+        },
+        {
+            "minCorrect": 30,
+            "maxCorrect": 32,
+            "band": 7.0
+        },
+        {
+            "minCorrect": 27,
+            "maxCorrect": 29,
+            "band": 6.5
+        },
+        {
+            "minCorrect": 23,
+            "maxCorrect": 26,
+            "band": 6.0
+        },
+        {
+            "minCorrect": 19,
+            "maxCorrect": 22,
+            "band": 5.5
+        },
+        {
+            "minCorrect": 15,
+            "maxCorrect": 18,
+            "band": 5.0
+        },
+        {
+            "minCorrect": 13,
+            "maxCorrect": 14,
+            "band": 4.5
+        },
+        {
+            "minCorrect": 10,
+            "maxCorrect": 12,
+            "band": 4.0
+        },
+        {
+            "minCorrect": 8,
+            "maxCorrect": 9,
+            "band": 3.5
+        },
+        {
+            "minCorrect": 6,
+            "maxCorrect": 7,
+            "band": 3.0
+        },
+        {
+            "minCorrect": 0,
+            "maxCorrect": 5,
+            "band": 2.5
+        }
+    ]
+}
