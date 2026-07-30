@@ -8,6 +8,9 @@ import HomeDashboard from "./pages/HomeDashboard";
 import PracticeRoom from "./pages/PracticeRoom";
 import ExamRoom from "./pages/ExamRoom";
 import Register from "./pages/Register";
+import ResultSummary from "./pages/ResultSummary";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
 
 function LoginReturnHome({ children }) {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -74,7 +77,7 @@ export default function App() {
               </ForceAuth>
             }
           />
-
+          <Route path="/result" element={<ForceAuth><ResultSummary /></ForceAuth>} />
           <Route
             path="/exam/:examId/:skill"
             element={
@@ -86,6 +89,16 @@ export default function App() {
             }
           />
 
+          <Route
+            path="/admin/grading"
+            element={
+              <ForceAuth>
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              </ForceAuth>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import { submitResult, getMyResults } from '../controllers/resultController.js';
+import { submitResult, getMyResults, getPendingGradingTasks, gradeResult } from '../controllers/resultController.js';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
+import { adminMiddleware } from '../middlewares/adminMiddleware.js';
 
 const router = Router();
 
@@ -20,5 +21,8 @@ const upload = multer({ storage });
 
 router.post('/submit', authMiddleware, upload.single('speakingRecording'), submitResult);
 router.get('/me', authMiddleware, getMyResults);
+
+router.get('/admin/pending', authMiddleware, adminMiddleware, getPendingGradingTasks);
+router.put('/admin/:id/grade', authMiddleware, adminMiddleware, gradeResult);
 
 export default router;

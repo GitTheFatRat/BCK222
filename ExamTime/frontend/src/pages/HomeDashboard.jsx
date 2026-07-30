@@ -19,17 +19,13 @@ export default function HomeDashboard() {
         const [examList, history] = await Promise.all([getExam(), getMyResultHistory()]);
 
         const formattedExams = examList.map((exam) => {
-          const relatedResults = history.filter((r) => r.examTitle === exam.title);
-          const bestOverall = relatedResults.reduce((best, r) => {
-            const band = r.scores?.overallBand;
-            return typeof band === 'number' && band > (best ?? -Infinity) ? band : best;
-          }, null);
+          const session = history.find((r) => r.examTitle === exam.title);
 
           return {
             examId: exam.code,
             title: exam.title,
-            isCompleted: relatedResults.length > 0,
-            bestBand: bestOverall,
+            isCompleted: !!session && Object.keys(session.skills).length > 0,
+            bestBand: session?.overallBand ?? null,
           };
         });
 
@@ -37,7 +33,7 @@ export default function HomeDashboard() {
         setResults(history);
       } catch (err) {
         console.error('Khong the tai du lieu dashboard:', err);
-        setError('Khong the tai du lieu. Vui long kiem tra ket noi va thu lai.');
+        setError('Failed to load data. Please check your connection and try again.');
       } finally {
         setIsLoading(false);
       }
@@ -47,7 +43,7 @@ export default function HomeDashboard() {
   }, []);
 
   if (isLoading) {
-    return <p className="loading-state">Dang tai danh sach de thi...</p>;
+    return <p className="loading-state">Loading exam list...</p>;
   }
 
   return (
@@ -57,7 +53,7 @@ export default function HomeDashboard() {
       {error && <p className="form-error">{error}</p>}
 
       {exams.length === 0 ? (
-        <p className="empty-state">Hien chua co de thi nao duoc xuat ban.</p>
+        <p className="empty-state">No exams published yet.</p>
       ) : (
         <div className="exams-grid">
           {exams.map((exam) => (

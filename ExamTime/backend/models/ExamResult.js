@@ -14,8 +14,13 @@ const examResultSchema = new mongoose.Schema(
         },
         skill: {
             type: String,
-            enum: ['listening', 'reading', 'writing', 'speaking', 'full'],
+            enum: ['listening', 'reading', 'writing-task1', 'writing-task2', 'speaking', 'full'],
             required: true,
+        },
+        sessionId: {
+            type: String,
+            required: true,
+            index: true,
         },
         answers: {
             type: mongoose.Schema.Types.Mixed,

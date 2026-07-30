@@ -11,29 +11,45 @@ export default function ResultHistory({ results = [] }) {
                     <th>Date</th>
                     <th>Listening</th>
                     <th>Reading</th>
-                    <th>Writing</th>
+                    <th>Writing T1</th>
+                    <th>Writing T2</th>
                     <th>Speaking</th>
                     <th>Overall</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                {results.map((result) => (
-                    <tr key={result._id}>
-                        <td>{result.examTitle}</td>
-                        <td>{formatDate(result.createdAt)}</td>
-                        <td>{result.scores?.listeningBand ?? '--'}</td>
-                        <td>{result.scores?.readingBand ?? '--'}</td>
-                        <td>{result.scores?.writingBand ?? '--'}</td>
-                        <td>{result.scores?.speakingBand ?? '--'}</td>
-                        <td>
-                            <b>{result.scores?.overallBand ?? '--'}</b>
-                        </td>
-                        <td>
-                            <StatusBadge status={result.status} />
-                        </td>
-                    </tr>
-                ))}
+                {results.map((session, index) => {
+                    const hasWritingT1 = session.skills['writing-task1'];
+                    const hasWritingT2 = session.skills['writing-task2'];
+                    const hasSpeaking = session.skills.speaking;
+                    const writingT1Band = hasWritingT1?.scores?.writingBand;
+                    const writingT2Band = hasWritingT2?.scores?.writingBand;
+                    const speakingBand = hasSpeaking?.scores?.speakingBand;
+                    const skillCount = Object.keys(session.skills).length;
+                    const isPending = Object.values(session.skills).some(
+                        (s) => s.status === 'GRADING' || s.status === 'SUBMITTED'
+                    );
+
+                    return (
+                        <tr key={session.sessionId || `legacy-session-${index}`}>
+                            <td>{session.examTitle}</td>
+                            <td>{formatDate(session.lastUpdatedAt)}</td>
+                            <td>{session.skills.listening?.scores?.listeningBand ?? '--'}</td>
+                            <td>{session.skills.reading?.scores?.readingBand ?? '--'}</td>
+                            <td>{hasWritingT1 ? (typeof writingT1Band === 'number' ? writingT1Band : 'Pending') : '--'}</td>
+                            <td>{hasWritingT2 ? (typeof writingT2Band === 'number' ? writingT2Band : 'Pending') : '--'}</td>
+                            <td>{hasSpeaking ? (typeof speakingBand === 'number' ? speakingBand : 'Pending') : '--'}</td>
+                            <td>
+                                <b>{session.overallBand ?? '--'}</b>
+                            </td>
+                            <td>
+                                <span className="status-badge status-graded">{skillCount}/5 skills</span>
+                                {isPending && <span className="status-badge status-grading" style={{ marginLeft: '4px' }}>Pending</span>}
+                            </td>
+                        </tr>
+                    );
+                })}
             </tbody>
         </table>
     );

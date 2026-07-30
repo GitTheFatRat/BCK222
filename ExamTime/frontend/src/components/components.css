@@ -227,3 +227,202 @@
     background: var(--et-navy);
     border-color: var(--et-navy);
 }
+/* Result Summary Page */
+.result-summary-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.result-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.overall-band-banner {
+    background: var(--et-navy-light);
+    color: var(--et-navy);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.skill-sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.skill-result-card {
+    background: var(--et-bg);
+    border: 1px solid var(--et-border);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.skill-unattempted {
+    opacity: 0.8;
+    background: #fafafa;
+}
+
+.skill-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.skill-card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--et-text);
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: var(--et-success-light);
+    color: var(--et-success);
+}
+
+.badge-warning {
+    background: #fff8e1;
+    color: #f57c00;
+}
+
+.badge-muted {
+    background: #f3f4f6;
+    color: var(--et-text-muted);
+}
+
+.skill-stats-layout {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.circular-ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(var(--et-success) var(--percentage, 0%), var(--et-border) 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ring-inner {
+    width: 80px;
+    height: 80px;
+    background: var(--et-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ring-score {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--et-text);
+}
+
+.stats-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 80px;
+    border: 1px solid var(--et-border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--et-text-muted);
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--et-text);
+}
+
+.stat-band {
+    background: var(--et-navy-light);
+    border-color: var(--et-navy-light);
+}
+
+.stat-band .stat-value, .stat-band .stat-label {
+    color: var(--et-navy);
+}
+
+.expand-action {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.answer-key-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.answer-key-row {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--et-border);
+    border-radius: 6px;
+    background: var(--et-bg);
+}
+
+.row-correct {
+    border-left: 4px solid var(--et-success);
+    background: var(--et-success-light);
+}
+
+.row-wrong {
+    border-left: 4px solid var(--et-danger);
+    background: var(--et-danger-light);
+}
+
+.row-skipped {
+    border-left: 4px solid var(--et-border);
+    background: #f9fafb;
+}
+
+.q-num {
+    font-weight: 700;
+    width: 24px;
+}
+
+.q-answers {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.correct-ans {
+    font-weight: 600;
+}
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }

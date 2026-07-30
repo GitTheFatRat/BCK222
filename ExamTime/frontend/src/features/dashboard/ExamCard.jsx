@@ -33,6 +33,19 @@ export default function ExamCard({ exam }) {
                     </div>
                 ))}
             </div>
+            
+            <div className="exam-card-footer" style={{ marginTop: '1rem', textAlign: 'right' }}>
+                <button
+                    className="btn btn-secondary"
+                    style={{ fontSize: '0.85rem', padding: '0.25rem 0.5rem' }}
+                    onClick={() => {
+                        localStorage.removeItem(`examtime_session_${exam.examId}`);
+                        alert('Started a new attempt.');
+                    }}
+                >
+                    Start a new attempt
+                </button>
+            </div>
         </div>
     );
 }

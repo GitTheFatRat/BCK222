@@ -28,14 +28,7 @@ const DURATION_SECONDS = {
   speaking: 15 * 60,
 };
 
-// Gop 'writing-task1' / 'writing-task2' (dung de dieu huong URL) thanh 'writing'
-// (dung de gui len backend, vi ExamResult.skill chi co enum 'writing' chung, khong tach Task1/2)
-function toBackendSkill(routeSkill) {
-  if (typeof routeSkill === 'string' && routeSkill.startsWith('writing')) {
-    return 'writing';
-  }
-  return routeSkill;
-}
+
 
 export default function ExamRoom() {
   const { examId: examCode, skill } = useParams(); // examCode = 'code' cua de thi tren URL, vd 'CAMBRIDGE-19-TEST01'
@@ -54,8 +47,37 @@ export default function ExamRoom() {
   const [loadError, setLoadError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [sessionId, setSessionId] = useState('');
+
   // Chong nop bai 2 lan (vd het gio tu dong nop + nguoi dung cung luc bam nut Nop bai)
   const hasSubmittedRef = useRef(false);
+
+  useEffect(() => {
+    const key = `examtime_session_${examCode}`;
+    let stored = localStorage.getItem(key);
+    let validSessionId = null;
+
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+        if (Date.now() - parsed.timestamp < thirtyDays) {
+          validSessionId = parsed.sessionId;
+        }
+      } catch (e) {
+        // ignore JSON parse error
+      }
+    }
+
+    if (!validSessionId) {
+      validSessionId = crypto.randomUUID();
+      localStorage.setItem(
+        key,
+        JSON.stringify({ sessionId: validSessionId, timestamp: Date.now() })
+      );
+    }
+    setSessionId(validSessionId);
+  }, [examCode]);
 
   // Tai du lieu de thi that (mode=exam -> backend tu an correctAnswer/explanation)
   useEffect(() => {
@@ -75,7 +97,7 @@ export default function ExamRoom() {
         dispatch(startSession({ examId: examCode, skill, remainingSeconds }));
       } catch (err) {
         if (!isCancelled) {
-          setLoadError(err.response?.data?.message || 'Khong the tai de thi.');
+          setLoadError(err.response?.data?.message || 'Failed to load exam.');
         }
       } finally {
         if (!isCancelled) setIsLoading(false);
@@ -113,7 +135,7 @@ export default function ExamRoom() {
     if (!realExamId || realExamId === 'undefined' || realExamId === '[object Object]') {
       console.error('examData._id khong hop le (JSON):', JSON.stringify(examData._id));
       console.error('Toan bo examData (JSON):', JSON.stringify(examData, null, 2));
-      setLoadError('Khong xac dinh duoc de thi de nop bai. Vui long tai lai trang.');
+      setLoadError('Unable to determine exam for submission. Please reload the page.');
       return;
     }
 
@@ -130,9 +152,10 @@ export default function ExamRoom() {
         speakingRecordingBlob = await res.blob();
       }
 
-      await submitExam({
+      const result = await submitExam({
         examId: realExamId,
-        skill: toBackendSkill(skill),
+        skill,
+        sessionId,
         answers,
         cheatingLog,
         writingTask1Text: writingTask1,
@@ -140,8 +163,18 @@ export default function ExamRoom() {
         speakingRecordingBlob,
       });
 
+      // Luu lai snapshot cau tra loi + diem so TRUOC KHI reset Redux,
+      // de trang /result co du lieu hien thi (Redux se bi xoa sach ngay sau day).
+      const navigationState = {
+        examCode,
+        skill,
+        sessionId,
+        scores: result.scores,
+        userAnswers: answers,
+      };
+
       dispatch(resetAnswers());
-      navigate('/', { replace: true });
+      navigate('/result', { replace: true, state: navigationState });
     } catch (err) {
       console.error('Nop bai that bai:', err);
       hasSubmittedRef.current = false; // cho phep thu lai neu nop that bai
@@ -157,6 +190,7 @@ export default function ExamRoom() {
     writingTask1,
     writingTask2,
     speakingRecordingBlobUrl,
+    sessionId,
     navigate,
   ]);
 
@@ -167,7 +201,7 @@ export default function ExamRoom() {
     }
   }, [status, isSubmitting, handleSubmit]);
 
-  if (isLoading) return <p className="loading-state">Dang tai de thi...</p>;
+  if (isLoading) return <p className="loading-state">Loading exam...</p>;
   if (loadError) return <p className="form-error">{loadError}</p>;
   if (!examData) return null;
 
@@ -176,7 +210,7 @@ export default function ExamRoom() {
       <div className="exam-room-header">
         <CountdownTimer />
         <button onClick={handleSubmit} disabled={isSubmitting}>
-          {isSubmitting ? 'Dang nop bai...' : 'Nop bai'}
+          {isSubmitting ? 'Submitting...' : 'Submit Exam'}
         </button>
       </div>
 

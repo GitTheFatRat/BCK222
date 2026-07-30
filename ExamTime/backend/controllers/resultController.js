@@ -28,11 +28,12 @@ function countCorrectAnswers(userAnswers, questions) {
 }
 
 function lookupBand(scaleList, correctCount) {
+    if (correctCount === 0) return 1.0;
     if (!Array.isArray(scaleList)) return null;
     const match = scaleList.find(
         (row) => correctCount >= row.minCorrect && correctCount <= row.maxCorrect
     );
-    return match ? match.band : null;
+    return match ? match.band : 1.0;
 }
 
 function calculateOverallBand(scores) {
@@ -45,14 +46,43 @@ function calculateOverallBand(scores) {
     return Math.round(average * 2) / 2;
 }
 
+function calculateSessionOverallBand(skills) {
+    const bands = [];
+
+    const listeningBand = skills.listening?.scores?.listeningBand;
+    if (typeof listeningBand === 'number') bands.push(listeningBand);
+
+    const readingBand = skills.reading?.scores?.readingBand;
+    if (typeof readingBand === 'number') bands.push(readingBand);
+
+    const writingTask1Band = skills['writing-task1']?.scores?.writingBand;
+    const writingTask2Band = skills['writing-task2']?.scores?.writingBand;
+    const writingBands = [writingTask1Band, writingTask2Band].filter(
+        (b) => typeof b === 'number'
+    );
+    if (writingBands.length > 0) {
+        const writingAverage =
+            writingBands.reduce((sum, b) => sum + b, 0) / writingBands.length;
+        bands.push(writingAverage);
+    }
+
+    const speakingBand = skills.speaking?.scores?.speakingBand;
+    if (typeof speakingBand === 'number') bands.push(speakingBand);
+
+    if (bands.length === 0) return null;
+    const average = bands.reduce((sum, b) => sum + b, 0) / bands.length;
+    return Math.round(average * 2) / 2;
+}
+
 export async function submitResult(req, res) {
     try {
         const { examId, writingTask1Text, writingTask2Text } = req.body;
-        let skill = req.body.skill;
+        const sessionId = req.body.sessionId;
 
-        if (skill && skill.startsWith('writing')) {
-            skill = 'writing';
+        if (!sessionId) {
+            return res.status(400).json({ message: 'Missing sessionId.' });
         }
+        const skill = req.body.skill;
 
         let answers = {};
         if (req.body.answers) {
@@ -65,12 +95,12 @@ export async function submitResult(req, res) {
         }
 
         if (!examId) {
-            return res.status(400).json({ message: 'Thieu examId.' });
+            return res.status(400).json({ message: 'Missing examId.' });
         }
 
-        const ALLOWED_SKILLS = ['listening', 'reading', 'writing', 'speaking', 'full'];
+        const ALLOWED_SKILLS = ['listening', 'reading', 'writing-task1', 'writing-task2', 'speaking', 'full'];
         if (!skill || !ALLOWED_SKILLS.includes(skill)) {
-            return res.status(400).json({ message: 'Skill khong hop le hoac bi thieu.' });
+            return res.status(400).json({ message: 'Invalid or missing skill.' });
         }
 
         let exam = null;
@@ -87,7 +117,7 @@ export async function submitResult(req, res) {
         }
 
         if (!exam) {
-            return res.status(404).json({ message: 'Khong tim thay de thi.' });
+            return res.status(404).json({ message: 'Exam not found.' });
         }
 
         const scale = await loadBandScale();
@@ -117,25 +147,50 @@ export async function submitResult(req, res) {
             }
         }
 
+        let requiresManualGrading = false;
+
+        if (skill === 'writing-task1') {
+            const wordCount = (writingTask1Text || '').trim().split(/\s+/).filter(Boolean).length;
+            if (wordCount <= 2) {
+                scores.writingBand = 1.0;
+            } else {
+                requiresManualGrading = true;
+            }
+        } else if (skill === 'writing-task2') {
+            const wordCount = (writingTask2Text || '').trim().split(/\s+/).filter(Boolean).length;
+            if (wordCount <= 2) {
+                scores.writingBand = 1.0;
+            } else {
+                requiresManualGrading = true;
+            }
+        } else if (skill === 'speaking') {
+            if (!req.file) {
+                scores.speakingBand = 1.0;
+            } else {
+                requiresManualGrading = true;
+            }
+        }
+
         scores.overallBand = calculateOverallBand(scores);
 
         const result = await ExamResult.create({
             user: req.user.id,
             exam: exam._id,
             skill,
+            sessionId,
             answers,
             cheatingLog,
             writingTask1Text: writingTask1Text || '',
             writingTask2Text: writingTask2Text || '',
             speakingRecordingUrl: req.file ? `/uploads/speaking/${req.file.filename}` : null,
             scores,
-            status: writingTask1Text || writingTask2Text || req.file ? 'GRADING' : 'GRADED',
+            status: requiresManualGrading ? 'GRADING' : 'GRADED',
         });
 
         return res.status(201).json(result);
     } catch (err) {
-        console.error('[submitResult] Loi:', err);
-        return res.status(500).json({ message: 'Nop bai that bai. Vui long thu lai.' });
+        console.error('[submitResult] Error:', err);
+        return res.status(500).json({ message: 'Submission failed. Please try again.' });
     }
 }
 
@@ -145,17 +200,100 @@ export async function getMyResults(req, res) {
             .populate('exam', 'title code')
             .sort('-createdAt');
 
-        const formatted = results.map((r) => ({
-            _id: r._id,
-            examTitle: r.exam?.title || 'Khong xac dinh',
-            createdAt: r.createdAt,
-            scores: r.scores,
-            status: r.status,
-        }));
+        const sessionMap = new Map();
+
+        for (const r of results) {
+            const key = r.sessionId;
+            if (!sessionMap.has(key)) {
+                sessionMap.set(key, {
+                    sessionId: key,
+                    examTitle: r.exam?.title || 'Unknown Exam',
+                    examCode: r.exam?.code || null,
+                    lastUpdatedAt: r.createdAt,
+                    skills: {},
+                });
+            }
+            const session = sessionMap.get(key);
+            if (!session.skills[r.skill]) {
+                session.skills[r.skill] = {
+                    resultId: r._id,
+                    scores: r.scores,
+                    status: r.status,
+                    createdAt: r.createdAt,
+                    answers: r.answers,
+                };
+            }
+            if (r.createdAt > session.lastUpdatedAt) {
+                session.lastUpdatedAt = r.createdAt;
+            }
+        }
+
+        for (const session of sessionMap.values()) {
+            session.overallBand = calculateSessionOverallBand(session.skills);
+        }
+
+        const formatted = Array.from(sessionMap.values()).sort(
+            (a, b) => new Date(b.lastUpdatedAt) - new Date(a.lastUpdatedAt)
+        );
 
         return res.json(formatted);
     } catch (err) {
-        console.error('[getMyResults] Loi:', err.message);
-        return res.status(500).json({ message: 'Khong the tai lich su ket qua.' });
+        console.error('[getMyResults] Error:', err.message);
+        return res.status(500).json({ message: 'Unable to load result history.' });
+    }
+}
+
+export async function getPendingGradingTasks(req, res) {
+    try {
+        const pendingTasks = await ExamResult.find({
+            status: { $in: ['GRADING', 'SUBMITTED'] },
+            skill: { $in: ['writing-task1', 'writing-task2', 'speaking'] },
+        })
+            .populate('user', 'username email')
+            .populate('exam', 'title code')
+            .sort('-createdAt');
+
+        return res.json(pendingTasks);
+    } catch (err) {
+        console.error('[getPendingGradingTasks] Error:', err.message);
+        return res.status(500).json({ message: 'Failed to fetch pending grading tasks.' });
+    }
+}
+
+export async function gradeResult(req, res) {
+    try {
+        const { id } = req.params;
+        const { score } = req.body;
+
+        if (score === undefined || score === null) {
+            return res.status(400).json({ message: 'Score is required.' });
+        }
+
+        const result = await ExamResult.findById(id);
+        if (!result) {
+            return res.status(404).json({ message: 'Result not found.' });
+        }
+
+        if (result.skill.startsWith('writing')) {
+            result.scores.writingBand = Number(score);
+        } else if (result.skill === 'speaking') {
+            result.scores.speakingBand = Number(score);
+        } else {
+            return res.status(400).json({ message: 'Skill does not require manual grading.' });
+        }
+
+        result.status = 'GRADED';
+        
+        // Recalculate overall band if possible
+        result.scores.overallBand = calculateOverallBand(result.scores);
+
+        result.markModified('scores');
+
+        await result.save();
+
+        return res.json({ message: 'Grading submitted successfully', result });
+    } catch (err) {
+        console.error('[gradeResult] Error:', err.message);
+        return res.status(500).json({ message: 'Failed to submit grade.' });
     }
 }
