@@ -1,4 +1,5 @@
 import { readFile } from 'fs/promises';
+import mongoose from 'mongoose';
 
 import ExamResult from '../models/ExamResult.js';
 import Exam from '../models/Exam.js';
@@ -17,6 +18,7 @@ async function loadBandScale() {
 function countCorrectAnswers(userAnswers, questions) {
     let correctCount = 0;
     for (const question of questions) {
+        if (!question || !question.qId) continue;
         const userAnswer = userAnswers[question.qId];
         if (userAnswer !== undefined && userAnswer === question.correctAnswer) {
             correctCount += 1;
@@ -26,6 +28,7 @@ function countCorrectAnswers(userAnswers, questions) {
 }
 
 function lookupBand(scaleList, correctCount) {
+    if (!Array.isArray(scaleList)) return null;
     const match = scaleList.find(
         (row) => correctCount >= row.minCorrect && correctCount <= row.maxCorrect
     );
@@ -45,14 +48,44 @@ function calculateOverallBand(scores) {
 export async function submitResult(req, res) {
     try {
         const { examId, writingTask1Text, writingTask2Text } = req.body;
-        const answers = req.body.answers ? JSON.parse(req.body.answers) : {};
-        const cheatingLog = req.body.cheatingLog ? JSON.parse(req.body.cheatingLog) : [];
+        let skill = req.body.skill;
+
+        if (skill && skill.startsWith('writing')) {
+            skill = 'writing';
+        }
+
+        let answers = {};
+        if (req.body.answers) {
+            answers = typeof req.body.answers === 'string' ? JSON.parse(req.body.answers) : req.body.answers;
+        }
+
+        let cheatingLog = [];
+        if (req.body.cheatingLog) {
+            cheatingLog = typeof req.body.cheatingLog === 'string' ? JSON.parse(req.body.cheatingLog) : req.body.cheatingLog;
+        }
 
         if (!examId) {
             return res.status(400).json({ message: 'Thieu examId.' });
         }
 
-        const exam = await Exam.findById(examId);
+        const ALLOWED_SKILLS = ['listening', 'reading', 'writing', 'speaking', 'full'];
+        if (!skill || !ALLOWED_SKILLS.includes(skill)) {
+            return res.status(400).json({ message: 'Skill khong hop le hoac bi thieu.' });
+        }
+
+        let exam = null;
+        if (mongoose.Types.ObjectId.isValid(examId)) {
+            exam = await Exam.findById(examId);
+        }
+        if (!exam) {
+            const cleanCode = String(examId).trim();
+            exam = await Exam.findOne({ code: { $regex: new RegExp(`^${cleanCode}$`, 'i') } });
+            if (!exam) {
+                const formattedCode = cleanCode.replace(/([a-zA-Z]+)(\d+)/g, '$1-$2');
+                exam = await Exam.findOne({ code: { $regex: new RegExp(`^${formattedCode}$`, 'i') } });
+            }
+        }
+
         if (!exam) {
             return res.status(404).json({ message: 'Khong tim thay de thi.' });
         }
@@ -66,19 +99,19 @@ export async function submitResult(req, res) {
             overallBand: null,
         };
 
-        if (exam.listeningSet) {
+        if ((skill === 'listening' || skill === 'full') && exam.listeningSet) {
             const listeningSet = await ListeningSet.findById(exam.listeningSet);
             if (listeningSet) {
-                const allListeningQuestions = listeningSet.sections.flatMap((s) => s.questions);
+                const allListeningQuestions = (listeningSet.sections || []).flatMap((s) => s.questions || []);
                 const correctCount = countCorrectAnswers(answers, allListeningQuestions);
                 scores.listeningBand = lookupBand(scale.listening, correctCount);
             }
         }
 
-        if (exam.readingSet) {
+        if ((skill === 'reading' || skill === 'full') && exam.readingSet) {
             const readingSet = await ReadingSet.findById(exam.readingSet);
             if (readingSet) {
-                const allReadingQuestions = readingSet.passages.flatMap((p) => p.questions);
+                const allReadingQuestions = (readingSet.passages || []).flatMap((p) => p.questions || []);
                 const correctCount = countCorrectAnswers(answers, allReadingQuestions);
                 scores.readingBand = lookupBand(scale.reading, correctCount);
             }
@@ -88,7 +121,8 @@ export async function submitResult(req, res) {
 
         const result = await ExamResult.create({
             user: req.user.id,
-            exam: examId,
+            exam: exam._id,
+            skill,
             answers,
             cheatingLog,
             writingTask1Text: writingTask1Text || '',
@@ -100,7 +134,7 @@ export async function submitResult(req, res) {
 
         return res.status(201).json(result);
     } catch (err) {
-        console.error('[submitResult] Loi:', err.message);
+        console.error('[submitResult] Loi:', err);
         return res.status(500).json({ message: 'Nop bai that bai. Vui long thu lai.' });
     }
 }

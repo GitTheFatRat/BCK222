@@ -1,49 +1,73 @@
 import { useEffect, useState } from 'react';
+
 import ExamCard from '../features/dashboard/ExamCard.jsx';
 import ResultHistory from '../features/dashboard/ResultHistory.jsx';
-import mockData from '../mock/examMock.json';
+import { getExam } from '../services/examService.js';
+import { getMyResultHistory } from '../services/resultService.js';
+
 export default function HomeDashboard() {
-    const [exams, setExams] = useState([]);
-    const [results, setResults] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const [exams, setExams] = useState([]);
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
-    useEffect(() => {
-        async function loadDashboardData() {
-            setIsLoading(true);
-            try {
-                setExams([
-                    {
-                        examId: mockData.examId,
-                        title: mockData.title,
-                        isCompleted: false,
-                        bestBand: null,
-                    },
-                ]);
-                setResults([]);
-            } catch (err) {
-                console.error('Cannot load data.:', err);
-            } finally {
-                setIsLoading(false);
-            }
-        }
+  useEffect(() => {
+    async function loadDashboardData() {
+      setIsLoading(true);
+      setError('');
+      try {
+        const [examList, history] = await Promise.all([getExam(), getMyResultHistory()]);
 
-        loadDashboardData();
-    }, []);
+        const formattedExams = examList.map((exam) => {
+          const relatedResults = history.filter((r) => r.examTitle === exam.title);
+          const bestOverall = relatedResults.reduce((best, r) => {
+            const band = r.scores?.overallBand;
+            return typeof band === 'number' && band > (best ?? -Infinity) ? band : best;
+          }, null);
 
-    if (isLoading) {
-        return <p className="loading-state">Loading ExamBanks...</p>;
+          return {
+            examId: exam.code,
+            title: exam.title,
+            isCompleted: relatedResults.length > 0,
+            bestBand: bestOverall,
+          };
+        });
+
+        setExams(formattedExams);
+        setResults(history);
+      } catch (err) {
+        console.error('Khong the tai du lieu dashboard:', err);
+        setError('Khong the tai du lieu. Vui long kiem tra ket noi va thu lai.');
+      } finally {
+        setIsLoading(false);
+      }
     }
 
-    return (
-        <div className="dashboard-container">
-            <h2>IELTS Exam Practice</h2>
-            <div className="exams-grid">
-                {exams.map(exam => (
-                    <ExamCard key={exam.examId} exam={exam} />
-                ))}
-            </div>
-            <h2>Result History</h2>
-            <ResultHistory results={results} />
+    loadDashboardData();
+  }, []);
+
+  if (isLoading) {
+    return <p className="loading-state">Dang tai danh sach de thi...</p>;
+  }
+
+  return (
+    <div className="dashboard-container">
+      <h2>IELTS Exam Practice</h2>
+
+      {error && <p className="form-error">{error}</p>}
+
+      {exams.length === 0 ? (
+        <p className="empty-state">Hien chua co de thi nao duoc xuat ban.</p>
+      ) : (
+        <div className="exams-grid">
+          {exams.map((exam) => (
+            <ExamCard key={exam.examId} exam={exam} />
+          ))}
         </div>
-    );
+      )}
+
+      <h2>Result History</h2>
+      <ResultHistory results={results} />
+    </div>
+  );
 }

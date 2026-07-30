@@ -19,9 +19,9 @@ const questionSchema = new mongoose.Schema(
 const sectionSchema = new mongoose.Schema(
     {
         sectionNumber: { type: Number, required: true },
-        question: [questionSchema]
+        questions: [questionSchema]
     },
-    { _id: true }
+    { _id: false }
 )
 
 const listeningSetSchema = new mongoose.Schema(

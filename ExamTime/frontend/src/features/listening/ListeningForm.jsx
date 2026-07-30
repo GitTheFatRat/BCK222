@@ -28,7 +28,7 @@ export default function ListeningForm({ questions = [], showAnswers = false }) {
 
                         {question.type === 'multiple-choice' && (
                             <div className="options-group">
-                                {question.options.map((option) => (
+                                {(question.options || []).map((option) => (
                                     <label key={option} className="option-label">
                                         <input
                                             type="radio"

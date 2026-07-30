@@ -37,7 +37,8 @@ export async function ingestExamFolder(req, res) {
         return res.status(400).json({ message: 'Missing folder name' });
     }
 
-    const sourcePath = path.join(SOURCE_BANK_DIR, folderName);
+    const safeFolderName = path.basename(folderName);
+    const sourcePath = path.join(SOURCE_BANK_DIR, safeFolderName);
 
     try {
         await fs.access(sourcePath);

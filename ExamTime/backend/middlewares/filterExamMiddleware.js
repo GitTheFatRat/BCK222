@@ -6,8 +6,7 @@ function stripAnswerFields(data) {
     }
 
     if (data !== null && typeof data === 'object') {
-        const plainObject = typeof data.toObject === 'function' ? data.toObject() : data;
-        const clone = { ...plainObject };
+        const clone = { ...data };
 
         for (const field of FIELDS_TO_STRIP) {
             delete clone[field];
@@ -28,7 +27,8 @@ export function filterExamMiddleware(req, res, next) {
 
     res.json = (payload) => {
         if (req.query.mode === 'exam') {
-            return originalJson(stripAnswerFields(payload));
+            const plainPayload = JSON.parse(JSON.stringify(payload));
+            return originalJson(stripAnswerFields(plainPayload));
         }
         return originalJson(payload);
     };

@@ -1,72 +1,93 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
 import ListeningForm from '../features/listening/ListeningForm.jsx';
 import ReadingSplit from '../features/reading/ReadingSplit.jsx';
 import WritingEditor from '../features/writing/WritingEditor.jsx';
 import SpeakingRecorder from '../features/speaking/SpeakingRecorder.jsx';
-import mockData from '../mock/examMock.json';
+import { getExamByCode } from '../services/examService.js';
+import { getMediaUrl } from '../config/media.js';
 
 export default function PracticeRoom() {
-    const { examId, skill } = useParams();
-    const [examData, setExamData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState('');
+  const { examId, skill } = useParams();
+  const [examData, setExamData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
-    useEffect(() => {
-        async function loadExamData() {
-            setIsLoading(true);
-            setError('');
-            try {
-                if (mockData.examId !== examId) {
-                    throw new Error('Cannot find exam.');
-                }
-                setExamData(mockData);
-            } catch (err) {
-                setError(err.message || 'Cannot load exam.');
-            } finally {
-                setIsLoading(false);
-            }
-        }
-        loadExamData()
-    }, [examId])
+  useEffect(() => {
+    async function loadExamData() {
+      setIsLoading(true);
+      setError('');
+      try {
+        const data = await getExamByCode(examId, 'practice');
+        setExamData(data);
+      } catch (err) {
+        setError(err.response?.data?.message || 'Co loi khi tai de thi.');
+      } finally {
+        setIsLoading(false);
+      }
+    }
 
-    if (isLoading) return <div className='loading-state'>Loading practice exams</div>
-    if (error) return <p className='form-error'>{error}</p>
-    if (!examData) return null;
+    loadExamData();
+  }, [examId]);
 
-    return (
-        <div className='practice-room'>
-            <div className='practice-header'>
-                <h2>Practice: {skillLabel(skill)}</h2>
-                <Link to="/">&larr; Back to home</Link>
-            </div>
+  if (isLoading) return <p className="loading-state">Dang tai de luyen tap...</p>;
+  if (error) return <p className="form-error">{error}</p>;
+  if (!examData) return null;
 
-            {skill === 'reading' && <ReadingSplit passage={examData.reading.passages[0]} />}
+  return (
+    <div className="practice-room">
+      <div className="practice-header">
+        <h2>Luyen tap: {skillLabel(skill)}</h2>
+        <Link to="/">&larr; Ve trang chu</Link>
+      </div>
 
-            {skill === 'writing-task1' && (
-                <WritingEditor task="Task1" minWords={examData.writing.task1.minWords} />
-            )}
+      {skill === 'listening' && examData.listeningSet && (
+        <>
+          <audio src={getMediaUrl(examData.listeningSet.audioUrl)} controls />
+          {examData.listeningSet.sections.map((section) => (
+            <ListeningForm key={section.sectionNumber} questions={section.questions} showAnswers />
+          ))}
+        </>
+      )}
 
-            {skill === 'writing-task2' && (
-                <WritingEditor task="Task2" minWords={examData.writing.task2.minWords} />
-            )}
+      {skill === 'reading' &&
+        examData.readingSet &&
+        examData.readingSet.passages.map((passage) => (
+          <ReadingSplit key={passage.passageNumber} passage={passage} showAnswers />
+        ))}
 
-            {skill === 'speaking' && <SpeakingRecorder cueCard={examData.speaking.part2} />}
+      {skill === 'writing-task1' && examData.writingSet && (
+        <WritingEditor
+          task="Task1"
+          minWords={examData.writingSet.task1.minWords}
+          prompt={examData.writingSet.task1.prompt}
+          imageUrl={examData.writingSet.task1.imageUrl}
+        />
+      )}
 
-            {!['listening', 'reading', 'writing-task1', 'writing-task2', 'speaking'].includes(skill) && (
-                <p>Invalid Skill: {skill}</p>
-            )}
-        </div>
-    );
+      {skill === 'writing-task2' && examData.writingSet && (
+        <WritingEditor
+          task="Task2"
+          minWords={examData.writingSet.task2.minWords}
+          prompt={examData.writingSet.task2.prompt}
+        />
+      )}
+
+      {skill === 'speaking' && examData.speakingSet && (
+        <SpeakingRecorder cueCard={examData.speakingSet.part2} />
+      )}
+    </div>
+  );
 }
 
 function skillLabel(skill) {
-    const labels = {
-        listening: 'listening',
-        reading: 'reading',
-        'writing-task1': 'Writing Task 1',
-        'writing-task2': 'Writing Task 2',
-        speaking: 'Speaking',
-    };
-    return labels[skill] || skill;
+  const labels = {
+    listening: 'Listening',
+    reading: 'Reading',
+    'writing-task1': 'Writing Task 1',
+    'writing-task2': 'Writing Task 2',
+    speaking: 'Speaking',
+  };
+  return labels[skill] || skill;
 }

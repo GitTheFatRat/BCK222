@@ -15,11 +15,12 @@ const answerSlice = createSlice({
             state.byQuestionId[qId] = value
         },
         setWritingContent(state, action) {
-            const { task, value } = action.payload
+            const { task, content, value } = action.payload;
+            const text = content !== undefined ? content : value;
             if (task === 'Task1') {
-                state.writingTask1 = value;
+                state.writingTask1 = text;
             } else if (task === 'Task2') {
-                state.writingTask2 = value;
+                state.writingTask2 = text;
             }
         },
         setSpeakingRecording(state, action) {

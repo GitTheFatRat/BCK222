@@ -1,7 +1,13 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { startSession, logCheatingEvent, endSession, resetSession } from '../store/slices/examSessionSlice.js';
+
+import {
+  startSession,
+  logCheatingEvent,
+  endSession,
+  resetSession,
+} from '../store/slices/examSessionSlice.js';
 import { resetAnswers } from '../store/slices/answerSlice.js';
 import CountdownTimer from '../components/CountdownTimer.jsx';
 import Sidebar from '../components/Layout/Sidebar.jsx';
@@ -10,122 +16,223 @@ import ListeningForm from '../features/listening/ListeningForm.jsx';
 import ReadingSplit from '../features/reading/ReadingSplit.jsx';
 import WritingEditor from '../features/writing/WritingEditor.jsx';
 import SpeakingRecorder from '../features/speaking/SpeakingRecorder.jsx';
-import mockData from '../mock/examMock.json';
+import { getExamByCode } from '../services/examService.js';
+import { submitExam } from '../services/resultService.js';
+import { getMediaUrl } from '../config/media.js';
 
 const DURATION_SECONDS = {
-    listening: 30 * 60,
-    reading: 60 * 60,
-    'writing-task1': 20 * 60,
-    'writing-task2': 40 * 60,
-    speaking: 15 * 60,
+  listening: 30 * 60,
+  reading: 60 * 60,
+  'writing-task1': 20 * 60,
+  'writing-task2': 40 * 60,
+  speaking: 15 * 60,
 };
 
+// Gop 'writing-task1' / 'writing-task2' (dung de dieu huong URL) thanh 'writing'
+// (dung de gui len backend, vi ExamResult.skill chi co enum 'writing' chung, khong tach Task1/2)
+function toBackendSkill(routeSkill) {
+  if (typeof routeSkill === 'string' && routeSkill.startsWith('writing')) {
+    return 'writing';
+  }
+  return routeSkill;
+}
+
 export default function ExamRoom() {
-    const { examId, skill } = useParams();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const { examId: examCode, skill } = useParams(); // examCode = 'code' cua de thi tren URL, vd 'CAMBRIDGE-19-TEST01'
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const status = useSelector((state) => state.examSession.status);
-    const answers = useSelector((state) => state.answers.byQuestionId);
-    const cheatingLog = useSelector((state) => state.examSession.cheatingLog);
-    const writingTask1 = useSelector((state) => state.answers.writingTask1);
-    const writingTask2 = useSelector((state) => state.answers.writingTask2);
-    const speakingRecordingBlobUrl = useSelector((state) => state.answers.speakingRecordingBlobUrl);
+  const status = useSelector((state) => state.examSession.status);
+  const answers = useSelector((state) => state.answers.byQuestionId);
+  const cheatingLog = useSelector((state) => state.examSession.cheatingLog);
+  const writingTask1 = useSelector((state) => state.answers.writingTask1);
+  const writingTask2 = useSelector((state) => state.answers.writingTask2);
+  const speakingRecordingBlobUrl = useSelector((state) => state.answers.speakingRecordingBlobUrl);
 
-    const [examData, setExamData] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+  const [examData, setExamData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    useEffect(() => {
-        if (mockData.examId !== examId) return;
-        setExamData(mockData);
+  // Chong nop bai 2 lan (vd het gio tu dong nop + nguoi dung cung luc bam nut Nop bai)
+  const hasSubmittedRef = useRef(false);
+
+  // Tai du lieu de thi that (mode=exam -> backend tu an correctAnswer/explanation)
+  useEffect(() => {
+    let isCancelled = false;
+
+    async function loadExamData() {
+      setIsLoading(true);
+      setLoadError('');
+      try {
+        const data = await getExamByCode(examCode, 'exam');
+        if (isCancelled) return;
+
+        setExamData(data);
+        hasSubmittedRef.current = false;
 
         const remainingSeconds = DURATION_SECONDS[skill] || 30 * 60;
-        dispatch(startSession({ examId, skill, remainingSeconds }));
-
-        return () => {
-            dispatch(resetSession());
-        };
-    }, [examId, skill]);
-
-    useEffect(() => {
-        function handleVisibilityChange() {
-            if (document.hidden && status === 'IN_PROGRESS') {
-                dispatch(logCheatingEvent({ type: 'TAB_SWITCHED' }));
-            }
+        dispatch(startSession({ examId: examCode, skill, remainingSeconds }));
+      } catch (err) {
+        if (!isCancelled) {
+          setLoadError(err.response?.data?.message || 'Khong the tai de thi.');
         }
-
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-    }, [dispatch, status]);
-
-    const handleSubmit = useCallback(async () => {
-        if (isSubmitting) return;
-        setIsSubmitting(true);
-
-        try {
-            dispatch(endSession());
-            console.log("Submitting responses...", { examId, skill, answers, cheatingLog });
-
-            dispatch(resetAnswers());
-            navigate('/', { replace: true })
-        } catch (err) {
-            console.error('Submit failed:', err);
-        } finally {
-            setIsSubmitting(false);
-        }
-    }, [isSubmitting, examId, skill, answers, cheatingLog, dispatch, navigate])
-
-    useEffect(() => {
-        if (status === 'SUBMITTED' && !isSubmitting) {
-            handleSubmit();
-        }
-    }, [status, isSubmitting, handleSubmit]);
-
-    if (!examData) {
-        return <p className="loading-state">Dang tai de thi...</p>;
+      } finally {
+        if (!isCancelled) setIsLoading(false);
+      }
     }
 
-    return (
-        <div className="exam-room">
-            <div className="exam-room-header">
-                <CountdownTimer />
-                <button onClick={handleSubmit} disabled={isSubmitting}>
-                    {isSubmitting ? 'Dang nop bai...' : 'Nop bai'}
-                </button>
-            </div>
+    loadExamData();
 
-            <div className="exam-room-body">
-                <div className="exam-room-content">
-                    {skill === 'listening' && (
-                        <>
-                            <AudioPlayer src={examData.listening.audioUrl} examMode />
-                            <ListeningForm questions={examData.listening.sections[0].questions} />
-                        </>
-                    )}
+    return () => {
+      isCancelled = true;
+      dispatch(resetSession());
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [examCode, skill]);
 
-                    {skill === 'reading' && <ReadingSplit passage={examData.reading.passages[0]} />}
+  // Phat hien chuyen tab trong luc dang thi that
+  useEffect(() => {
+    function handleVisibilityChange() {
+      if (document.hidden && status === 'IN_PROGRESS') {
+        dispatch(logCheatingEvent({ type: 'TAB_SWITCH' }));
+      }
+    }
 
-                    {skill === 'writing-task1' && (
-                        <WritingEditor task="Task1" minWords={examData.writing.task1.minWords} />
-                    )}
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [dispatch, status]);
 
-                    {skill === 'writing-task2' && (
-                        <WritingEditor task="Task2" minWords={examData.writing.task2.minWords} />
-                    )}
+  const handleSubmit = useCallback(async () => {
+    if (isSubmitting || hasSubmittedRef.current || !examData) return;
 
-                    {skill === 'speaking' && <SpeakingRecorder cueCard={examData.speaking.part2} />}
-                </div>
+    // examData._id la ObjectId THAT cua Exam trong MongoDB (dang chuoi text sau khi qua JSON),
+    // BAT BUOC phai la string o day - khong duoc truyen ca object examData vao.
+    const realExamId = typeof examData._id === 'string' ? examData._id : String(examData._id);
 
-                {(skill === 'listening' || skill === 'reading') && (
-                    <Sidebar
-                        totalQuestions={examData[skill].sections?.[0]?.questions?.length || examData[skill].passages?.[0]?.questions?.length || 0}
-                        answeredIds={Object.keys(answers)}
-                        onJump={(qId) => {
-                            document.getElementById(`question-${qId}`)?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                    />
-                )}
-            </div>
+    if (!realExamId || realExamId === 'undefined' || realExamId === '[object Object]') {
+      console.error('examData._id khong hop le (JSON):', JSON.stringify(examData._id));
+      console.error('Toan bo examData (JSON):', JSON.stringify(examData, null, 2));
+      setLoadError('Khong xac dinh duoc de thi de nop bai. Vui long tai lai trang.');
+      return;
+    }
+
+    hasSubmittedRef.current = true;
+    setIsSubmitting(true);
+
+    try {
+      dispatch(endSession());
+
+      // Chuyen blob URL tam thoi (URL.createObjectURL) thanh Blob that de gui qua FormData
+      let speakingRecordingBlob = null;
+      if (speakingRecordingBlobUrl) {
+        const res = await fetch(speakingRecordingBlobUrl);
+        speakingRecordingBlob = await res.blob();
+      }
+
+      await submitExam({
+        examId: realExamId,
+        skill: toBackendSkill(skill),
+        answers,
+        cheatingLog,
+        writingTask1Text: writingTask1,
+        writingTask2Text: writingTask2,
+        speakingRecordingBlob,
+      });
+
+      dispatch(resetAnswers());
+      navigate('/', { replace: true });
+    } catch (err) {
+      console.error('Nop bai that bai:', err);
+      hasSubmittedRef.current = false; // cho phep thu lai neu nop that bai
+      setIsSubmitting(false);
+    }
+  }, [
+    isSubmitting,
+    examData,
+    dispatch,
+    skill,
+    answers,
+    cheatingLog,
+    writingTask1,
+    writingTask2,
+    speakingRecordingBlobUrl,
+    navigate,
+  ]);
+
+  // Tu dong nop bai khi het gio (examSessionSlice.tick() tu chuyen status -> 'SUBMITTED')
+  useEffect(() => {
+    if (status === 'SUBMITTED' && !isSubmitting) {
+      handleSubmit();
+    }
+  }, [status, isSubmitting, handleSubmit]);
+
+  if (isLoading) return <p className="loading-state">Dang tai de thi...</p>;
+  if (loadError) return <p className="form-error">{loadError}</p>;
+  if (!examData) return null;
+
+  return (
+    <div className="exam-room">
+      <div className="exam-room-header">
+        <CountdownTimer />
+        <button onClick={handleSubmit} disabled={isSubmitting}>
+          {isSubmitting ? 'Dang nop bai...' : 'Nop bai'}
+        </button>
+      </div>
+
+      <div className="exam-room-body">
+        <div className="exam-room-content">
+          {skill === 'listening' && examData.listeningSet && (
+            <>
+              <AudioPlayer src={getMediaUrl(examData.listeningSet.audioUrl)} examMode />
+              {examData.listeningSet.sections.map((section) => (
+                <ListeningForm key={section.sectionNumber} questions={section.questions} />
+              ))}
+            </>
+          )}
+
+          {skill === 'reading' &&
+            examData.readingSet &&
+            examData.readingSet.passages.map((passage) => (
+              <ReadingSplit key={passage.passageNumber} passage={passage} />
+            ))}
+
+          {skill === 'writing-task1' && examData.writingSet && (
+            <WritingEditor
+              task="Task1"
+              minWords={examData.writingSet.task1.minWords}
+              prompt={examData.writingSet.task1.prompt}
+              imageUrl={examData.writingSet.task1.imageUrl}
+            />
+          )}
+
+          {skill === 'writing-task2' && examData.writingSet && (
+            <WritingEditor
+              task="Task2"
+              minWords={examData.writingSet.task2.minWords}
+              prompt={examData.writingSet.task2.prompt}
+            />
+          )}
+
+          {skill === 'speaking' && examData.speakingSet && (
+            <SpeakingRecorder cueCard={examData.speakingSet.part2} />
+          )}
         </div>
-    );
-}   
+
+        {(skill === 'listening' || skill === 'reading') && (
+          <Sidebar
+            totalQuestions={
+              skill === 'listening'
+                ? examData.listeningSet?.sections?.[0]?.questions?.length || 0
+                : examData.readingSet?.passages?.[0]?.questions?.length || 0
+            }
+            answeredIds={Object.keys(answers)}
+            onJump={(qId) => {
+              document.getElementById(`question-${qId}`)?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          />
+        )}
+      </div>
+    </div>
+  );
+}

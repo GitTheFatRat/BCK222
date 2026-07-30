@@ -13,18 +13,24 @@ export async function getAllExams(req, res) {
 export async function getExamByCode(req, res) {
     try {
         const { code } = req.params;
+        const cleanCode = String(code).trim();
 
-        const exam = await Exam.findOne({ code: code.toUpperCase() })
+        let exam = await Exam.findOne({ code: { $regex: new RegExp(`^${cleanCode}$`, 'i') } })
             .populate('listeningSet')
             .populate('readingSet')
             .populate('writingSet')
             .populate('speakingSet');
 
         if (!exam) {
-            return res.status(404).json({ message: 'cannot find exams with this code' });
+            const formattedCode = cleanCode.replace(/([a-zA-Z]+)(\d+)/g, '$1-$2');
+            exam = await Exam.findOne({ code: { $regex: new RegExp(`^${formattedCode}$`, 'i') } })
+                .populate('listeningSet')
+                .populate('readingSet')
+                .populate('writingSet')
+                .populate('speakingSet');
         }
 
-        if (!exam.isPublished) {
+        if (!exam || !exam.isPublished) {
             return res.status(404).json({ message: 'cannot find exams with this code' });
         }
 

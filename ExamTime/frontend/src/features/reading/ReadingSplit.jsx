@@ -5,7 +5,7 @@ export default function ReadingSplit({ passage, showAnswers = false }) {
         <div className="reading-split">
             <div className="passage-pane">
                 <h3>{passage.title}</h3>
-                {passage.text.split('\n').map((paragraph, index) => (
+                {(passage?.text || '').split('\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                 ))}
             </div>
