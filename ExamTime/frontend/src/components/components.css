@@ -75,6 +75,85 @@
 .footer {
     padding: 16px 28px;
     text-align: center;
+}
+
+:root {
+    --et-navy: #0b3d91;
+    --et-navy-dark: #082b68;
+    --et-navy-light: #eaf1fc;
+    --et-border: #d8e2f0;
+    --et-text: #1f2937;
+    --et-text-muted: #6b7280;
+    --et-danger: #c62828;
+    --et-danger-light: #fdecea;
+    --et-success: #2e7d32;
+    --et-success-light: #eaf7ec;
+    --et-bg: #ffffff;
+}
+
+/* navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: var(--et-bg);
+    border-bottom: 1px solid var(--et-border);
+}
+
+.navbar__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.navbar__brand-mark {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--et-navy);
+    border: 1.5px solid var(--et-navy);
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+.navbar__brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--et-text);
+}
+
+.navbar__user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.navbar__username {
+    font-size: 14px;
+    color: var(--et-text-muted);
+}
+
+.navbar__logout-btn {
+    padding: 7px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--et-navy);
+    background: var(--et-navy-light);
+    border: 1px solid var(--et-border);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.navbar__logout-btn:hover {
+    background: #dce8fb;
+}
+
+/* footer */
+.footer {
+    padding: 16px 28px;
+    text-align: center;
     font-size: 13px;
     color: var(--et-text-muted);
     border-top: 1px solid var(--et-border);
@@ -86,140 +165,208 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px 20px;
-    background: var(--et-navy-light);
-    border: 1px solid var(--et-border);
+    justify-content: center;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
-    min-width: 120px;
+    min-width: 100px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .countdown-timer__label {
-    font-size: 11px;
-    color: var(--et-text-muted);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
 }
 
 .countdown-timer__value {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    color: var(--et-navy);
+    color: #ffffff;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 1px;
+}
+
+@keyframes pulse-warning {
+    0% {
+        background: rgba(220, 38, 38, 0.2);
+        border-color: rgba(220, 38, 38, 0.4);
+    }
+
+    50% {
+        background: rgba(220, 38, 38, 0.4);
+        border-color: rgba(220, 38, 38, 0.8);
+    }
+
+    100% {
+        background: rgba(220, 38, 38, 0.2);
+        border-color: rgba(220, 38, 38, 0.4);
+    }
 }
 
 .countdown-timer--warning {
-    background: var(--et-danger-light);
-    border-color: #f5c6c3;
+    animation: pulse-warning 2s infinite;
 }
 
 .countdown-timer--warning .countdown-timer__value {
-    color: var(--et-danger);
+    color: #ffcccc;
 }
 
 /* audio player */
 .audio-player {
-    padding: 14px 18px;
-    background: var(--et-navy-light);
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    background: #ffffff;
     border: 1px solid var(--et-border);
-    border-radius: 8px;
-    margin-bottom: 16px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .audio-player audio {
     width: 100%;
+    border-radius: 30px;
+    outline: none;
 }
 
 .audio-player__toggle {
-    margin-top: 10px;
-    padding: 8px 18px;
+    margin-top: 12px;
+    padding: 10px 24px;
     font-size: 14px;
     font-weight: 600;
     color: #ffffff;
     background: var(--et-navy);
     border: none;
-    border-radius: 6px;
+    border-radius: 30px;
     cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(11, 61, 145, 0.2);
 }
 
-.audio-player__toggle:hover {
+.audio-player__toggle::before {
+    content: "▶";
+    font-size: 12px;
+}
+
+.audio-player__toggle:hover:not(:disabled) {
     background: var(--et-navy-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(11, 61, 145, 0.3);
 }
 
 .audio-player__toggle:disabled {
-    background: #b7c4d9;
+    background: #e2e8f0;
+    color: #94a3b8;
+    box-shadow: none;
     cursor: not-allowed;
 }
 
+.audio-player__toggle:disabled::before {
+    content: "✔";
+}
+
 .audio-player__notice {
-    margin-top: 8px;
-    font-size: 12.5px;
+    margin-top: 12px;
+    font-size: 13px;
     color: var(--et-text-muted);
+    background: var(--et-danger-light);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--et-danger);
+    display: inline-block;
 }
 
 /* side bar */
 .sidebar {
-    width: 220px;
-    padding: 16px;
+    width: 240px;
+    padding: 20px;
     background: var(--et-bg);
     border: 1px solid var(--et-border);
-    border-radius: 8px;
+    border-radius: 12px;
     height: fit-content;
+    position: sticky;
+    top: 90px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .sidebar__title {
-    margin: 0 0 12px;
-    font-size: 13px;
+    margin: 0 0 16px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--et-text);
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--et-border);
 }
 
 .sidebar__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: 10px;
 }
 
 .sidebar__question-btn {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     font-size: 13px;
     font-weight: 600;
     color: var(--et-text);
     background: var(--et-bg);
-    border: 1px solid var(--et-border);
-    border-radius: 6px;
+    border: 1.5px solid var(--et-border);
+    border-radius: 10px;
     cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebar__question-btn:hover {
     border-color: var(--et-navy);
+    background: var(--et-navy-light);
+    transform: translateY(-1px);
 }
 
 .sidebar__question-btn--answered {
     background: var(--et-navy);
     border-color: var(--et-navy);
     color: #ffffff;
+    box-shadow: 0 2px 6px rgba(11, 61, 145, 0.3);
+}
+
+.sidebar__question-btn--answered:hover {
+    background: var(--et-navy-dark);
+    color: #ffffff;
 }
 
 .sidebar__legend {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-top: 14px;
-    font-size: 12.5px;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--et-border);
+    font-size: 13px;
     color: var(--et-text-muted);
 }
 
 .sidebar__legend-dot {
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
     background: var(--et-bg);
-    border: 1px solid var(--et-border);
-    margin-right: 6px;
+    border: 1.5px solid var(--et-border);
+    margin-right: 8px;
     vertical-align: middle;
 }
 
@@ -227,6 +374,7 @@
     background: var(--et-navy);
     border-color: var(--et-navy);
 }
+
 /* Result Summary Page */
 .result-summary-page {
     max-width: 800px;
@@ -369,7 +517,8 @@
     border-color: var(--et-navy-light);
 }
 
-.stat-band .stat-value, .stat-band .stat-label {
+.stat-band .stat-value,
+.stat-band .stat-label {
     color: var(--et-navy);
 }
 
@@ -424,5 +573,77 @@
     font-weight: 600;
 }
 
-.mt-10 { margin-top: 10px; }
-.mt-20 { margin-top: 20px; }
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* ── 768px and below (tablet portrait & phone) ── */
+@media (max-width: 768px) {
+
+    /* Navbar: tighten gaps so admin links don't overflow */
+    .navbar {
+        padding: 10px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .navbar__user {
+        gap: 8px;
+    }
+
+    .navbar__admin-link {
+        padding: 5px 8px;
+        font-size: 13px;
+    }
+
+    .navbar__logout-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    /* Sidebar: become a horizontal scrollable strip */
+    .sidebar {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .sidebar__grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 6px;
+        padding-bottom: 4px;
+        /* hide scrollbar on webkit but keep functional */
+        scrollbar-width: thin;
+    }
+
+    .sidebar__question-btn {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+    }
+
+    .sidebar__legend {
+        flex-direction: row;
+        gap: 16px;
+        margin-top: 10px;
+    }
+}
+
+/* ── 480px and below (small phones) ── */
+@media (max-width: 480px) {
+
+    /* On very small screens hide the username text to save space */
+    .navbar__username {
+        display: none;
+    }
+}

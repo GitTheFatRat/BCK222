@@ -46,3 +46,8 @@ export async function submitGrade(resultId, score) {
   const { data } = await apiClient.put(`/results/admin/${resultId}/grade`, { score });
   return data;
 }
+
+export async function getCheatingLogs() {
+  const { data } = await apiClient.get('/results/admin/cheating-logs');
+  return data;
+}

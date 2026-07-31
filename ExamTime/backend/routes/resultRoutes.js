@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import { submitResult, getMyResults, getPendingGradingTasks, gradeResult } from '../controllers/resultController.js';
+import { submitResult, getMyResults, getPendingGradingTasks, gradeResult, getCheatingLogs } from '../controllers/resultController.js';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 import { adminMiddleware } from '../middlewares/adminMiddleware.js';
 
@@ -24,5 +24,6 @@ router.get('/me', authMiddleware, getMyResults);
 
 router.get('/admin/pending', authMiddleware, adminMiddleware, getPendingGradingTasks);
 router.put('/admin/:id/grade', authMiddleware, adminMiddleware, gradeResult);
+router.get('/admin/cheating-logs', authMiddleware, adminMiddleware, getCheatingLogs);
 
 export default router;

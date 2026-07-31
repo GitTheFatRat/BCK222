@@ -329,39 +329,71 @@ textarea:focus {
 .practice-room, .exam-room {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    /* Removed gap: 20px so we can make the header flush at the top */
+    min-height: 100vh;
 }
 
+/* Exam Room Header (sticky topbar) */
 .practice-header, .exam-room-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--et-border, #d8e2f0);
-    padding-bottom: 16px;
-    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--et-navy) 0%, var(--et-navy-dark) 100%);
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    /* Stretch across screen if .app-content has padding */
+    margin: -24px -24px 24px -24px;
+    border-radius: 0 0 12px 12px;
 }
 
 .practice-header h2, .exam-room-header h2 {
     margin: 0;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0.02em;
 }
 
-.exam-room-header button {
+.exam-room-header button, .practice-header button {
     background-color: var(--et-success, #2e7d32);
     color: #ffffff;
+    border-radius: 20px;
+    padding: 8px 24px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+    border: none;
+    transition: all 0.2s ease;
 }
 
-.exam-room-header button:hover {
-    background-color: #235e26;
+.exam-room-header button:hover, .practice-header button:hover {
+    background-color: #388e3c;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(46, 125, 50, 0.4);
+}
+
+.exam-room-header a, .practice-header a {
+    color: rgba(255, 255, 255, 0.8);
+}
+.exam-room-header a:hover, .practice-header a:hover {
+    color: #ffffff;
 }
 
 .exam-room-body {
     display: flex;
-    gap: 24px;
+    gap: 32px;
     align-items: flex-start;
 }
 
 .exam-room-content {
     flex: 1;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    padding: 32px;
+    border: 1px solid var(--et-border);
 }
 
 /* Reading Split Layout */
@@ -369,29 +401,53 @@ textarea:focus {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    height: calc(100vh - 220px);
+    height: calc(100vh - 160px);
 }
 
-.passage-pane, .questions-pane {
+.passage-pane {
     border: 1px solid var(--et-border, #d8e2f0);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 32px;
+    overflow-y: auto;
+    background: #fafbfd; /* Warm tinted paper look */
+    border-left: 4px solid var(--et-navy);
+    height: 100%;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.questions-pane {
+    border: 1px solid var(--et-border, #d8e2f0);
+    border-radius: 12px;
+    padding: 24px;
     overflow-y: auto;
     background: #ffffff;
     height: 100%;
+    box-shadow: inset 0 6px 12px -6px rgba(0,0,0,0.05);
 }
 
 .passage-pane h3 {
-    margin-bottom: 16px;
-    font-size: 22px;
-    border-bottom: 2px solid var(--et-navy, #0b3d91);
-    padding-bottom: 8px;
+    margin-bottom: 24px;
+    font-size: 26px;
+    color: var(--et-navy-dark);
+    position: relative;
+    padding-bottom: 12px;
+}
+.passage-pane h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--et-navy);
+    border-radius: 2px;
 }
 
 .passage-pane p {
-    margin-bottom: 16px;
-    font-size: 15px;
-    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #334155;
     text-align: justify;
 }
 
@@ -399,71 +455,107 @@ textarea:focus {
 .listening-form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 .question-block {
-    background-color: var(--et-bg, #ffffff);
+    background-color: #ffffff;
     border: 1px solid var(--et-border, #d8e2f0);
-    border-radius: 8px;
-    padding: 16px;
+    border-left: 4px solid var(--et-navy);
+    border-radius: 12px;
+    padding: 20px 24px;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.question-block:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
 }
 
 .question-block.is-correct {
-    border-color: var(--et-success, #2e7d32);
+    border-left-color: var(--et-success, #2e7d32);
     background-color: var(--et-success-light, #eaf7ec);
 }
 
 .question-block.is-wrong {
-    border-color: var(--et-danger, #c62828);
+    border-left-color: var(--et-danger, #c62828);
     background-color: var(--et-danger-light, #fdecea);
 }
 
 .question-prompt {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
 }
 
 .question-number {
     font-weight: 700;
-    color: var(--et-navy, #0b3d91);
-    margin-right: 6px;
+    color: #ffffff;
+    background: var(--et-navy);
+    min-width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 13px;
+    flex-shrink: 0;
 }
 
 .options-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    padding-left: 40px; /* align with text, bypassing badge */
 }
 
 .option-label {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14.5px;
+    gap: 12px;
+    font-size: 15px;
     cursor: pointer;
     font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    border: 1px solid transparent;
+}
+.option-label:hover {
+    background: var(--et-navy-light);
+    border-color: #dce8fb;
 }
 
 .option-label input[type="radio"] {
     margin: 0;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     accent-color: var(--et-navy, #0b3d91);
 }
 
 .gap-fill-input {
-    max-width: 320px;
+    max-width: 360px;
+    margin-left: 40px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 2px solid var(--et-border);
+    transition: all 0.2s ease;
+}
+.gap-fill-input:focus {
+    border-color: var(--et-navy);
+    box-shadow: 0 0 0 4px rgba(11, 61, 145, 0.1);
 }
 
 .answer-feedback {
-    margin-top: 12px;
-    padding-top: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
     border-top: 1px dashed var(--et-border, #d8e2f0);
     font-size: 14px;
+    padding-left: 40px;
 }
 
 .answer-feedback p {
@@ -473,85 +565,112 @@ textarea:focus {
 .explanation {
     color: var(--et-text-muted, #6b7280);
     font-style: italic;
+    background: rgba(255,255,255,0.5);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 8px !important;
 }
 
 /* Writing Editor */
 .writing-editor {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     background: #ffffff;
-    border: 1px solid var(--et-border, #d8e2f0);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 0;
 }
 
 .writing-prompt {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.6;
+    background: var(--et-navy-light);
+    border-left: 4px solid var(--et-navy);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 0;
 }
 
 .writing-chart-image {
     max-width: 100%;
     height: auto;
     border: 1px solid var(--et-border, #d8e2f0);
-    border-radius: 6px;
+    border-radius: 8px;
     margin: 8px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .writing-textarea {
     resize: vertical;
-    min-height: 280px;
-    font-size: 15px;
-    line-height: 1.6;
+    min-height: 320px;
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 24px;
+    border-radius: 12px;
+    border: 2px solid var(--et-border);
+    transition: all 0.3s ease;
+}
+.writing-textarea:focus {
+    border-color: var(--et-navy);
+    box-shadow: 0 0 0 4px rgba(11, 61, 145, 0.1);
 }
 
 .word-count {
     font-weight: 600;
     font-size: 14px;
-    padding: 6px 12px;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border-radius: 20px;
     width: fit-content;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .word-count.warning {
     background-color: var(--et-danger-light, #fdecea);
     color: var(--et-danger, #c62828);
+    border: 1px solid #f5c6c3;
 }
 
 .word-count.ok {
     background-color: var(--et-success-light, #eaf7ec);
     color: var(--et-success, #2e7d32);
+    border: 1px solid #c8e6c9;
 }
 
 /* Speaking Recorder UI */
 .speaking-recorder {
     background: #ffffff;
-    border: 1px solid var(--et-border, #d8e2f0);
-    border-radius: 8px;
-    padding: 24px;
+    border-radius: 12px;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+}
+.speaking-recorder h3 {
+    margin-bottom: 0;
 }
 
 .cue-card-text {
-    background-color: var(--et-navy-light, #eaf1fc);
+    background-color: #fafbfd;
     border-left: 4px solid var(--et-navy, #0b3d91);
-    padding: 16px;
+    padding: 24px;
     font-size: 16px;
     font-style: italic;
-    line-height: 1.6;
-    border-radius: 0 6px 6px 0;
+    line-height: 1.7;
+    border-radius: 0 12px 12px 0;
     white-space: pre-line;
+    color: #334155;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
 }
 
 .countdown-display {
-    font-size: 32px;
+    font-size: 48px;
     font-weight: 700;
     color: var(--et-navy, #0b3d91);
-    margin: 12px 0;
+    margin: 16px 0;
+    font-family: monospace;
+    letter-spacing: -1px;
 }
 
 .recording-indicator {
@@ -559,22 +678,39 @@ textarea:focus {
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    font-size: 18px;
 }
 
 .recording-indicator::before {
     content: '';
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     background-color: var(--et-danger, #c62828);
     border-radius: 50%;
     animation: pulse 1.2s infinite alternate;
+    box-shadow: 0 0 10px rgba(198, 40, 40, 0.4);
+}
+
+.phase-prep, .phase-recording, .phase-done, .phase-error {
+    background: var(--et-navy-light);
+    border: 1px solid var(--et-border);
+    padding: 32px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.phase-recording {
+    background: #fff5f5;
+    border-color: #fed7d7;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.4; }
-    100% { opacity: 1; }
+    0% { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.1); opacity: 1; }
 }
 
 /* Not Found Page */
@@ -1110,3 +1246,182 @@ textarea:focus {
     color: var(--et-text-muted, #6b7280);
     font-style: italic;
 }
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* ── 1024px and below (tablet landscape / small laptop) ── */
+@media (max-width: 1024px) {
+
+    /* Reduce reading split height so it doesn't overflow small laptop screens */
+    .reading-split {
+        height: calc(100vh - 180px);
+    }
+}
+
+/* ── 768px and below (tablet portrait & phone) ── */
+@media (max-width: 768px) {
+
+    /* Item 2: app-content — reduce side padding */
+    .app-content {
+        padding: 16px;
+    }
+
+    /* Item 3: exam-room-body — stack sidebar below main content */
+    .exam-room-body {
+        flex-direction: column;
+    }
+
+    /* Item 2: exam-room-header — allow wrap so timer + button stack */
+    .practice-header,
+    .exam-room-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* Item 3: reading-split — single column, no fixed height */
+    .reading-split {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 0;
+    }
+
+    .passage-pane,
+    .questions-pane {
+        height: auto;
+        min-height: 300px;
+        max-height: 60vh;
+    }
+
+    /* Item 10: login / register — reduce form padding */
+    .login-form,
+    .register-form {
+        padding: 24px 20px;
+    }
+
+    /* Item 11: admin task header — stack info and meta vertically */
+    .admin-task-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .admin-task-meta {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    /* Item 12: result-summary-header — stack h2 and band banner */
+    .result-summary-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ── 600px and below ── */
+@media (max-width: 600px) {
+
+    /* Item 4: skill-stats-layout — stack ring above stats grid */
+    .skill-stats-layout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .ring-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Item 11: admin task info — wrap badges to new line */
+    .admin-task-info {
+        gap: 8px;
+    }
+}
+
+/* ── 480px and below (small phones) ── */
+@media (max-width: 480px) {
+
+    /* Item 2: exam-room-header — shrink timer font and button */
+    .exam-room-header button,
+    .practice-header button {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+
+    /* Item 8: exams-grid — lower minmax so it always fits 1 column */
+    .exams-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    /* Item 9: exam-card skill rows — allow wrap on tiny screens */
+    .exam-card-skill-row {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Item 10: auth forms — reduce page padding */
+    .login-page,
+    .register-page {
+        padding: 12px;
+    }
+
+    .login-form,
+    .register-form {
+        padding: 20px 16px;
+    }
+
+    /* Item 12: result-summary overall band banner — full width */
+    .overall-band-banner {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* Item 13: admin grade input row — stack vertically */
+    .admin-grade-input-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-grade-input-row input[type="number"] {
+        width: 100%;
+    }
+
+    .admin-grade-input-row .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ── Item 5 & 6: result-history table — horizontal scroll on all screen sizes ── */
+/* Applied globally (not behind a breakpoint) so even medium screens benefit.   */
+/* display:block on <table> is the CSS-only trick to enable overflow-x scroll.  */
+.result-history {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Restore table cell rendering via display on child elements */
+}
+
+.result-history thead,
+.result-history tbody,
+.result-history tfoot {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+}
+
+.result-history tr {
+    display: table-row;
+}
+
+.result-history th,
+.result-history td {
+    display: table-cell;
+    white-space: nowrap;
+}
+

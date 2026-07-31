@@ -24,9 +24,14 @@ export default function Navbar() {
             {isAuthenticated && (
                 <div className="navbar__user">
                     {user?.role === 'admin' && (
-                        <Link to="/admin/grading" className="navbar__admin-link">
-                            Grading
-                        </Link>
+                        <>
+                            <Link to="/admin/grading" className="navbar__admin-link">
+                                Grading
+                            </Link>
+                            <Link to="/admin/cheating-logs" className="navbar__admin-link">
+                                Cheating Logs
+                            </Link>
+                        </>
                     )}
                     <span className="navbar__username">{user?.username || user?.email}</span>
                     <button type="button" className="navbar__logout-btn" onClick={handleLogout}>

@@ -10,6 +10,7 @@ import ExamRoom from "./pages/ExamRoom";
 import Register from "./pages/Register";
 import ResultSummary from "./pages/ResultSummary";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminCheatingLogs from "./pages/AdminCheatingLogs";
 import AdminRoute from "./components/AdminRoute";
 
 function LoginReturnHome({ children }) {
@@ -95,6 +96,16 @@ export default function App() {
               <ForceAuth>
                 <AdminRoute>
                   <AdminDashboard />
+                </AdminRoute>
+              </ForceAuth>
+            }
+          />
+          <Route
+            path="/admin/cheating-logs"
+            element={
+              <ForceAuth>
+                <AdminRoute>
+                  <AdminCheatingLogs />
                 </AdminRoute>
               </ForceAuth>
             }

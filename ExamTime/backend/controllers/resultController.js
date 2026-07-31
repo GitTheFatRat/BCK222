@@ -57,13 +57,19 @@ function calculateSessionOverallBand(skills) {
 
     const writingTask1Band = skills['writing-task1']?.scores?.writingBand;
     const writingTask2Band = skills['writing-task2']?.scores?.writingBand;
-    const writingBands = [writingTask1Band, writingTask2Band].filter(
-        (b) => typeof b === 'number'
-    );
-    if (writingBands.length > 0) {
-        const writingAverage =
-            writingBands.reduce((sum, b) => sum + b, 0) / writingBands.length;
-        bands.push(writingAverage);
+
+    let writingCombined = null;
+    if (typeof writingTask1Band === 'number' && typeof writingTask2Band === 'number') {
+        writingCombined = (writingTask1Band * 1 + writingTask2Band * 2) / 3;
+        writingCombined = Math.round(writingCombined * 2) / 2;
+    } else if (typeof writingTask1Band === 'number') {
+        writingCombined = writingTask1Band;
+    } else if (typeof writingTask2Band === 'number') {
+        writingCombined = writingTask2Band;
+    }
+
+    if (typeof writingCombined === 'number') {
+        bands.push(writingCombined);
     }
 
     const speakingBand = skills.speaking?.scores?.speakingBand;
@@ -283,7 +289,7 @@ export async function gradeResult(req, res) {
         }
 
         result.status = 'GRADED';
-        
+
         // Recalculate overall band if possible
         result.scores.overallBand = calculateOverallBand(result.scores);
 
@@ -295,5 +301,19 @@ export async function gradeResult(req, res) {
     } catch (err) {
         console.error('[gradeResult] Error:', err.message);
         return res.status(500).json({ message: 'Failed to submit grade.' });
+    }
+}
+
+export async function getCheatingLogs(req, res) {
+    try {
+        const results = await ExamResult.find({})
+            .populate('user', 'username email')
+            .populate('exam', 'title code')
+            .sort('-createdAt');
+
+        return res.json(results);
+    } catch (err) {
+        console.error('[getCheatingLogs] Error:', err.message);
+        return res.status(500).json({ message: 'Failed to fetch cheating logs.' });
     }
 }

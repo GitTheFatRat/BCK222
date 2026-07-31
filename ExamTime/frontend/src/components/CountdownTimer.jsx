@@ -26,7 +26,7 @@ export default function CountdownTimer() {
 
     return (
         <div className={`countdown-timer ${isWarning ? 'countdown-timer--warning' : ''}`}>
-            <span className="countdown-timer__label">Thoi gian con lai</span>
+            <span className="countdown-timer__label">Time Remaining</span>
             <span className="countdown-timer__value">
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </span>

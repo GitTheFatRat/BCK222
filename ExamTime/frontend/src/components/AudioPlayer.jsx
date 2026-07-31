@@ -66,7 +66,7 @@ export default function AudioPlayer({ src, examMode = false }) {
                         onClick={handleTogglePlay}
                         disabled={hasPlayedOnce && !isPlaying}
                     >
-                        {isPlaying ? 'Tam dung' : hasPlayedOnce ? 'Da nghe xong' : 'Phat am thanh'}
+                        {isPlaying ? 'Pause' : hasPlayedOnce ? 'Audio Played' : 'Play Audio'}
                     </button>
 
                     <p className="audio-player__notice">
