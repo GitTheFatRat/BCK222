@@ -18,26 +18,10 @@ export default function ExamCard({ exam }) {
                 </span>
             </div>
 
-            <div className="exam-card-skills">
-                {SKILLS.map((skill) => (
-                    <div key={skill.key} className="exam-card-skill-row">
-                        <span>{skill.label}</span>
-                        <div className="exam-card-actions">
-                            <Link to={`/practice/${exam.examId}/${skill.key}`} className="btn btn-secondary">
-                                Practice
-                            </Link>
-                            <Link to={`/exam/${exam.examId}/${skill.key}`} className="btn btn-primary">
-                                Mock Test
-                            </Link>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            
-            <div className="exam-card-footer" style={{ marginTop: '1rem', textAlign: 'right' }}>
+            <div className="exam-card-footer" style={{ marginTop: '1.5rem', display: 'flex', gap: '10px', justifyContent: 'flex-end', alignItems: 'center' }}>
                 <button
                     className="btn btn-secondary"
-                    style={{ fontSize: '0.85rem', padding: '0.25rem 0.5rem' }}
+                    style={{ fontSize: '0.9rem', padding: '0.5rem 1rem' }}
                     onClick={() => {
                         localStorage.removeItem(`examtime_session_${exam.examId}`);
                         alert('Started a new attempt.');
@@ -45,6 +29,9 @@ export default function ExamCard({ exam }) {
                 >
                     Start a new attempt
                 </button>
+                <Link to={`/exam/${exam.examId}/listening`} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '0.5rem 1rem' }}>
+                    Take Exam
+                </Link>
             </div>
         </div>
     );

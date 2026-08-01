@@ -1,0 +1,65 @@
+{
+    "passages": [
+        {
+            "passageNumber": 1,
+            "title": "The History of Tea",
+            "text": "Tea is one of the most widely consumed beverages in the world, second only to water. Its origins can be traced back thousands of years to ancient China, where it was first used for medicinal purposes before becoming a popular drink.\nLegend attributes the discovery of tea to Emperor Shen Nong, who is said to have accidentally discovered the beverage when tea leaves blew into a pot of boiling water. Whether or not this story is historically accurate, archaeological evidence confirms that tea cultivation in China dates back at least to the Han Dynasty.\nTea spread to Japan through Buddhist monks who studied in China and brought both tea plants and the ceremonial practices associated with tea drinking back to their homeland. This eventually evolved into the elaborate Japanese tea ceremony still practised today.\nIn the 17th century, tea was introduced to Europe by Portuguese and Dutch traders. It quickly became a fashionable drink among the European aristocracy before becoming widely accessible to the general population. Britain, in particular, developed a strong tea culture, which later spread to its colonies, including India, where the British established extensive tea plantations in the 19th century.",
+            "questions": [
+                {
+                    "qId": "Q1",
+                    "type": "true-false-notgiven",
+                    "prompt": "Tea is the most widely consumed beverage in the world.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Bai doc noi tra la thuc uong pho bien thu hai, chi sau nuoc loc."
+                },
+                {
+                    "qId": "Q2",
+                    "type": "true-false-notgiven",
+                    "prompt": "Emperor Shen Nong's discovery of tea is confirmed by archaeological evidence.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "Cau chuyen chi la truyen thuyet, bai doc khong xac nhan tinh chinh xac lich su cua no."
+                },
+                {
+                    "qId": "Q3",
+                    "type": "true-false-notgiven",
+                    "prompt": "Tea cultivation in China can be traced back to at least the Han Dynasty.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "Bai doc noi ro bang chung khao co xac nhan dieu nay."
+                },
+                {
+                    "qId": "Q4",
+                    "type": "gap-fill",
+                    "prompt": "Tea was brought to Japan by ___________ who studied in China.",
+                    "correctAnswer": "Buddhist monks",
+                    "explanation": "Doan van neu ro cac nha su Phat giao la nguoi mang tra sang Nhat Ban."
+                },
+                {
+                    "qId": "Q5",
+                    "type": "gap-fill",
+                    "prompt": "Tea was introduced to Europe in the ___________ century.",
+                    "correctAnswer": "17th",
+                    "explanation": "Bai doc ghi ro tra duoc gioi thieu vao chau Au trong the ky 17."
+                },
+                {
+                    "qId": "Q6",
+                    "type": "multiple-choice",
+                    "prompt": "Which two countries' traders introduced tea to Europe?",
+                    "options": [
+                        "A. British and French",
+                        "B. Portuguese and Dutch",
+                        "C. Spanish and Italian"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Bai doc neu ro thuong nhan Bo Dao Nha va Ha Lan la nguoi gioi thieu tra."
+                },
+                {
+                    "qId": "Q7",
+                    "type": "true-false-notgiven",
+                    "prompt": "Britain established tea plantations in India during the 19th century.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "Doan cuoi bai doc xac nhan Anh thiet lap don dien tra o An Do vao the ky 19."
+                }
+            ]
+        }
+    ]
+}

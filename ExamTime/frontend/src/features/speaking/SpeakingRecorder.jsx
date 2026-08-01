@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux'
 import { setSpeakingRecording } from '../../store/slices/answerSlice'
 
 export default function SpeakingRecorder({ cueCard }) {
+    const prepSeconds = 60;
+    const talkSeconds = 120;
     const [phase, setPhase] = useState('PREP');
-    const [countdown, setCountdown] = useState(cueCard.prepSeconds);
+    const [countdown, setCountdown] = useState(prepSeconds);
     const [errorMessage, setErrorMessage] = useState('');
 
     const mediaRecorderRef = useRef(null);
@@ -14,7 +16,6 @@ export default function SpeakingRecorder({ cueCard }) {
     const autoStopTimeoutRef = useRef(null);
 
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (phase !== 'PREP') return;
 
@@ -73,11 +74,11 @@ export default function SpeakingRecorder({ cueCard }) {
                 };
 
                 recorder.start();
-                setCountdown(cueCard.talkSeconds);
+                setCountdown(talkSeconds);
 
                 autoStopTimeoutRef.current = setTimeout(() => {
                     recorder.stop();
-                }, cueCard.talkSeconds * 1000);
+                }, talkSeconds * 1000);
             } catch (err) {
                 setErrorMessage('Cannot access to microphone. Please allow access and try again.');
                 setPhase('ERROR');
@@ -99,7 +100,7 @@ export default function SpeakingRecorder({ cueCard }) {
     function handleRetry() {
         setErrorMessage('')
         setPhase('PREP')
-        setCountdown(cueCard.prepSeconds);
+        setCountdown(prepSeconds);
     }
 
     return (

@@ -1,0 +1,377 @@
+{
+    "passages": [
+        {
+            "passageNumber": 1,
+            "title": "The Deep Sea: Earth's Final Frontier",
+            "text": "The deep sea, encompassing the ocean below 200 metres, represents the largest and least explored biome on Earth. For centuries, it was believed that life could not exist in the pitch-black, freezing, and high-pressure environment of the abyss. This view was radically challenged in the late 19th century when expeditions began pulling up strange, bioluminescent creatures from the depths.\n\nIn 1977, a discovery completely revolutionized marine biology. Scientists exploring the Galapagos Rift in the submersible 'Alvin' found hydrothermal vents on the ocean floor. These vents spew superheated, mineral-rich water into the freezing ocean. Astonishingly, they found thriving ecosystems surrounding these vents, teeming with giant tube worms, blind crabs, and unique species of clams. Unlike ecosystems on the surface, which rely on sunlight and photosynthesis, these vent communities are based on chemosynthesis. Specialized bacteria convert hydrogen sulphide from the vents into organic matter, forming the base of a unique food web.\n\nThe adaptations of deep-sea creatures are as fascinating as they are bizarre. Many species possess bioluminescence—the ability to produce light chemically. This adaptation serves multiple purposes: attracting prey, confusing predators, or communicating with mates. The anglerfish, for example, uses a glowing lure dangling from its head to draw unsuspecting fish into its jaws. Furthermore, to cope with the immense pressure, deep-sea organisms typically lack air bladders and have soft, gelatinous bodies.\n\nDespite its remoteness, the deep sea is not immune to human impact. Deep-sea trawling for fish destroys fragile coral reefs that take centuries to grow. Additionally, there is growing commercial interest in deep-sea mining to extract valuable metals like copper, nickel, and cobalt from manganese nodules on the ocean floor. Conservationists warn that such activities could cause irreversible damage to these slow-growing, poorly understood ecosystems before they are even fully documented.",
+            "questions": [
+                {
+                    "qId": "Q1",
+                    "type": "true-false-notgiven",
+                    "prompt": "The deep sea is the most thoroughly mapped environment on Earth.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The text states it is the 'least explored biome on Earth'."
+                },
+                {
+                    "qId": "Q2",
+                    "type": "true-false-notgiven",
+                    "prompt": "Ecosystems around hydrothermal vents depend on sunlight.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "They are based on chemosynthesis, unlike surface ecosystems which rely on sunlight."
+                },
+                {
+                    "qId": "Q3",
+                    "type": "true-false-notgiven",
+                    "prompt": "The submersible 'Alvin' was the first to explore the Galapagos Rift.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "The text says 'Alvin' explored it in 1977, but doesn't explicitly claim it was the very first."
+                },
+                {
+                    "qId": "Q4",
+                    "type": "true-false-notgiven",
+                    "prompt": "Bioluminescence is used by some creatures to communicate with mates.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "The text states it serves multiple purposes, including 'communicating with mates'."
+                },
+                {
+                    "qId": "Q5",
+                    "type": "true-false-notgiven",
+                    "prompt": "Deep-sea corals can recover from trawling damage within a few years.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The text says they take 'centuries to grow' and trawling causes 'irreversible damage'."
+                },
+                {
+                    "qId": "Q6",
+                    "type": "gap-fill",
+                    "prompt": "At the base of the hydrothermal vent food web are specialized ___________.",
+                    "correctAnswer": "bacteria",
+                    "explanation": "Specialized bacteria convert hydrogen sulphide... forming the base of a unique food web."
+                },
+                {
+                    "qId": "Q7",
+                    "type": "gap-fill",
+                    "prompt": "The anglerfish attracts its prey using a glowing ___________.",
+                    "correctAnswer": "lure",
+                    "explanation": "The anglerfish uses a glowing lure dangling from its head."
+                },
+                {
+                    "qId": "Q8",
+                    "type": "gap-fill",
+                    "prompt": "Because of the high pressure, deep-sea animals usually do not have air ___________.",
+                    "correctAnswer": "bladders",
+                    "explanation": "Deep-sea organisms typically lack air bladders."
+                },
+                {
+                    "qId": "Q9",
+                    "type": "multiple-choice",
+                    "prompt": "What chemical process do vent ecosystems rely on?",
+                    "options": [
+                        "A. Photosynthesis",
+                        "B. Bioluminescence",
+                        "C. Chemosynthesis",
+                        "D. Evaporation"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "These vent communities are based on chemosynthesis."
+                },
+                {
+                    "qId": "Q10",
+                    "type": "multiple-choice",
+                    "prompt": "Which of the following is NOT a purpose of bioluminescence mentioned in the text?",
+                    "options": [
+                        "A. Attracting prey",
+                        "B. Seeing clearly in the dark",
+                        "C. Confusing predators",
+                        "D. Communicating with mates"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "The text mentions attracting prey, confusing predators, and communicating, but not seeing clearly."
+                },
+                {
+                    "qId": "Q11",
+                    "type": "multiple-choice",
+                    "prompt": "What do manganese nodules on the ocean floor contain?",
+                    "options": [
+                        "A. Fossil fuels",
+                        "B. Giant tube worms",
+                        "C. Valuable metals like copper and cobalt",
+                        "D. Specialized bacteria"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Extract valuable metals like copper, nickel, and cobalt from manganese nodules."
+                },
+                {
+                    "qId": "Q12",
+                    "type": "multiple-choice",
+                    "prompt": "According to conservationists, what is the main risk of deep-sea mining?",
+                    "options": [
+                        "A. Releasing toxic gases into the atmosphere",
+                        "B. Damaging poorly understood ecosystems",
+                        "C. Triggering underwater earthquakes",
+                        "D. Disturbing shipwrecks"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Could cause irreversible damage to these slow-growing, poorly understood ecosystems."
+                },
+                {
+                    "qId": "Q13",
+                    "type": "gap-fill",
+                    "prompt": "Before the late 19th century, it was believed life could not exist in the ___________.",
+                    "correctAnswer": "abyss",
+                    "explanation": "Believed that life could not exist in the pitch-black, freezing, and high-pressure environment of the abyss."
+                }
+            ]
+        },
+        {
+            "passageNumber": 2,
+            "title": "The Psychology of Advertising",
+            "text": "Advertising is a pervasive element of modern life, but its effectiveness relies on deeply ingrained psychological principles rather than mere repetition. The goal of an advertiser is not simply to inform consumers about a product, but to persuade them that the product will fulfill a psychological need, whether that be social status, security, or self-actualization.\n\nOne of the most foundational theories used in advertising is classical conditioning, famously demonstrated by Ivan Pavlov. Advertisers use this by pairing their product with a stimulus that already elicits a positive emotional response. For instance, a car commercial might feature an attractive person driving through a beautiful landscape while uplifting music plays. Over time, the consumer associates the positive feelings generated by the music and scenery with the car itself.\n\nAnother powerful tool is the 'Scarcity Principle'. Coined by psychologist Robert Cialdini, this principle states that people value things more when they perceive them as being in short supply. Phrases like 'Limited Edition', 'Only 3 left in stock', or 'Sale ends today' trigger a sense of urgency. The fear of missing out (FOMO) overrides logical calculation, prompting consumers to make impulse purchases they might otherwise avoid.\n\nSocial proof is equally critical. Humans are inherently social creatures who look to others to determine correct behavior. Testimonials, celebrity endorsements, and reviews are all forms of social proof. If a consumer sees that thousands of other people have highly rated a product, they are significantly more likely to trust the brand. This herd mentality is particularly pronounced in situations where the consumer is uncertain about the quality of the item.\n\nHowever, the rise of digital marketing has shifted the landscape. Modern advertising relies heavily on data analytics and targeted algorithms. By tracking online behavior, advertisers can deliver personalized ads that align with a user's specific interests and recent search history. While this makes advertising highly efficient, it has also raised widespread ethical concerns regarding privacy and the psychological manipulation of vulnerable demographics.",
+            "questions": [
+                {
+                    "qId": "Q14",
+                    "type": "matching",
+                    "prompt": "Match the principle: Pairing a product with positive music and scenery.",
+                    "correctAnswer": "classical conditioning",
+                    "explanation": "Advertisers use classical conditioning by pairing their product with a stimulus that elicits a positive response."
+                },
+                {
+                    "qId": "Q15",
+                    "type": "matching",
+                    "prompt": "Match the principle: Using phrases like 'Limited Edition' to trigger urgency.",
+                    "correctAnswer": "Scarcity Principle",
+                    "explanation": "The Scarcity Principle uses phrases like 'Limited Edition' to trigger a sense of urgency."
+                },
+                {
+                    "qId": "Q16",
+                    "type": "matching",
+                    "prompt": "Match the principle: Relying on testimonials and celebrity endorsements.",
+                    "correctAnswer": "social proof",
+                    "explanation": "Testimonials, celebrity endorsements, and reviews are all forms of social proof."
+                },
+                {
+                    "qId": "Q17",
+                    "type": "true-false-notgiven",
+                    "prompt": "The primary goal of advertising is merely to inform people about a product.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The text states the goal is 'not simply to inform consumers... but to persuade them'."
+                },
+                {
+                    "qId": "Q18",
+                    "type": "true-false-notgiven",
+                    "prompt": "Robert Cialdini was the first person to study classical conditioning.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Ivan Pavlov demonstrated classical conditioning; Cialdini coined the Scarcity Principle."
+                },
+                {
+                    "qId": "Q19",
+                    "type": "true-false-notgiven",
+                    "prompt": "Consumers are more likely to rely on social proof when they are unsure about a product.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "Particularly pronounced in situations where the consumer is uncertain about the quality."
+                },
+                {
+                    "qId": "Q20",
+                    "type": "true-false-notgiven",
+                    "prompt": "Digital advertising is less effective than traditional television advertising.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "The text mentions digital advertising is highly efficient but does not compare its effectiveness to TV."
+                },
+                {
+                    "qId": "Q21",
+                    "type": "gap-fill",
+                    "prompt": "The fear of ___________ often causes consumers to make impulse purchases.",
+                    "correctAnswer": "missing out",
+                    "explanation": "The fear of missing out (FOMO) overrides logical calculation."
+                },
+                {
+                    "qId": "Q22",
+                    "type": "gap-fill",
+                    "prompt": "Modern digital advertising uses data ___________ to deliver targeted ads.",
+                    "correctAnswer": "analytics",
+                    "explanation": "Modern advertising relies heavily on data analytics and targeted algorithms."
+                },
+                {
+                    "qId": "Q23",
+                    "type": "multiple-choice",
+                    "prompt": "What does a consumer eventually associate the car with in the classical conditioning example?",
+                    "options": [
+                        "A. A sense of danger",
+                        "B. The positive feelings generated by the music and scenery",
+                        "C. The price of the vehicle",
+                        "D. The celebrity endorsing it"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "The consumer associates the positive feelings generated by the music and scenery with the car."
+                },
+                {
+                    "qId": "Q24",
+                    "type": "multiple-choice",
+                    "prompt": "Which of the following best describes the 'herd mentality'?",
+                    "options": [
+                        "A. Looking to others to determine correct behavior",
+                        "B. Making impulse purchases during a sale",
+                        "C. Listening to uplifting music while shopping",
+                        "D. Tracking online behavior"
+                    ],
+                    "correctAnswer": "A",
+                    "explanation": "Humans look to others to determine correct behavior... This herd mentality is particularly pronounced..."
+                },
+                {
+                    "qId": "Q25",
+                    "type": "multiple-choice",
+                    "prompt": "What ethical concern has been raised regarding digital marketing?",
+                    "options": [
+                        "A. It uses too much electricity",
+                        "B. It ignores the Scarcity Principle",
+                        "C. The invasion of privacy and psychological manipulation",
+                        "D. It focuses too heavily on celebrity endorsements"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Raised widespread ethical concerns regarding privacy and the psychological manipulation."
+                },
+                {
+                    "qId": "Q26",
+                    "type": "gap-fill",
+                    "prompt": "Advertisers want consumers to believe a product will fulfill a psychological ___________.",
+                    "correctAnswer": "need",
+                    "explanation": "Persuade them that the product will fulfill a psychological need."
+                }
+            ]
+        },
+        {
+            "passageNumber": 3,
+            "title": "The Enigma of Dark Matter",
+            "text": "When we look up at the night sky, we see stars, planets, and glowing nebulae. However, astrophysicists have discovered that everything we can see—all the ordinary matter that makes up galaxies, stars, and even ourselves—accounts for only about 5% of the universe. The vast majority of the cosmos consists of two mysterious components: dark energy (about 68%) and dark matter (about 27%). While dark energy is driving the accelerated expansion of the universe, dark matter acts as the invisible cosmic glue holding galaxies together.\n\nThe concept of dark matter was first proposed in the 1930s by Swiss astronomer Fritz Zwicky. While observing the Coma Cluster of galaxies, Zwicky noticed that the galaxies were moving far too quickly. Based on the visible mass of the cluster, there was not enough gravity to keep the galaxies from flying apart. Zwicky hypothesized the existence of 'dunkle Materie' (dark matter) to provide the missing gravitational pull. His ideas were largely ignored until the 1970s, when Vera Rubin studied the rotation curves of spiral galaxies. She found that stars at the outer edges of galaxies were orbiting at the same speed as stars closer to the center, which violated Newtonian physics unless a massive, invisible halo of matter was surrounding the galaxy.\n\nDespite overwhelming gravitational evidence for its existence, dark matter remains completely invisible. It does not emit, reflect, or absorb light or any other form of electromagnetic radiation. It interacts with ordinary matter almost exclusively through gravity. This makes detecting it directly an incredibly difficult task.\n\nCurrently, the leading candidates for dark matter are Weakly Interacting Massive Particles (WIMPs). If WIMPs exist, they would occasionally bump into the nucleus of an ordinary atom, creating a tiny, detectable signal. To catch these rare interactions, scientists have built massive detectors deep underground, shielding them from cosmic rays that could cause false positives. Projects like the XENON1T experiment in Italy use vats of liquid xenon to search for WIMP collisions. As of now, no definitive direct detection of a dark matter particle has been confirmed, leaving it as one of the most profound mysteries in modern physics.",
+            "questions": [
+                {
+                    "qId": "Q27",
+                    "type": "true-false-notgiven",
+                    "prompt": "Ordinary matter makes up more than 10% of the universe.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The text states ordinary matter accounts for only about 5%."
+                },
+                {
+                    "qId": "Q28",
+                    "type": "true-false-notgiven",
+                    "prompt": "Dark energy is responsible for holding galaxies together.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Dark matter acts as the cosmic glue holding galaxies together; dark energy drives expansion."
+                },
+                {
+                    "qId": "Q29",
+                    "type": "true-false-notgiven",
+                    "prompt": "Fritz Zwicky's theory about dark matter was immediately accepted by the scientific community.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "His ideas were largely ignored until the 1970s."
+                },
+                {
+                    "qId": "Q30",
+                    "type": "true-false-notgiven",
+                    "prompt": "Vera Rubin's observations of spiral galaxies provided strong evidence for dark matter.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "She found stars orbiting at speeds that violated physics unless an invisible halo existed."
+                },
+                {
+                    "qId": "Q31",
+                    "type": "true-false-notgiven",
+                    "prompt": "The XENON1T experiment is the most expensive dark matter project in the world.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "The text mentions the experiment but does not discuss its cost relative to others."
+                },
+                {
+                    "qId": "Q32",
+                    "type": "gap-fill",
+                    "prompt": "Fritz Zwicky studied the ___________ Cluster of galaxies.",
+                    "correctAnswer": "Coma",
+                    "explanation": "While observing the Coma Cluster of galaxies, Zwicky noticed..."
+                },
+                {
+                    "qId": "Q33",
+                    "type": "gap-fill",
+                    "prompt": "Dark matter does not emit, reflect, or absorb ___________ radiation.",
+                    "correctAnswer": "electromagnetic",
+                    "explanation": "It does not emit, reflect, or absorb light or any other form of electromagnetic radiation."
+                },
+                {
+                    "qId": "Q34",
+                    "type": "gap-fill",
+                    "prompt": "Dark matter interacts with ordinary matter mainly through ___________.",
+                    "correctAnswer": "gravity",
+                    "explanation": "It interacts with ordinary matter almost exclusively through gravity."
+                },
+                {
+                    "qId": "Q35",
+                    "type": "gap-fill",
+                    "prompt": "Scientists build detectors deep underground to shield them from ___________ rays.",
+                    "correctAnswer": "cosmic",
+                    "explanation": "Shielding them from cosmic rays that could cause false positives."
+                },
+                {
+                    "qId": "Q36",
+                    "type": "multiple-choice",
+                    "prompt": "What does WIMP stand for?",
+                    "options": [
+                        "A. Waves Interacting with Mass Particles",
+                        "B. Weakly Interacting Massive Particles",
+                        "C. Wide Invisible Matter Projections",
+                        "D. Weighted Interstellar Matter Protons"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "The leading candidates for dark matter are Weakly Interacting Massive Particles (WIMPs)."
+                },
+                {
+                    "qId": "Q37",
+                    "type": "multiple-choice",
+                    "prompt": "What liquid does the XENON1T experiment use in its vats?",
+                    "options": [
+                        "A. Liquid nitrogen",
+                        "B. Liquid water",
+                        "C. Liquid xenon",
+                        "D. Liquid helium"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Use vats of liquid xenon to search for WIMP collisions."
+                },
+                {
+                    "qId": "Q38",
+                    "type": "multiple-choice",
+                    "prompt": "Why did Zwicky propose the existence of dark matter?",
+                    "options": [
+                        "A. He saw invisible clouds blocking starlight",
+                        "B. There was not enough visible mass to explain the speed of the galaxies",
+                        "C. He detected WIMPs in his laboratory",
+                        "D. He wanted to explain why the universe was expanding"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "There was not enough gravity to keep the galaxies from flying apart based on the visible mass."
+                },
+                {
+                    "qId": "Q39",
+                    "type": "multiple-choice",
+                    "prompt": "What would a WIMP collision create in a detector?",
+                    "options": [
+                        "A. A black hole",
+                        "B. A flash of dark energy",
+                        "C. A new galaxy",
+                        "D. A tiny, detectable signal"
+                    ],
+                    "correctAnswer": "D",
+                    "explanation": "They would occasionally bump into the nucleus... creating a tiny, detectable signal."
+                },
+                {
+                    "qId": "Q40",
+                    "type": "multiple-choice",
+                    "prompt": "According to the passage, what percentage of the universe is made of dark energy?",
+                    "options": [
+                        "A. 5%",
+                        "B. 27%",
+                        "C. 68%",
+                        "D. 100%"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Dark energy (about 68%)."
+                }
+            ]
+        }
+    ]
+}

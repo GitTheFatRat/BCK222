@@ -19,6 +19,7 @@ const questionSchema = new mongoose.Schema(
 const sectionSchema = new mongoose.Schema(
     {
         sectionNumber: { type: Number, required: true },
+        audioUrl: { type: String, required: true },
         questions: [questionSchema]
     },
     { _id: false }
@@ -26,7 +27,6 @@ const sectionSchema = new mongoose.Schema(
 
 const listeningSetSchema = new mongoose.Schema(
     {
-        audioUrl: { type: String, required: true },
         sections: [sectionSchema],
     },
     { timestamps: true }

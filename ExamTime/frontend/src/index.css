@@ -28,6 +28,11 @@ body {
     margin: 0 auto;
 }
 
+/* Expand max-width for exam/practice rooms to utilize more screen space */
+.app-content:has(.exam-room), .app-content:has(.practice-room) {
+    max-width: 1600px;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
@@ -399,7 +404,7 @@ textarea:focus {
 /* Reading Split Layout */
 .reading-split {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 24px;
     height: calc(100vh - 160px);
 }
@@ -594,10 +599,11 @@ textarea:focus {
 
 .writing-chart-image {
     max-width: 100%;
-    height: auto;
+    max-height: 400px;
+    object-fit: contain;
     border: 1px solid var(--et-border, #d8e2f0);
     border-radius: 8px;
-    margin: 8px 0;
+    margin: 16px 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
@@ -726,12 +732,9 @@ textarea:focus {
 
 /* Navbar */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
     background-color: var(--et-navy, #0b3d91);
     color: #ffffff;
+    width: 100%;
 }
 
 .navbar__user {
@@ -741,19 +744,19 @@ textarea:focus {
 }
 
 .navbar__admin-link {
-    color: #fef3c7;
+    color: #4B5563;
     font-weight: 600;
     font-size: 14px;
     padding: 6px 14px;
     border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     transition: background-color 0.2s ease, color 0.2s ease;
     text-decoration: none;
 }
 
 .navbar__admin-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background-color: var(--et-navy-light, #eaf1fc);
+    color: var(--et-navy, #0b3d91);
     text-decoration: none;
 }
 

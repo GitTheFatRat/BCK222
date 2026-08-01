@@ -1,0 +1,305 @@
+{
+    "sections": [
+        {
+            "sectionNumber": 1,
+            "questions": [
+                {
+                    "qId": "Q1",
+                    "type": "gap-fill",
+                    "prompt": "Number of bookcases available:",
+                    "correctAnswer": "2",
+                    "explanation": "Người bán hàng cho biết: 'We've sold one, but we still have two available.'"
+                },
+                {
+                    "qId": "Q2",
+                    "type": "gap-fill",
+                    "prompt": "Width of bookcases:",
+                    "correctAnswer": "75 cm",
+                    "explanation": "Người bán hàng nói rõ kích thước: 'They're both 75 cm wide.'"
+                },
+                {
+                    "qId": "Q3",
+                    "type": "gap-fill",
+                    "prompt": "Height of bookcases:",
+                    "correctAnswer": "180 cm",
+                    "explanation": "Người bán hàng tiếp tục cho biết chiều cao: 'and 180 cm high.'"
+                },
+                {
+                    "qId": "Q4",
+                    "type": "gap-fill",
+                    "prompt": "Material of the first bookcase:",
+                    "correctAnswer": "wood",
+                    "explanation": "Khách hàng muốn tìm tủ làm bằng gỗ: 'something made of wood'."
+                },
+                {
+                    "qId": "Q5",
+                    "type": "gap-fill",
+                    "prompt": "Price of the first bookcase:",
+                    "correctAnswer": "£15",
+                    "explanation": "Người bán cho biết giá của chiếc thứ nhất: 'It's just 15 pounds.'"
+                },
+                {
+                    "qId": "Q6",
+                    "type": "gap-fill",
+                    "prompt": "Colour of the second bookcase:",
+                    "correctAnswer": "dark brown",
+                    "explanation": "Người bán miêu tả màu sắc chiếc thứ hai: 'natural wood colour, dark brown'."
+                },
+                {
+                    "qId": "Q7",
+                    "type": "gap-fill",
+                    "prompt": "Age/period of the second bookcase:",
+                    "correctAnswer": "1930s",
+                    "explanation": "Người bán đề cập thời điểm mua: 'sometime in the 1930s'."
+                },
+                {
+                    "qId": "Q8",
+                    "type": "gap-fill",
+                    "prompt": "Feature included at the bottom of the second bookcase:",
+                    "correctAnswer": "a cupboard",
+                    "explanation": "Mô tả chi tiết: 'it also has a cupboard at the bottom'."
+                },
+                {
+                    "qId": "Q9",
+                    "type": "gap-fill",
+                    "prompt": "Price of the second bookcase:",
+                    "correctAnswer": "£95",
+                    "explanation": "Giá của chiếc thứ hai được báo là: '95 pounds'."
+                },
+                {
+                    "qId": "Q10",
+                    "type": "gap-fill",
+                    "prompt": "Customer's address:",
+                    "correctAnswer": "41 Oak Rise",
+                    "explanation": "Khách hàng đọc địa chỉ: '41 Oak Rise, that's in Stanton'."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 2,
+            "questions": [
+                {
+                    "qId": "Q11",
+                    "type": "gap-fill",
+                    "prompt": "Name of the upcoming charity event organized by Neil Curtis:",
+                    "correctAnswer": "art sale",
+                    "explanation": "Neil Curtis giới thiệu: 'the charity art sale organized this year by Neil Curtis'."
+                },
+                {
+                    "qId": "Q12",
+                    "type": "gap-fill",
+                    "prompt": "Main venue for displaying the pictures:",
+                    "correctAnswer": "the star gallery",
+                    "explanation": "Địa điểm trưng bày chính: 'Most of them at the Star Gallery in the shopping mall'."
+                },
+                {
+                    "qId": "Q13",
+                    "type": "gap-fill",
+                    "prompt": "Alternative display location for some pictures:",
+                    "correctAnswer": "the cafe",
+                    "explanation": "Địa điểm phụ: 'some in the cafe next door'."
+                },
+                {
+                    "qId": "Q14",
+                    "type": "gap-fill",
+                    "prompt": "Day of the week when the actual sale takes place:",
+                    "correctAnswer": "Thursday",
+                    "explanation": "Thời gian bán đấu giá/bán tranh: 'The actual sale will take place on Thursday evening'."
+                },
+                {
+                    "qId": "Q15",
+                    "type": "gap-fill",
+                    "prompt": "Time when the sale event starts:",
+                    "correctAnswer": "7:30",
+                    "explanation": "Giờ bắt đầu sale: 'with sales starting at 7:30'."
+                },
+                {
+                    "qId": "Q16",
+                    "type": "gap-fill",
+                    "prompt": "Time when refreshments and general viewing start:",
+                    "correctAnswer": "6:30",
+                    "explanation": "Giờ bắt đầu refreshments/xem trước: 'starting at 6:30'."
+                },
+                {
+                    "qId": "Q17",
+                    "type": "gap-fill",
+                    "prompt": "Total number of works contributed by local artists:",
+                    "correctAnswer": "50",
+                    "explanation": "Số lượng tác phẩm: 'We've got about 50 works by local artists'."
+                },
+                {
+                    "qId": "Q18",
+                    "type": "gap-fill",
+                    "prompt": "Destination of all proceeds from the sale:",
+                    "correctAnswer": "disabled children",
+                    "explanation": "Mục đích từ thiện: 'all proceeds will go to support children who are disabled'."
+                },
+                {
+                    "qId": "Q19",
+                    "type": "gap-fill",
+                    "prompt": "Accepted payment methods include checks, cash, and ___________.",
+                    "correctAnswer": "credit cards",
+                    "explanation": "Hình thức thanh toán: 'We accept checks, credit cards, or cash'."
+                },
+                {
+                    "qId": "Q20",
+                    "type": "gap-fill",
+                    "prompt": "Donations are also welcome even without buying a picture; visitors can make a ___________.",
+                    "correctAnswer": "donation",
+                    "explanation": "Khuyến khích đóng góp: 'you can always make a donation'."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 3,
+            "questions": [
+                {
+                    "qId": "Q21",
+                    "type": "gap-fill",
+                    "prompt": "Author chosen by Joey:",
+                    "correctAnswer": "Carlos Castaneda",
+                    "explanation": "Joey chọn tác giả: 'I'm going to do Carlos Castaneda'."
+                },
+                {
+                    "qId": "Q22",
+                    "type": "gap-fill",
+                    "prompt": "Author chosen by Olivia:",
+                    "correctAnswer": "Emily Bronte",
+                    "explanation": "Olivia chọn tác giả: 'So I chose Emily Bronte'."
+                },
+                {
+                    "qId": "Q23",
+                    "type": "gap-fill",
+                    "prompt": "Minimum length required for the author's biography:",
+                    "correctAnswer": "250 pages",
+                    "explanation": "Yêu cầu về độ dài tiểu sử: 'I think the minimum length's 250 pages'."
+                },
+                {
+                    "qId": "Q24",
+                    "type": "gap-fill",
+                    "prompt": "The specific book Olivia chose to read by her author:",
+                    "correctAnswer": "Wuthering Heights",
+                    "explanation": "Tác phẩm Olivia chọn: 'I'm going to do Wuthering Heights'."
+                },
+                {
+                    "qId": "Q25",
+                    "type": "gap-fill",
+                    "prompt": "Maximum duration allowed for the video project:",
+                    "correctAnswer": "1 minute",
+                    "explanation": "Thời lượng video: 'A minute'."
+                },
+                {
+                    "qId": "Q26",
+                    "type": "gap-fill",
+                    "prompt": "Key element used to create the appropriate atmosphere in the video:",
+                    "correctAnswer": "sound effects",
+                    "explanation": "Cách tạo bầu không khí: 'use things like sound effects to create the atmosphere'."
+                },
+                {
+                    "qId": "Q27",
+                    "type": "gap-fill",
+                    "prompt": "Software requirement: students must use a ___________ of software programs.",
+                    "correctAnswer": "range",
+                    "explanation": "Yêu cầu phần mềm: 'it's important that we use a range, not just one software program'."
+                },
+                {
+                    "qId": "Q28",
+                    "type": "gap-fill",
+                    "prompt": "Final requirement for the video: include a ___________ at the end listing all sources.",
+                    "correctAnswer": "bibliography",
+                    "explanation": "Yêu cầu cuối video: 'with details of the source in a bibliography at the end'."
+                },
+                {
+                    "qId": "Q29",
+                    "type": "gap-fill",
+                    "prompt": "Assessment criterion representing how well the essence of the work is captured:",
+                    "correctAnswer": "content",
+                    "explanation": "Tiêu chí đánh giá nội dung: 'how successful we are at getting the essence of the work... they call that content'."
+                },
+                {
+                    "qId": "Q30",
+                    "type": "gap-fill",
+                    "prompt": "Percentage of marks allocated to the video itself (artistic and technical side):",
+                    "correctAnswer": "25%",
+                    "explanation": "Tỷ lệ điểm video: 'the last 25% is on the video itself, the artistic and technical side'."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 4,
+            "questions": [
+                {
+                    "qId": "Q31",
+                    "type": "gap-fill",
+                    "prompt": "Early research on children in the USA suggested that being bilingual ___________ learning.",
+                    "correctAnswer": "interfered",
+                    "explanation": "Bài nghe đề cập: 'early research done with children in the USA in fact suggested that being bilingual interfered in some way with learning'."
+                },
+                {
+                    "qId": "Q32",
+                    "type": "gap-fill",
+                    "prompt": "Early research failed to consider children's social and ___________ backgrounds.",
+                    "correctAnswer": "economic",
+                    "explanation": "Giải thích lý do nghiên cứu cũ không chính xác: 'it didn't take into account other factors such as the children's social and economic backgrounds'."
+                },
+                {
+                    "qId": "Q33",
+                    "type": "gap-fill",
+                    "prompt": "Current understanding shows that the relationship between bilingualism and cognitive development is ___________.",
+                    "correctAnswer": "positive",
+                    "explanation": "Nhận định hiện tại: 'we believe now that the relationship between bilingualism and cognitive development is actually a positive one'."
+                },
+                {
+                    "qId": "Q34",
+                    "type": "gap-fill",
+                    "prompt": "Cognitive skills like ___________ are found to be better among bilingual children.",
+                    "correctAnswer": "problem solving",
+                    "explanation": "Ví dụ về kỹ năng nhận thức: 'cognitive skills such as problem solving... are better among bilingual children than monolingual ones'."
+                },
+                {
+                    "qId": "Q35",
+                    "type": "gap-fill",
+                    "prompt": "Dr Ellen Bialystok conducted studies on the effects of bilingualism at ___________ University.",
+                    "correctAnswer": "York",
+                    "explanation": "Nơi công tác của Dr Ellen Bialystok: 'done by Ellen Bialystok at York University in Canada'."
+                },
+                {
+                    "qId": "Q36",
+                    "type": "gap-fill",
+                    "prompt": "In the experiment, subjects had to press the left or right shift key depending on the ___________ of the square.",
+                    "correctAnswer": "color",
+                    "explanation": "Chi tiết thí nghiệm: 'just to the color they saw... they didn't have to react at all to the actual position'."
+                },
+                {
+                    "qId": "Q37",
+                    "type": "gap-fill",
+                    "prompt": "Slower reaction times caused by conflicting demands are known as the ___________ effect.",
+                    "correctAnswer": "Simon",
+                    "explanation": "Tên hiện tượng: 'because of a phenomenon known as the Simon effect'."
+                },
+                {
+                    "qId": "Q38",
+                    "type": "gap-fill",
+                    "prompt": "Bilingual people were better able to deal with the Simon effect because they can suppress the activity of part of the ___________.",
+                    "correctAnswer": "brain",
+                    "explanation": "Nguyên nhân kết quả: 'someone who speaks two languages can suppress the activity of parts of the brain when it isn't needed'."
+                },
+                {
+                    "qId": "Q39",
+                    "type": "gap-fill",
+                    "prompt": "The performance gap between monolinguals and bilinguals actually ___________ with age.",
+                    "correctAnswer": "increased",
+                    "explanation": "Kết quả theo độ tuổi: 'the performance gap between monolinguals and bilinguals actually increased with age'."
+                },
+                {
+                    "qId": "Q40",
+                    "type": "gap-fill",
+                    "prompt": "Bilingualism may protect the mind against ___________.",
+                    "correctAnswer": "decline",
+                    "explanation": "Ý nghĩa thực tế: 'bilingualism protects the mind against decline'."
+                }
+            ]
+        }
+    ],
+    "audioUrl": "/uploads/exams/TEST01.mp3"
+}

@@ -22,10 +22,10 @@ import { getMediaUrl } from '../config/media.js';
 
 const DURATION_SECONDS = {
   listening: 30 * 60,
-  reading: 60 * 60,
+  reading: 45 * 60,
   'writing-task1': 20 * 60,
   'writing-task2': 40 * 60,
-  speaking: 15 * 60,
+  speaking: 3 * 60,
 };
 
 
@@ -48,6 +48,7 @@ export default function ExamRoom() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [sessionId, setSessionId] = useState('');
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
   // Chong nop bai 2 lan (vd het gio tu dong nop + nguoi dung cung luc bam nut Nop bai)
   const hasSubmittedRef = useRef(false);
@@ -217,12 +218,36 @@ export default function ExamRoom() {
       <div className="exam-room-body">
         <div className="exam-room-content">
           {skill === 'listening' && examData.listeningSet && (
-            <>
-              <AudioPlayer src={getMediaUrl(examData.listeningSet.audioUrl)} examMode />
-              {examData.listeningSet.sections.map((section) => (
-                <ListeningForm key={section.sectionNumber} questions={section.questions} />
-              ))}
-            </>
+            <div className="listening-section-container">
+              {examData.listeningSet.sections[currentSectionIndex] && (
+                <>
+                  <AudioPlayer
+                    key={currentSectionIndex}
+                    src={getMediaUrl(examData.listeningSet.sections[currentSectionIndex].audioUrl)}
+                    examMode
+                  />
+                  <ListeningForm
+                    questions={examData.listeningSet.sections[currentSectionIndex].questions}
+                  />
+                  <div className="section-navigation">
+                    <button
+                      className="btn-prev-section"
+                      disabled={currentSectionIndex === 0}
+                      onClick={() => setCurrentSectionIndex(prev => prev - 1)}
+                    >
+                      &lt; Previous Section
+                    </button>
+                    <button
+                      className="btn-next-section"
+                      disabled={currentSectionIndex === examData.listeningSet.sections.length - 1}
+                      onClick={() => setCurrentSectionIndex(prev => prev + 1)}
+                    >
+                      Next Section &gt;
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           )}
 
           {skill === 'reading' &&
@@ -257,11 +282,29 @@ export default function ExamRoom() {
           <Sidebar
             totalQuestions={
               skill === 'listening'
-                ? examData.listeningSet?.sections?.[0]?.questions?.length || 0
-                : examData.readingSet?.passages?.[0]?.questions?.length || 0
+                ? (examData.listeningSet?.sections || []).reduce(
+                    (sum, sec) => sum + (sec.questions?.length || 0),
+                    0
+                  )
+                : (examData.readingSet?.passages || []).reduce(
+                    (sum, p) => sum + (p.questions?.length || 0),
+                    0
+                  )
             }
             answeredIds={Object.keys(answers)}
             onJump={(qId) => {
+              if (skill === 'listening' && examData?.listeningSet?.sections) {
+                  const targetSectionIndex = examData.listeningSet.sections.findIndex(sec => 
+                      sec.questions.some(q => q.qId === qId)
+                  );
+                  if (targetSectionIndex !== -1 && targetSectionIndex !== currentSectionIndex) {
+                      setCurrentSectionIndex(targetSectionIndex);
+                      setTimeout(() => {
+                          document.getElementById(`question-${qId}`)?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                      return;
+                  }
+              }
               document.getElementById(`question-${qId}`)?.scrollIntoView({ behavior: 'smooth' });
             }}
           />

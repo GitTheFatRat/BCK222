@@ -1,0 +1,365 @@
+{
+    "sections": [
+        {
+            "sectionNumber": 1,
+            "questions": [
+                {
+                    "qId": "Q1",
+                    "type": "gap-fill",
+                    "prompt": "The customer's surname is ___________.",
+                    "correctAnswer": "Peterson",
+                    "explanation": "Nguoi noi danh van ro: P-E-T-E-R-S-O-N o phut 0:45 cua bang ghi am."
+                },
+                {
+                    "qId": "Q2",
+                    "type": "gap-fill",
+                    "prompt": "His phone number is ___________.",
+                    "correctAnswer": "0208 554 3321",
+                    "explanation": "So dien thoai duoc nhac lai 2 lan de xac nhan trong doan hoi thoai."
+                },
+                {
+                    "qId": "Q3",
+                    "type": "multiple-choice",
+                    "prompt": "What time does the library open on weekdays?",
+                    "options": [
+                        "A. 8:00 AM",
+                        "B. 9:00 AM",
+                        "C. 9:30 AM"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Nhan vien noi 'we open at nine every weekday morning'."
+                },
+                {
+                    "qId": "Q4",
+                    "type": "multiple-choice",
+                    "prompt": "Which facility is currently closed for renovation?",
+                    "options": [
+                        "A. The reading room",
+                        "B. The computer lab",
+                        "C. The cafeteria"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Doan ghi am de cap 'the cafeteria will be closed until next month'."
+                },
+                {
+                    "qId": "Q5",
+                    "type": "gap-fill",
+                    "prompt": "Membership fee for students is $___________ per year.",
+                    "correctAnswer": "45",
+                    "explanation": "So tien duoc nhac truc tiep: 'forty-five dollars annually for students'."
+                },
+                {
+                    "qId": "Q6",
+                    "type": "matching",
+                    "prompt": "Match the day with the correct closing time: Friday closes at ___________.",
+                    "correctAnswer": "6 PM",
+                    "explanation": "Bang gio dong cua rieng cho ngay thu Sau khac voi cac ngay khac trong tuan."
+                },
+                {
+                    "qId": "Q7",
+                    "type": "multiple-choice",
+                    "prompt": "What should new members bring to register?",
+                    "options": [
+                        "A. Passport only",
+                        "B. Student ID and proof of address",
+                        "C. Just a passport photo"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Yeu cau ro rang: the ID sinh vien va giay to chung minh dia chi."
+                },
+                {
+                    "qId": "Q8",
+                    "type": "gap-fill",
+                    "prompt": "The late return fine is $___________ per day.",
+                    "correctAnswer": "2",
+                    "explanation": "Muc phat duoc nhac: 'two dollars for every day it's overdue'."
+                },
+                {
+                    "qId": "Q9",
+                    "type": "true-false-notgiven",
+                    "prompt": "The library allows borrowing up to 10 books at a time.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Bang ghi am noi ro gioi han la 5 cuon, khong phai 10."
+                },
+                {
+                    "qId": "Q10",
+                    "type": "gap-fill",
+                    "prompt": "The nearest bus stop to the library is called ___________.",
+                    "correctAnswer": "Riverside Station",
+                    "explanation": "Ten tram xe bus duoc de cap khi huong dan duong di."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 2,
+            "questions": [
+                {
+                    "qId": "Q11",
+                    "type": "gap-fill",
+                    "prompt": "The customer's surname is ___________.",
+                    "correctAnswer": "Peterson",
+                    "explanation": "Nguoi noi danh van ro: P-E-T-E-R-S-O-N o phut 0:45 cua bang ghi am."
+                },
+                {
+                    "qId": "Q12",
+                    "type": "gap-fill",
+                    "prompt": "His phone number is ___________.",
+                    "correctAnswer": "0208 554 3321",
+                    "explanation": "So dien thoai duoc nhac lai 2 lan de xac nhan trong doan hoi thoai."
+                },
+                {
+                    "qId": "Q13",
+                    "type": "multiple-choice",
+                    "prompt": "What time does the library open on weekdays?",
+                    "options": [
+                        "A. 8:00 AM",
+                        "B. 9:00 AM",
+                        "C. 9:30 AM"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Nhan vien noi 'we open at nine every weekday morning'."
+                },
+                {
+                    "qId": "Q14",
+                    "type": "multiple-choice",
+                    "prompt": "Which facility is currently closed for renovation?",
+                    "options": [
+                        "A. The reading room",
+                        "B. The computer lab",
+                        "C. The cafeteria"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Doan ghi am de cap 'the cafeteria will be closed until next month'."
+                },
+                {
+                    "qId": "Q15",
+                    "type": "gap-fill",
+                    "prompt": "Membership fee for students is $___________ per year.",
+                    "correctAnswer": "45",
+                    "explanation": "So tien duoc nhac truc tiep: 'forty-five dollars annually for students'."
+                },
+                {
+                    "qId": "Q16",
+                    "type": "matching",
+                    "prompt": "Match the day with the correct closing time: Friday closes at ___________.",
+                    "correctAnswer": "6 PM",
+                    "explanation": "Bang gio dong cua rieng cho ngay thu Sau khac voi cac ngay khac trong tuan."
+                },
+                {
+                    "qId": "Q17",
+                    "type": "multiple-choice",
+                    "prompt": "What should new members bring to register?",
+                    "options": [
+                        "A. Passport only",
+                        "B. Student ID and proof of address",
+                        "C. Just a passport photo"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Yeu cau ro rang: the ID sinh vien va giay to chung minh dia chi."
+                },
+                {
+                    "qId": "Q18",
+                    "type": "gap-fill",
+                    "prompt": "The late return fine is $___________ per day.",
+                    "correctAnswer": "2",
+                    "explanation": "Muc phat duoc nhac: 'two dollars for every day it's overdue'."
+                },
+                {
+                    "qId": "Q19",
+                    "type": "true-false-notgiven",
+                    "prompt": "The library allows borrowing up to 10 books at a time.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Bang ghi am noi ro gioi han la 5 cuon, khong phai 10."
+                },
+                {
+                    "qId": "Q20",
+                    "type": "gap-fill",
+                    "prompt": "The nearest bus stop to the library is called ___________.",
+                    "correctAnswer": "Riverside Station",
+                    "explanation": "Ten tram xe bus duoc de cap khi huong dan duong di."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 3,
+            "questions": [
+                {
+                    "qId": "Q21",
+                    "type": "gap-fill",
+                    "prompt": "The customer's surname is ___________.",
+                    "correctAnswer": "Peterson",
+                    "explanation": "Nguoi noi danh van ro: P-E-T-E-R-S-O-N o phut 0:45 cua bang ghi am."
+                },
+                {
+                    "qId": "Q22",
+                    "type": "gap-fill",
+                    "prompt": "His phone number is ___________.",
+                    "correctAnswer": "0208 554 3321",
+                    "explanation": "So dien thoai duoc nhac lai 2 lan de xac nhan trong doan hoi thoai."
+                },
+                {
+                    "qId": "Q23",
+                    "type": "multiple-choice",
+                    "prompt": "What time does the library open on weekdays?",
+                    "options": [
+                        "A. 8:00 AM",
+                        "B. 9:00 AM",
+                        "C. 9:30 AM"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Nhan vien noi 'we open at nine every weekday morning'."
+                },
+                {
+                    "qId": "Q24",
+                    "type": "multiple-choice",
+                    "prompt": "Which facility is currently closed for renovation?",
+                    "options": [
+                        "A. The reading room",
+                        "B. The computer lab",
+                        "C. The cafeteria"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Doan ghi am de cap 'the cafeteria will be closed until next month'."
+                },
+                {
+                    "qId": "Q25",
+                    "type": "gap-fill",
+                    "prompt": "Membership fee for students is $___________ per year.",
+                    "correctAnswer": "45",
+                    "explanation": "So tien duoc nhac truc tiep: 'forty-five dollars annually for students'."
+                },
+                {
+                    "qId": "Q26",
+                    "type": "matching",
+                    "prompt": "Match the day with the correct closing time: Friday closes at ___________.",
+                    "correctAnswer": "6 PM",
+                    "explanation": "Bang gio dong cua rieng cho ngay thu Sau khac voi cac ngay khac trong tuan."
+                },
+                {
+                    "qId": "Q27",
+                    "type": "multiple-choice",
+                    "prompt": "What should new members bring to register?",
+                    "options": [
+                        "A. Passport only",
+                        "B. Student ID and proof of address",
+                        "C. Just a passport photo"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Yeu cau ro rang: the ID sinh vien va giay to chung minh dia chi."
+                },
+                {
+                    "qId": "Q28",
+                    "type": "gap-fill",
+                    "prompt": "The late return fine is $___________ per day.",
+                    "correctAnswer": "2",
+                    "explanation": "Muc phat duoc nhac: 'two dollars for every day it's overdue'."
+                },
+                {
+                    "qId": "Q29",
+                    "type": "true-false-notgiven",
+                    "prompt": "The library allows borrowing up to 10 books at a time.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Bang ghi am noi ro gioi han la 5 cuon, khong phai 10."
+                },
+                {
+                    "qId": "Q30",
+                    "type": "gap-fill",
+                    "prompt": "The nearest bus stop to the library is called ___________.",
+                    "correctAnswer": "Riverside Station",
+                    "explanation": "Ten tram xe bus duoc de cap khi huong dan duong di."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 4,
+            "questions": [
+                {
+                    "qId": "Q31",
+                    "type": "gap-fill",
+                    "prompt": "The customer's surname is ___________.",
+                    "correctAnswer": "Peterson",
+                    "explanation": "Nguoi noi danh van ro: P-E-T-E-R-S-O-N o phut 0:45 cua bang ghi am."
+                },
+                {
+                    "qId": "Q32",
+                    "type": "gap-fill",
+                    "prompt": "His phone number is ___________.",
+                    "correctAnswer": "0208 554 3321",
+                    "explanation": "So dien thoai duoc nhac lai 2 lan de xac nhan trong doan hoi thoai."
+                },
+                {
+                    "qId": "Q33",
+                    "type": "multiple-choice",
+                    "prompt": "What time does the library open on weekdays?",
+                    "options": [
+                        "A. 8:00 AM",
+                        "B. 9:00 AM",
+                        "C. 9:30 AM"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Nhan vien noi 'we open at nine every weekday morning'."
+                },
+                {
+                    "qId": "Q34",
+                    "type": "multiple-choice",
+                    "prompt": "Which facility is currently closed for renovation?",
+                    "options": [
+                        "A. The reading room",
+                        "B. The computer lab",
+                        "C. The cafeteria"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "Doan ghi am de cap 'the cafeteria will be closed until next month'."
+                },
+                {
+                    "qId": "Q35",
+                    "type": "gap-fill",
+                    "prompt": "Membership fee for students is $___________ per year.",
+                    "correctAnswer": "45",
+                    "explanation": "So tien duoc nhac truc tiep: 'forty-five dollars annually for students'."
+                },
+                {
+                    "qId": "Q36",
+                    "type": "matching",
+                    "prompt": "Match the day with the correct closing time: Friday closes at ___________.",
+                    "correctAnswer": "6 PM",
+                    "explanation": "Bang gio dong cua rieng cho ngay thu Sau khac voi cac ngay khac trong tuan."
+                },
+                {
+                    "qId": "Q37",
+                    "type": "multiple-choice",
+                    "prompt": "What should new members bring to register?",
+                    "options": [
+                        "A. Passport only",
+                        "B. Student ID and proof of address",
+                        "C. Just a passport photo"
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Yeu cau ro rang: the ID sinh vien va giay to chung minh dia chi."
+                },
+                {
+                    "qId": "Q38",
+                    "type": "gap-fill",
+                    "prompt": "The late return fine is $___________ per day.",
+                    "correctAnswer": "2",
+                    "explanation": "Muc phat duoc nhac: 'two dollars for every day it's overdue'."
+                },
+                {
+                    "qId": "Q39",
+                    "type": "true-false-notgiven",
+                    "prompt": "The library allows borrowing up to 10 books at a time.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "Bang ghi am noi ro gioi han la 5 cuon, khong phai 10."
+                },
+                {
+                    "qId": "Q40",
+                    "type": "gap-fill",
+                    "prompt": "The nearest bus stop to the library is called ___________.",
+                    "correctAnswer": "Riverside Station",
+                    "explanation": "Ten tram xe bus duoc de cap khi huong dan duong di."
+                }
+            ]
+        }
+    ],
+    "audioUrl": "/uploads/exams/TEST06.mp3"
+}

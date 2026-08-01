@@ -1,0 +1,305 @@
+{
+    "sections": [
+        {
+            "sectionNumber": 1,
+            "questions": [
+                {
+                    "qId": "Q1",
+                    "type": "gap-fill",
+                    "prompt": "Research is pushing the frontiers of ecology in ___________ regions of the planet.",
+                    "correctAnswer": "remote",
+                    "explanation": "Bài nghe đề cập: 'carried out in the remoter regions of our planet'."
+                },
+                {
+                    "qId": "Q2",
+                    "type": "gap-fill",
+                    "prompt": "Organisms that can survive in the most extreme environments are known as ___________.",
+                    "correctAnswer": "extremophiles",
+                    "explanation": "Thuật ngữ được định nghĩa: 'grouped into what is now known as extremophiles'."
+                },
+                {
+                    "qId": "Q3",
+                    "type": "gap-fill",
+                    "prompt": "The research discussed was carried out in ___________, one of the coldest and driest places on Earth.",
+                    "correctAnswer": "Antarctica",
+                    "explanation": "Địa điểm nghiên cứu: 'was carried out in Antarctica, one of the coldest and driest places on Earth'."
+                },
+                {
+                    "qId": "Q4",
+                    "type": "gap-fill",
+                    "prompt": "Some of the discovered microbe colonies were identified as a type of fungus called ___________.",
+                    "correctAnswer": "Beauveria bassiana",
+                    "explanation": "Tên loại nấm được tìm thấy: 'a type of fungus called Beauveria bassiana'."
+                },
+                {
+                    "qId": "Q5",
+                    "type": "gap-fill",
+                    "prompt": "Organisms living near the rock surface can still be warmed by the ___________.",
+                    "correctAnswer": "sun",
+                    "explanation": "Nguồn nhiệt sưởi ấm: 'can still be warmed by the sun'."
+                },
+                {
+                    "qId": "Q6",
+                    "type": "gap-fill",
+                    "prompt": "High amounts of ___________ in the soil might prevent essential water from freezing.",
+                    "correctAnswer": "salt",
+                    "explanation": "Yếu tố giúp chống đông nước: 'very high amounts of salt in the soil might be the clue'."
+                },
+                {
+                    "qId": "Q7",
+                    "type": "gap-fill",
+                    "prompt": "At very high salt levels, temperatures could drop to ___________ degrees before frost causes damage.",
+                    "correctAnswer": "-56",
+                    "explanation": "Mức nhiệt độ giới hạn: 'could drop to -56 degrees before frost would cause any damage'."
+                },
+                {
+                    "qId": "Q8",
+                    "type": "gap-fill",
+                    "prompt": "The natural process occurring in Antarctica that keeps water liquid at very low temperatures is called ___________.",
+                    "correctAnswer": "supercooling",
+                    "explanation": "Tên quá trình: 'the process at work here is called supercooling'."
+                },
+                {
+                    "qId": "Q9",
+                    "type": "gap-fill",
+                    "prompt": "The research suggests that extraterrestrial life might be able to survive on our neighboring planet ___________.",
+                    "correctAnswer": "Mars",
+                    "explanation": "Hàm ý về hành tinh khác: 'including on our neighboring planet Mars'."
+                },
+                {
+                    "qId": "Q10",
+                    "type": "gap-fill",
+                    "prompt": "All of this research might have great significance for future unmanned space ___________.",
+                    "correctAnswer": "missions",
+                    "explanation": "Ý nghĩa ứng dụng: 'great significance for future unmanned space missions'."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 2,
+            "questions": [
+                {
+                    "qId": "Q11",
+                    "type": "gap-fill",
+                    "prompt": "Name of caller:",
+                    "correctAnswer": "Martin Hill",
+                    "explanation": "Nhân vật nam giới thiệu tên mình là Martin Hill."
+                },
+                {
+                    "qId": "Q12",
+                    "type": "gap-fill",
+                    "prompt": "Number of people accommodation is for:",
+                    "correctAnswer": "3",
+                    "explanation": "Martin cho biết chỗ ở dành cho ba người ('for three of us')."
+                },
+                {
+                    "qId": "Q13",
+                    "type": "gap-fill",
+                    "prompt": "Employment status of the tenants:",
+                    "correctAnswer": "full-time",
+                    "explanation": "Cả ba người đều có việc làm toàn thời gian ('full-time jobs')."
+                },
+                {
+                    "qId": "Q14",
+                    "type": "gap-fill",
+                    "prompt": "Minimum number of bedrooms wanted:",
+                    "correctAnswer": "3",
+                    "explanation": "Họ muốn tìm nhà ít nhất 3 phòng ngủ ('at least three')."
+                },
+                {
+                    "qId": "Q15",
+                    "type": "gap-fill",
+                    "prompt": "Essential bathroom requirement:",
+                    "correctAnswer": "shower",
+                    "explanation": "Yêu cầu bắt buộc về phòng tắm là phải có vòi sen ('the shower's crucial')."
+                },
+                {
+                    "qId": "Q16",
+                    "type": "gap-fill",
+                    "prompt": "Preferred general location:",
+                    "correctAnswer": "city centre",
+                    "explanation": "Khu vực ưu tiên hàng đầu là trung tâm thành phố ('The city centre would be good')."
+                },
+                {
+                    "qId": "Q17",
+                    "type": "gap-fill",
+                    "prompt": "First flat location:",
+                    "correctAnswer": "Bridge Street",
+                    "explanation": "Căn hộ thứ nhất nằm ở đường Bridge Street."
+                },
+                {
+                    "qId": "Q18",
+                    "type": "gap-fill",
+                    "prompt": "Rent of the first flat per month:",
+                    "correctAnswer": "£450",
+                    "explanation": "Giá thuê căn hộ đầu tiên là 450 bảng một tháng."
+                },
+                {
+                    "qId": "Q19",
+                    "type": "gap-fill",
+                    "prompt": "Second flat location:",
+                    "correctAnswer": "Hills Avenue",
+                    "explanation": "Căn hộ thứ hai nằm trên đại lộ Hills Avenue."
+                },
+                {
+                    "qId": "Q20",
+                    "type": "gap-fill",
+                    "prompt": "Rent of the second flat per month:",
+                    "correctAnswer": "£800",
+                    "explanation": "Giá thuê căn hộ thứ hai là 800 bảng một tháng."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 3,
+            "questions": [
+                {
+                    "qId": "Q21",
+                    "type": "gap-fill",
+                    "prompt": "What is the topic of Dave's project?",
+                    "correctAnswer": "work placements",
+                    "explanation": "Tutor xác nhận đề tài: 'Now, yours is the one on work placement, isn't it?' - 'Yeah, that's right'."
+                },
+                {
+                    "qId": "Q22",
+                    "type": "gap-fill",
+                    "prompt": "What type of placement schemes did Dave decide to focus on?",
+                    "correctAnswer": "university",
+                    "explanation": "Dave trả lời về việc giới hạn phạm vi nghiên cứu: 'You've stuck to university placement schemes?' - 'Yeah, well, I quickly found that I had to limit my research'."
+                },
+                {
+                    "qId": "Q23",
+                    "type": "gap-fill",
+                    "prompt": "Total number of questionnaires sent out by Dave:",
+                    "correctAnswer": "150",
+                    "explanation": "Dave nêu số lượng phát khảo sát: 'I sent out about 150 questionnaires altogether'."
+                },
+                {
+                    "qId": "Q24",
+                    "type": "gap-fill",
+                    "prompt": "Who mostly filled in the company questionnaires?",
+                    "correctAnswer": "line managers",
+                    "explanation": "Tutor hỏi về người điền phiếu và Dave đáp: 'the idea was to have them done by the students' line managers'."
+                },
+                {
+                    "qId": "Q25",
+                    "type": "gap-fill",
+                    "prompt": "What does the tutor suggest Dave should add to the back of his project?",
+                    "correctAnswer": "an appendix",
+                    "explanation": "Góp ý của tutor về danh sách phản hồi: 'You can put it as an appendix at the back'."
+                },
+                {
+                    "qId": "Q26",
+                    "type": "gap-fill",
+                    "prompt": "What does the tutor think Dave needs to give in the introduction?",
+                    "correctAnswer": "a definition",
+                    "explanation": "Tutor chỉ ra điểm thiếu trong phần mở đầu: 'So you think I should give a definition?' - 'Exactly'."
+                },
+                {
+                    "qId": "Q27",
+                    "type": "gap-fill",
+                    "prompt": "What does the tutor suggest dividing the introduction into?",
+                    "correctAnswer": "two sections",
+                    "explanation": "Tutor gợi ý chia phần mở đầu: 'do you think it would be better to have two sections there?' - 'I do'."
+                },
+                {
+                    "qId": "Q28",
+                    "type": "gap-fill",
+                    "prompt": "What aspect of preparation does Dave analyze first in his findings?",
+                    "correctAnswer": "institutions",
+                    "explanation": "Dave nói về phần phân tích đầu tiên: 'I had to look at that first... and I found a huge variation between the different institutions'."
+                },
+                {
+                    "qId": "Q29",
+                    "type": "gap-fill",
+                    "prompt": "What does Dave consider to be the core of his whole project?",
+                    "correctAnswer": "key skills development",
+                    "explanation": "Dave xác định trọng tâm: 'For me, this is the core of my whole project really, on key skills development'."
+                },
+                {
+                    "qId": "Q30",
+                    "type": "gap-fill",
+                    "prompt": "What should Dave use to illustrate his points in the final chapter?",
+                    "correctAnswer": "quotations",
+                    "explanation": "Tutor hướng dẫn cách làm chương cuối: 'maybe you could illustrate it with quotations from the questionnaires'."
+                }
+            ]
+        },
+        {
+            "sectionNumber": 4,
+            "questions": [
+                {
+                    "qId": "Q31",
+                    "type": "gap-fill",
+                    "prompt": "Guided tours of the British Library do not include a visit to the ___________ rooms.",
+                    "correctAnswer": "reading",
+                    "explanation": "Thông tin hạn chế vé: 'do not include a visit to the reading rooms'."
+                },
+                {
+                    "qId": "Q32",
+                    "type": "gap-fill",
+                    "prompt": "Guided tours that include the reading rooms only take place on ___________.",
+                    "correctAnswer": "Sundays",
+                    "explanation": "Thời gian tham quan phòng đọc: 'the only day there are tours is on Sundays'."
+                },
+                {
+                    "qId": "Q33",
+                    "type": "gap-fill",
+                    "prompt": "The modern building of the British Library was first designed in the year ___________.",
+                    "correctAnswer": "1977",
+                    "explanation": "Năm thiết kế tòa nhà: 'first designed by Sir Colin St John Wilson in 1977'."
+                },
+                {
+                    "qId": "Q34",
+                    "type": "gap-fill",
+                    "prompt": "The total floor space of the library building covers ___________ square meters.",
+                    "correctAnswer": "100000",
+                    "explanation": "Diện tích sàn: 'The total floor space here is 100,000 square meters'."
+                },
+                {
+                    "qId": "Q35",
+                    "type": "gap-fill",
+                    "prompt": "The library employs a total of ___________ staff members working in the building.",
+                    "correctAnswer": "1000",
+                    "explanation": "Số lượng nhân viên: 'has a thousand staff members based here in the building'."
+                },
+                {
+                    "qId": "Q36",
+                    "type": "gap-fill",
+                    "prompt": "Outside the main entrance, visitors can see a stunning sculpture of Newton created by ___________.",
+                    "correctAnswer": "Paolozzi",
+                    "explanation": "Tên nhà điêu khắc bức tượng Newton: 'The sculptor was Paolozzi'."
+                },
+                {
+                    "qId": "Q37",
+                    "type": "gap-fill",
+                    "prompt": "On the lower ground floor, to the left of the main entrance, visitors can find the ___________.",
+                    "correctAnswer": "bookshop",
+                    "explanation": "Khu vực bên trái lối vào chính ở tầng hầm dưới: 'That's the area over to the left of the main entrance... we also have a bookshop'."
+                },
+                {
+                    "qId": "Q38",
+                    "type": "gap-fill",
+                    "prompt": "The glass-sided tower located in the middle of the upper ground floor is called the ___________ Library.",
+                    "correctAnswer": "King's",
+                    "explanation": "Tên của tòa tháp kính: 'This is called the King's Library'."
+                },
+                {
+                    "qId": "Q39",
+                    "type": "gap-fill",
+                    "prompt": "The King's Library was built to house the collection presented to the nation in ___________ by the King.",
+                    "correctAnswer": "1823",
+                    "explanation": "Năm bộ sưu tập được trình cống: 'presented to the nation in 1823 by the King'."
+                },
+                {
+                    "qId": "Q40",
+                    "type": "gap-fill",
+                    "prompt": "Located behind the library's treasures gallery on the way to the cafe is the ___________ display.",
+                    "correctAnswer": "stamp",
+                    "explanation": "Khu vực trưng bày trên đường tới quán cà phê: 'take a look at the stamp display situated behind it on the way to the cafe'."
+                }
+            ]
+        }
+    ],
+    "audioUrl": "/uploads/exams/TEST02.mp3"
+}

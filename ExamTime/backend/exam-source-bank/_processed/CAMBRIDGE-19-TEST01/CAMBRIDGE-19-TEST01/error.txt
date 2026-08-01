@@ -1,6 +1,0 @@
-Folder: CAMBRIDGE-19-TEST01
-Error: SpeakingSet validation failed: part2.talkSecond: Path `part2.talkSecond` is required., part2.prepSecond: Path `part2.prepSecond` is required.
-Stack: ValidationError: SpeakingSet validation failed: part2.talkSecond: Path `part2.talkSecond` is required., part2.prepSecond: Path `part2.prepSecond` is required.
-    at model.validate (C:\Users\Administrator\Desktop\BCK2\ExamTime\backend\node_modules\mongoose\lib\document.js:2864:36)
-    at async castBulkWrite.castInsertOne (C:\Users\Administrator\Desktop\BCK2\ExamTime\backend\node_modules\mongoose\lib\helpers\model\castBulkWrite.js:102:3)
-Time: 2026-07-26T15:20:30.141Z

@@ -23,7 +23,7 @@ export default function ListeningForm({ questions = [], showAnswers = false }) {
                         className={`question-block ${isCorrect ? 'is-correct' : ''} ${isWrong ? 'is-wrong' : ''}`}
                     >
                         <p className="question-prompt">
-                            <span className="question-number">{index + 1}.</span> {question.prompt}
+                            <span className="question-number">{question.qId.replace('Q', '')}.</span> {question.prompt}
                         </p>
 
                         {question.type === 'multiple-choice' && (

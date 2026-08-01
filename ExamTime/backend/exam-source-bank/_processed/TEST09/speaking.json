@@ -1,0 +1,19 @@
+{
+    "part1": [
+        "Can you tell me a little about your hometown?",
+        "Do you work or are you a student?",
+        "What do you usually do in your free time?",
+        "Do you prefer reading books or watching movies? Why?"
+    ],
+    "part2": {
+        "cueCard": "Describe a book that had a strong impact on you. You should say: what the book was about, when you read it, why you decided to read it, and explain why it had such a strong impact on you.",
+        "prepSeconds": 60,
+        "talkSeconds": 120
+    },
+    "part3": [
+        "Why do you think some people prefer e-books over printed books?",
+        "Do you think reading habits have changed in your country over the last decade?",
+        "How important is reading for children's development?",
+        "Do you think governments should invest more in public libraries?"
+    ]
+}

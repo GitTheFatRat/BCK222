@@ -1,0 +1,11 @@
+{
+    "task1": {
+        "prompt": "The chart below shows the percentage of households with internet access in three countries between 2000 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+        "imageUrl": "/uploads/exams/writing-task1-chart.png",
+        "minWords": 150
+    },
+    "task2": {
+        "prompt": "Many people believe that technological developments have made our lives more complex, and the solution is to live a simpler life without that technology. To what extent do you agree or disagree with this opinion? Give reasons for your answer and include relevant examples from your own knowledge or experience.",
+        "minWords": 250
+    }
+}

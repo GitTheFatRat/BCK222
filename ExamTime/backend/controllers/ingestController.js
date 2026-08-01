@@ -54,11 +54,43 @@ export async function ingestExamFolder(req, res) {
         const speakingData = await readJsonFile(path.join(sourcePath, 'speaking.json'));
 
         await ensureDir(UPLOADS_EXAMS_DIR);
-        const audioFileName = `${manifest.code}.mp3`;
-        const audioDestPath = path.join(UPLOADS_EXAMS_DIR, audioFileName);
-        await fs.copyFile(path.join(sourcePath, 'audio.mp3'), audioDestPath);
+        
+        if (listeningData && listeningData.sections) {
+            const seenQIds = new Set();
+            let lastQNum = 0;
+            for (const section of listeningData.sections) {
+                const audioSrcFileName = `audio_${section.sectionNumber}.mp3`;
+                const audioDestFileName = `${manifest.code}_audio_${section.sectionNumber}.mp3`;
+                const audioSrcPath = path.join(sourcePath, audioSrcFileName);
+                const audioDestPath = path.join(UPLOADS_EXAMS_DIR, audioDestFileName);
+                
+                try {
+                    await fs.access(audioSrcPath);
+                    await fs.copyFile(audioSrcPath, audioDestPath);
+                    section.audioUrl = `/uploads/exams/${audioDestFileName}`;
+                } catch (e) {
+                    throw new Error(`Missing audio file for listening section ${section.sectionNumber}: ${audioSrcFileName}`);
+                }
 
-        listeningData.audioUrl = `/uploads/exams/${audioFileName}`;
+                if (section.questions) {
+                    for (const q of section.questions) {
+                        if (seenQIds.has(q.qId)) {
+                            throw new Error(`Duplicate qId found in listening: ${q.qId}`);
+                        }
+                        seenQIds.add(q.qId);
+                        
+                        const qNumMatch = q.qId.match(/^Q(\d+)$/);
+                        if (qNumMatch) {
+                            const qNum = parseInt(qNumMatch[1], 10);
+                            if (qNum <= lastQNum) {
+                                throw new Error(`qId is not strictly continuous in listening: ${q.qId} comes after Q${lastQNum}`);
+                            }
+                            lastQNum = qNum;
+                        }
+                    }
+                }
+            }
+        }
         const [listeningResult, readingResult, writingResult, speakingResult] = await Promise.all([
             ListeningSet.bulkWrite([{ insertOne: { document: listeningData } }]),
             ReadingSet.bulkWrite([{ insertOne: { document: readingData } }]),

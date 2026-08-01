@@ -16,29 +16,31 @@ export default function Navbar() {
 
     return (
         <header className="navbar">
-            <Link to="/" className="navbar__brand">
-                <span className="navbar__brand-mark">IELTS</span>
-                <span className="navbar__brand-name">ExamTime</span>
-            </Link>
+            <div className="navbar__inner">
+                <Link to="/" className="navbar__brand">
+                    <span className="navbar__brand-mark">IELTS</span>
+                    <span className="navbar__brand-name">ExamTime</span>
+                </Link>
 
-            {isAuthenticated && (
-                <div className="navbar__user">
-                    {user?.role === 'admin' && (
-                        <>
-                            <Link to="/admin/grading" className="navbar__admin-link">
-                                Grading
-                            </Link>
-                            <Link to="/admin/cheating-logs" className="navbar__admin-link">
-                                Cheating Logs
-                            </Link>
-                        </>
-                    )}
-                    <span className="navbar__username">{user?.username || user?.email}</span>
-                    <button type="button" className="navbar__logout-btn" onClick={handleLogout}>
-                        Logout
-                    </button>
-                </div>
-            )}
+                {isAuthenticated && (
+                    <div className="navbar__user">
+                        {user?.role === 'admin' && (
+                            <>
+                                <Link to="/admin/grading" className="navbar__admin-link">
+                                    Grading
+                                </Link>
+                                <Link to="/admin/cheating-logs" className="navbar__admin-link">
+                                    Cheating Logs
+                                </Link>
+                            </>
+                        )}
+                        <span className="navbar__username">{user?.username || user?.email}</span>
+                        <button type="button" className="navbar__logout-btn" onClick={handleLogout}>
+                            Logout
+                        </button>
+                    </div>
+                )}
+            </div>
         </header>
     );
 }

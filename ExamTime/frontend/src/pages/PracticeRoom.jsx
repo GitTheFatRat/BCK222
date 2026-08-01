@@ -13,6 +13,7 @@ export default function PracticeRoom() {
   const [examData, setExamData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
   useEffect(() => {
     async function loadExamData() {
@@ -43,12 +44,37 @@ export default function PracticeRoom() {
       </div>
 
       {skill === 'listening' && examData.listeningSet && (
-        <>
-          <audio src={getMediaUrl(examData.listeningSet.audioUrl)} controls />
-          {examData.listeningSet.sections.map((section) => (
-            <ListeningForm key={section.sectionNumber} questions={section.questions} showAnswers />
-          ))}
-        </>
+        <div className="listening-section-container">
+          {examData.listeningSet.sections[currentSectionIndex] && (
+            <>
+              <audio 
+                key={currentSectionIndex}
+                src={getMediaUrl(examData.listeningSet.sections[currentSectionIndex].audioUrl)} 
+                controls 
+              />
+              <ListeningForm 
+                questions={examData.listeningSet.sections[currentSectionIndex].questions} 
+                showAnswers 
+              />
+              <div className="section-navigation">
+                <button
+                  className="btn-prev-section"
+                  disabled={currentSectionIndex === 0}
+                  onClick={() => setCurrentSectionIndex(prev => prev - 1)}
+                >
+                  &lt; Previous Section
+                </button>
+                <button
+                  className="btn-next-section"
+                  disabled={currentSectionIndex === examData.listeningSet.sections.length - 1}
+                  onClick={() => setCurrentSectionIndex(prev => prev + 1)}
+                >
+                  Next Section &gt;
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       )}
 
       {skill === 'reading' &&
