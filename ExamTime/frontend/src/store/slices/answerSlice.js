@@ -29,12 +29,18 @@ const answerSlice = createSlice({
         clearAnswer(state, action) {
             delete state.byQuestionId[action.payload.questionId]
         },
+        setAllAnswers(state, action) {
+            state.byQuestionId = action.payload.byQuestionId || {};
+            state.writingTask1 = action.payload.writingTask1 || '';
+            state.writingTask2 = action.payload.writingTask2 || '';
+            // speakingRecordingBlobUrl is not persisted across reloads usually
+        },
         resetAnswers() {
             return initialState;
         }
     }
 });
 
-export const { setAnswer, setWritingContent, setSpeakingRecording, clearAnswer, resetAnswers } = answerSlice.actions;
+export const { setAnswer, setWritingContent, setSpeakingRecording, clearAnswer, setAllAnswers, resetAnswers } = answerSlice.actions;
 
 export default answerSlice.reducer;

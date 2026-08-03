@@ -42,6 +42,11 @@ export async function getPendingResults() {
   return data;
 }
 
+export const getLeaderboard = async () => {
+  const { data } = await apiClient.get('/results/leaderboard');
+  return data;
+};
+
 export async function submitGrade(resultId, score) {
   const { data } = await apiClient.put(`/results/admin/${resultId}/grade`, { score });
   return data;

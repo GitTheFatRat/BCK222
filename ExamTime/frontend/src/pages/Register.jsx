@@ -54,7 +54,13 @@ export default function Register() {
     return (
         <div className="register-page">
             <form onSubmit={handleSubmit} className="register-form">
-                <h2>Create an account</h2>
+                <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, var(--et-primary), var(--et-accent))', color: 'white', fontWeight: 800, fontFamily: 'Outfit, sans-serif', padding: '8px 16px', borderRadius: 'var(--radius-md)', fontSize: '20px', letterSpacing: '1px', marginBottom: '8px', boxShadow: '0 4px 14px rgba(79, 70, 229, 0.3)' }}>
+                        ExamTime
+                    </div>
+                </div>
+                <h2 style={{ marginBottom: '8px' }}>Create an Account</h2>
+                <p style={{ textAlign: 'center', color: 'var(--et-text-muted)', marginBottom: '24px', fontSize: '15px' }}>Join us and start your journey.</p>
 
                 {error && <p className="form-error">{error}</p>}
 
@@ -106,8 +112,8 @@ export default function Register() {
                     required
                 />
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Processing...' : 'Register'}
+                <button type="submit" className="btn-primary" disabled={isSubmitting} style={{ marginTop: '8px', width: '100%' }}>
+                    {isSubmitting ? 'Creating account...' : 'Register'}
                 </button>
 
                 <p className="form-footer">

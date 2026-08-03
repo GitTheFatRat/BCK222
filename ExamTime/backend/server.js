@@ -7,12 +7,14 @@ import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import examRoutes from './routes/examRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import resultRoutes from './routes/resultRoutes.js';
 
 dotenv.config();
 fs.mkdirSync('uploads/exams', { recursive: true });
 fs.mkdirSync('uploads/speaking', { recursive: true });
 fs.mkdirSync('uploads/writing', { recursive: true });
+fs.mkdirSync('uploads/avatars', { recursive: true });
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authRoutes);
 app.use('/api/exams', examRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/results', resultRoutes);
 
 app.get('/api/health', (req, res) => {

@@ -317,3 +317,53 @@ export async function getCheatingLogs(req, res) {
         return res.status(500).json({ message: 'Failed to fetch cheating logs.' });
     }
 }
+
+export async function getLeaderboard(req, res) {
+    try {
+        const leaderboard = await ExamResult.aggregate([
+            {
+                $group: {
+                    _id: '$user',
+                    examsTaken: { $addToSet: '$exam' }
+                }
+            },
+            {
+                $project: {
+                    user: '$_id',
+                    examCount: { $size: '$examsTaken' }
+                }
+            },
+            {
+                $sort: { examCount: -1 }
+            },
+            {
+                $limit: 10
+            },
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: 'user',
+                    foreignField: '_id',
+                    as: 'userDetails'
+                }
+            },
+            {
+                $unwind: '$userDetails'
+            },
+            {
+                $project: {
+                    _id: 0,
+                    userId: '$user',
+                    username: '$userDetails.username',
+                    avatar: '$userDetails.avatar',
+                    examCount: 1
+                }
+            }
+        ]);
+
+        return res.json(leaderboard);
+    } catch (err) {
+        console.error('[getLeaderboard] Error:', err.message);
+        return res.status(500).json({ message: 'Failed to fetch leaderboard.' });
+    }
+}

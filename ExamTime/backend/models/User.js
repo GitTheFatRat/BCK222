@@ -23,9 +23,22 @@ const userSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            enum: ['student', 'admin'],
+            enum: ['student', 'teacher', 'admin'],
             default: 'student',
         },
+        avatar: {
+            type: String,
+            default: '',
+        },
+        description: {
+            type: String,
+            default: '',
+            maxlength: 500,
+        },
+        banner: {
+            type: String,
+            default: '',
+        }
     },
     { timestamps: true }
 );

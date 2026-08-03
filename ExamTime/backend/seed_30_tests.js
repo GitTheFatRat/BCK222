@@ -33,7 +33,7 @@ async function run() {
     for (let i = 3; i <= 32; i++) {
         const numStr = i.toString().padStart(2, '0');
         const code = `TEST${numStr}`;
-        const title = `Mock Test ${numStr}`;
+        const title = `Test ${numStr}`;
 
         console.log(`Generating ${code}...`);
 

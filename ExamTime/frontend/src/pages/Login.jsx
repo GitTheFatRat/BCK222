@@ -44,7 +44,13 @@ export default function Login() {
     return (
         <div className="login-page">
             <form onSubmit={handleSubmit} className="login-form">
-                <h2>Login ExamTime</h2>
+                <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, var(--et-primary), var(--et-accent))', color: 'white', fontWeight: 800, fontFamily: 'Outfit, sans-serif', padding: '8px 16px', borderRadius: 'var(--radius-md)', fontSize: '20px', letterSpacing: '1px', marginBottom: '8px', boxShadow: '0 4px 14px rgba(79, 70, 229, 0.3)' }}>
+                        ExamTime
+                    </div>
+                </div>
+                <h2 style={{ marginBottom: '8px' }}>Welcome Back</h2>
+                <p style={{ textAlign: 'center', color: 'var(--et-text-muted)', marginBottom: '24px', fontSize: '15px' }}>Sign in to continue your preparation.</p>
 
                 {error && <p className="form-error">{error}</p>}
 
@@ -72,8 +78,8 @@ export default function Login() {
                     required
                 />
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Processing...' : 'Login'}
+                <button type="submit" className="btn-primary" disabled={isSubmitting} style={{ marginTop: '8px', width: '100%' }}>
+                    {isSubmitting ? 'Signing in...' : 'Sign In'}
                 </button>
 
                 <p className="form-footer">

@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import AppSidebar from "./components/Layout/AppSidebar.jsx";
 import RouteGuard from "./components/RouteGuard";
 import Login from "./pages/Login";
 import HomeDashboard from "./pages/HomeDashboard";
@@ -11,6 +10,10 @@ import Register from "./pages/Register";
 import ResultSummary from "./pages/ResultSummary";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminCheatingLogs from "./pages/AdminCheatingLogs";
+import AdminUsers from "./pages/AdminUsers";
+import Settings from "./pages/Settings";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import UserProfile from "./pages/UserProfile";
 import AdminRoute from "./components/AdminRoute";
 
 function LoginReturnHome({ children }) {
@@ -39,9 +42,11 @@ function NotFound() {
 }
 
 export default function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
-    <div className="app-shell">
-      <Navbar />
+    <div className={`app-shell ${isAuthenticated ? 'layout-sidebar' : ''}`}>
+      <AppSidebar />
 
       <main className="app-content">
         <Routes>
@@ -66,6 +71,30 @@ export default function App() {
             element={
               <ForceAuth>
                 <HomeDashboard />
+              </ForceAuth>
+            }
+          />
+          <Route
+            path="/leaderboard"
+            element={
+              <ForceAuth>
+                <LeaderboardPage />
+              </ForceAuth>
+            }
+          />
+          <Route
+            path="/profile/:userId"
+            element={
+              <ForceAuth>
+                <UserProfile />
+              </ForceAuth>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ForceAuth>
+                <Settings />
               </ForceAuth>
             }
           />
@@ -94,7 +123,7 @@ export default function App() {
             path="/admin/grading"
             element={
               <ForceAuth>
-                <AdminRoute>
+                <AdminRoute allowedRoles={['admin', 'teacher']}>
                   <AdminDashboard />
                 </AdminRoute>
               </ForceAuth>
@@ -104,8 +133,18 @@ export default function App() {
             path="/admin/cheating-logs"
             element={
               <ForceAuth>
-                <AdminRoute>
+                <AdminRoute allowedRoles={['admin', 'teacher']}>
                   <AdminCheatingLogs />
+                </AdminRoute>
+              </ForceAuth>
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <ForceAuth>
+                <AdminRoute>
+                  <AdminUsers />
                 </AdminRoute>
               </ForceAuth>
             }
@@ -113,8 +152,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-
-      <Footer />
     </div>
   );
 }

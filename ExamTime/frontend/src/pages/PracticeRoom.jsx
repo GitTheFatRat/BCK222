@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setAllAnswers } from '../store/slices/answerSlice.js';
+import { saveAnswersToDB, getAnswersFromDB } from '../services/indexedDBService.js';
 
 import ListeningForm from '../features/listening/ListeningForm.jsx';
 import ReadingSplit from '../features/reading/ReadingSplit.jsx';
@@ -14,6 +18,39 @@ export default function PracticeRoom() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+
+  const dispatch = useDispatch();
+  const answers = useSelector((state) => state.answers.byQuestionId);
+  const writingTask1 = useSelector((state) => state.answers.writingTask1);
+  const writingTask2 = useSelector((state) => state.answers.writingTask2);
+
+  // Khoi phuc du lieu tu IndexedDB
+  useEffect(() => {
+    if (examId && skill) {
+      const dbKey = `practice_${examId}_${skill}`;
+      getAnswersFromDB(dbKey).then((savedData) => {
+        if (savedData) {
+          dispatch(setAllAnswers(savedData));
+        }
+      });
+    }
+  }, [examId, skill, dispatch]);
+
+  // Luu vao IndexedDB khi co thay doi (debounce)
+  useEffect(() => {
+    if (examId && skill) {
+      const dbKey = `practice_${examId}_${skill}`;
+      const dataToSave = {
+        byQuestionId: answers,
+        writingTask1,
+        writingTask2
+      };
+      const timeoutId = setTimeout(() => {
+        saveAnswersToDB(dbKey, dataToSave);
+      }, 1000);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [examId, skill, answers, writingTask1, writingTask2]);
 
   useEffect(() => {
     async function loadExamData() {

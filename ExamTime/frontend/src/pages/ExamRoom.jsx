@@ -8,7 +8,8 @@ import {
   endSession,
   resetSession,
 } from '../store/slices/examSessionSlice.js';
-import { resetAnswers } from '../store/slices/answerSlice.js';
+import { resetAnswers, setAllAnswers } from '../store/slices/answerSlice.js';
+import { saveAnswersToDB, getAnswersFromDB, clearAnswersFromDB } from '../services/indexedDBService.js';
 import CountdownTimer from '../components/CountdownTimer.jsx';
 import Sidebar from '../components/Layout/Sidebar.jsx';
 import AudioPlayer from '../components/AudioPlayer.jsx';
@@ -79,6 +80,34 @@ export default function ExamRoom() {
     }
     setSessionId(validSessionId);
   }, [examCode]);
+
+  // Khoi phuc du lieu tra loi tu IndexedDB
+  useEffect(() => {
+    if (sessionId && skill) {
+      const dbKey = `${sessionId}_${skill}`;
+      getAnswersFromDB(dbKey).then((savedData) => {
+        if (savedData) {
+          dispatch(setAllAnswers(savedData));
+        }
+      });
+    }
+  }, [sessionId, skill, dispatch]);
+
+  // Luu du lieu tra loi vao IndexedDB moi khi co thay doi (debounce 1 giay)
+  useEffect(() => {
+    if (sessionId && skill) {
+      const dbKey = `${sessionId}_${skill}`;
+      const dataToSave = {
+        byQuestionId: answers,
+        writingTask1,
+        writingTask2
+      };
+      const timeoutId = setTimeout(() => {
+        saveAnswersToDB(dbKey, dataToSave);
+      }, 1000);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [sessionId, skill, answers, writingTask1, writingTask2]);
 
   // Tai du lieu de thi that (mode=exam -> backend tu an correctAnswer/explanation)
   useEffect(() => {
@@ -163,6 +192,9 @@ export default function ExamRoom() {
         writingTask2Text: writingTask2,
         speakingRecordingBlob,
       });
+
+      const dbKey = `${sessionId}_${skill}`;
+      clearAnswersFromDB(dbKey);
 
       // Luu lai snapshot cau tra loi + diem so TRUOC KHI reset Redux,
       // de trang /result co du lieu hien thi (Redux se bi xoa sach ngay sau day).

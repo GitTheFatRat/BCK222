@@ -2,380 +2,381 @@
     "passages": [
         {
             "passageNumber": 1,
-            "title": "The Evolution of Urban Architecture",
-            "text": "Urban architecture has undergone a radical transformation over the centuries, reflecting both technological advancements and changing social needs. In ancient civilizations, cities were often built around religious or political centres. The ziggurats of Mesopotamia and the temples of ancient Greece served as monumental focal points that dominated the skyline. However, the materials available at the time—primarily stone, mudbrick, and wood—strictly limited the height and span of these structures.\n\nThe industrial revolution marked a significant turning point. The mass production of iron and, later, steel allowed architects to envision structures that were previously impossible. The Crystal Palace in London, designed by Joseph Paxton in 1851, was a pioneer in the use of modular glass and iron components. This shifted the architectural paradigm towards light, expansive interior spaces. Shortly after, the invention of the safety elevator by Elisha Otis in 1852 removed the final barrier to vertical urban growth.\n\nBy the late 19th and early 20th centuries, the Chicago School of architecture had embraced steel-frame construction, giving birth to the first skyscrapers. Louis Sullivan, a prominent figure in this movement, coined the phrase 'form follows function', arguing that a building's purpose should dictate its design. This pragmatic approach paved the way for Modernism in the 20th century, championed by architects like Le Corbusier and Ludwig Mies van der Rohe, who favoured minimalism, glass facades, and open floor plans over decorative ornamentation.\n\nToday, urban architecture faces a new set of challenges, primarily driven by the urgent need for environmental sustainability. Contemporary 'green' architecture incorporates energy-efficient systems, living walls, and sustainable materials. The goal is no longer just to build taller or larger, but to create urban environments that harmonize with the natural ecosystem and minimize carbon footprints.",
+            "title": "Asymmetric Organocatalysis: The Third Pillar of Chemical Synthesis",
+            "text": "For over a century, chemists relied on two primary methodologies to drive chemical reactions: enzymatic catalysis and transition-metal catalysis. While enzymes are exquisitely selective and metal catalysts are highly potent, both possess inherent limitations. Enzymes are large, sensitive molecules optimized for aqueous environments, rendering them difficult to adapt for industrial-scale organic synthesis. Conversely, transition metals, such as palladium and ruthenium, are often highly toxic, expensive, and notoriously sensitive to oxygen and moisture, necessitating rigorous and costly reaction conditions.\n\nAt the dawn of the 21st century, a paradigm shift occurred with the independent and nearly simultaneous development of asymmetric organocatalysis by Benjamin List and David MacMillan. This novel approach utilizes small organic molecules—predominantly composed of carbon, hydrogen, nitrogen, oxygen, and sulfur—to drive chemical reactions. Unlike bulk metals, these small organic molecules are environmentally benign, structurally robust, and easily synthesized. \n\nThe true triumph of organocatalysis lies in its 'asymmetric' nature. Many fundamental molecules of life are chiral, meaning they exist in two non-superimposable mirror-image forms, known as enantiomers. In biological systems, one enantiomer can be a life-saving drug, while its mirror image might be inert or profoundly toxic—a tragic reality demonstrated by the thalidomide crisis in the 1960s. Organocatalysts possess the extraordinary ability to dictate the stereochemical outcome of a reaction, yielding exclusively the desired enantiomer through highly specific transition-state geometries. For instance, List demonstrated that the simple amino acid proline could drive the intermolecular aldol reaction with remarkable enantioselectivity by forming a transient enamine intermediate. This conceptual breakthrough has rapidly transformed pharmaceutical manufacturing, enabling the streamlined, 'green' synthesis of complex therapeutics while minimizing toxic heavy-metal waste.",
             "questions": [
                 {
                     "qId": "Q1",
                     "type": "true-false-notgiven",
-                    "prompt": "Ancient cities were usually built around commercial centres.",
+                    "prompt": "Enzymatic catalysis is easily adapted for large-scale industrial organic synthesis.",
                     "correctAnswer": "FALSE",
-                    "explanation": "The text says they were built around religious or political centres."
+                    "explanation": "The text states that enzymes are 'rendering them difficult to adapt for industrial-scale organic synthesis.'"
                 },
                 {
                     "qId": "Q2",
                     "type": "true-false-notgiven",
-                    "prompt": "The materials used in ancient times restricted the height of buildings.",
+                    "prompt": "Transition-metal catalysts require strict environmental controls to function effectively.",
                     "correctAnswer": "TRUE",
-                    "explanation": "The text states materials strictly limited the height and span."
+                    "explanation": "The text notes they are 'notoriously sensitive to oxygen and moisture, necessitating rigorous and costly reaction conditions.'"
                 },
                 {
                     "qId": "Q3",
                     "type": "true-false-notgiven",
-                    "prompt": "The Crystal Palace was the most expensive building of its time.",
-                    "correctAnswer": "NOT GIVEN",
-                    "explanation": "The text does not mention the cost of the Crystal Palace."
+                    "prompt": "List and MacMillan collaborated in the same laboratory to discover organocatalysis.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The passage states it was an 'independent and nearly simultaneous development' by the two scientists."
                 },
                 {
                     "qId": "Q4",
                     "type": "true-false-notgiven",
-                    "prompt": "Elisha Otis invented the steel-frame construction method.",
-                    "correctAnswer": "FALSE",
-                    "explanation": "Otis invented the safety elevator, not the steel-frame."
+                    "prompt": "Thalidomide is currently used as a treatment for certain types of cancer.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "The text mentions the thalidomide crisis of the 1960s but does not provide information on its current uses."
                 },
                 {
                     "qId": "Q5",
-                    "type": "true-false-notgiven",
-                    "prompt": "Louis Sullivan believed that a building's design should be based on its intended use.",
-                    "correctAnswer": "TRUE",
-                    "explanation": "Sullivan argued 'form follows function'."
+                    "type": "gap-fill",
+                    "prompt": "Organocatalysts are primarily made up of elements like carbon, hydrogen, nitrogen, ___________, and sulfur.",
+                    "correctAnswer": "oxygen",
+                    "explanation": "The text explicitly lists the elements: 'predominantly composed of carbon, hydrogen, nitrogen, oxygen, and sulfur'."
                 },
                 {
                     "qId": "Q6",
                     "type": "gap-fill",
-                    "prompt": "The mass production of ___________ enabled new architectural possibilities during the industrial revolution.",
-                    "correctAnswer": "iron",
-                    "explanation": "The mass production of iron (and later steel) allowed architects to envision new structures."
+                    "prompt": "Chiral molecules exist as two non-superimposable mirror images called ___________.",
+                    "correctAnswer": "enantiomers",
+                    "explanation": "The text defines chiral molecules as existing in 'two non-superimposable mirror-image forms, known as enantiomers.'"
                 },
                 {
                     "qId": "Q7",
                     "type": "gap-fill",
-                    "prompt": "Joseph Paxton's design shifted the focus towards ___________ interior spaces.",
-                    "correctAnswer": "expansive",
-                    "explanation": "Shifted the architectural paradigm towards light, expansive interior spaces."
+                    "prompt": "Proline functions as a catalyst in the aldol reaction by generating a temporary ___________ intermediate.",
+                    "correctAnswer": "enamine",
+                    "explanation": "List demonstrated that proline works 'by forming a transient enamine intermediate.'"
                 },
                 {
                     "qId": "Q8",
-                    "type": "gap-fill",
-                    "prompt": "The first skyscrapers were developed by the ___________ of architecture.",
-                    "correctAnswer": "Chicago School",
-                    "explanation": "The Chicago School of architecture... giving birth to the first skyscrapers."
+                    "type": "multiple-choice",
+                    "prompt": "What is the primary advantage of organocatalysts over transition-metal catalysts?",
+                    "options": [
+                        "A. They are larger molecules.",
+                        "B. They work exclusively in aqueous environments.",
+                        "C. They are environmentally benign and robust.",
+                        "D. They are completely insensitive to temperature."
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "The text states that unlike bulk metals, small organic molecules are 'environmentally benign, structurally robust, and easily synthesized.'"
                 },
                 {
                     "qId": "Q9",
-                    "type": "gap-fill",
-                    "prompt": "Modernist architects like Le Corbusier preferred ___________ over decorative elements.",
-                    "correctAnswer": "minimalism",
-                    "explanation": "Favoured minimalism, glass facades, and open floor plans over decorative ornamentation."
+                    "type": "multiple-choice",
+                    "prompt": "According to the passage, why is asymmetric synthesis crucial in the pharmaceutical industry?",
+                    "options": [
+                        "A. It reduces the cost of raw materials.",
+                        "B. It prevents the creation of harmful mirror-image molecules.",
+                        "C. It speeds up the manufacturing process by ten times.",
+                        "D. It eliminates the need for any chemical solvents."
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "Biological systems react differently to mirror images; one can be a drug while the other is toxic. Asymmetric synthesis yields exclusively the desired enantiomer."
                 },
                 {
                     "qId": "Q10",
                     "type": "multiple-choice",
-                    "prompt": "What is the primary focus of contemporary urban architecture according to the text?",
+                    "prompt": "What does the term 'paradigm shift' in the second paragraph refer to?",
                     "options": [
-                        "A. Building taller structures than before",
-                        "B. Environmental sustainability",
-                        "C. Preserving ancient architectural styles",
-                        "D. Using only glass and steel"
-                    ],
-                    "correctAnswer": "B",
-                    "explanation": "The text states contemporary architecture faces challenges driven by the urgent need for environmental sustainability."
-                },
-                {
-                    "qId": "Q11",
-                    "type": "multiple-choice",
-                    "prompt": "Which invention removed the final barrier to vertical urban growth?",
-                    "options": [
-                        "A. Steel-frame construction",
-                        "B. Modular glass components",
-                        "C. The safety elevator",
-                        "D. Living walls"
+                        "A. The discovery of enzymes.",
+                        "B. The ban on toxic heavy metals.",
+                        "C. The introduction of organocatalysis.",
+                        "D. The synthesis of proline."
                     ],
                     "correctAnswer": "C",
-                    "explanation": "The invention of the safety elevator by Elisha Otis in 1852 removed the final barrier."
-                },
-                {
-                    "qId": "Q12",
-                    "type": "multiple-choice",
-                    "prompt": "What did Modernist architects avoid in their designs?",
-                    "options": [
-                        "A. Open floor plans",
-                        "B. Glass facades",
-                        "C. Light interior spaces",
-                        "D. Decorative ornamentation"
-                    ],
-                    "correctAnswer": "D",
-                    "explanation": "They favoured minimalism over decorative ornamentation."
-                },
-                {
-                    "qId": "Q13",
-                    "type": "multiple-choice",
-                    "prompt": "The term 'green' architecture in the final paragraph implies a focus on:",
-                    "options": [
-                        "A. Using green paint",
-                        "B. Minimizing carbon footprints",
-                        "C. Reviving ancient designs",
-                        "D. Constructing greenhouses"
-                    ],
-                    "correctAnswer": "B",
-                    "explanation": "The goal is to harmonize with the natural ecosystem and minimize carbon footprints."
+                    "explanation": "The paradigm shift mentioned at the dawn of the 21st century was 'the independent and nearly simultaneous development of asymmetric organocatalysis'."
                 }
             ]
         },
         {
             "passageNumber": 2,
-            "title": "The Intelligence of Corvids",
-            "text": "Corvids, a family of birds that includes crows, ravens, jays, and magpies, have long been subjects of myth and folklore. Often associated with intelligence, trickery, or even omens, these birds are now the focus of intense scientific study. Recent research has demonstrated that corvid intelligence rivals that of some non-human primates, challenging the long-held assumption that a large neocortex is essential for complex cognition.\n\nOne of the most striking demonstrations of corvid intelligence is their ability to use and manufacture tools. New Caledonian crows, for instance, are famous for crafting hooks from twigs to extract grubs from tree crevices. They do not merely pick up a random stick; they carefully select, trim, and shape the material for a specific purpose. This behavior indicates a sophisticated understanding of cause and effect, as well as the ability to hold a mental image of the desired tool before it is created.\n\nBeyond tool use, corvids exhibit advanced social intelligence. They are capable of recognizing individual human faces and can remember whether a specific person has been a threat or a benefactor in the past. In one study conducted by researchers at the University of Washington, crows that were trapped and banded by researchers wearing distinct masks would aggressively scold anyone wearing those masks years later. Remarkably, this aggressive behavior was passed on to other crows in the flock who had never been trapped themselves, demonstrating cultural transmission of knowledge.\n\nFurthermore, corvids engage in 'caching' behavior, hiding food to retrieve it later. What makes this remarkable is their awareness of being watched. If a scrub jay realizes another bird is observing it hide food, it will later return in private to re-hide the cache in a different location. This suggests they possess 'theory of mind'—the ability to attribute mental states and intentions to others.\n\nThese findings force scientists to reconsider the evolutionary pathways of intelligence. Because the avian brain structure differs significantly from the mammalian brain, the complex cognitive abilities of corvids show that high intelligence can evolve through completely different neurological mechanisms.",
+            "title": "X-ray Crystallography and the Elucidation of Macromolecular Structures",
+            "text": "Understanding the function of biological macromolecules, such as proteins and nucleic acids, fundamentally relies on deciphering their three-dimensional architectures. For decades, X-ray crystallography has remained the gold standard for high-resolution structural determination. The technique hinges on the principles of wave interference and Bragg’s Law. When a highly focused beam of X-rays is directed at a crystallized molecule, the regular array of atoms scatters the radiation. These scattered waves interfere constructively and destructively, producing a distinct diffraction pattern on a detector.\n\nHowever, obtaining a measurable diffraction pattern is only the genesis of a formidable mathematical challenge known as the 'phase problem'. While the detector accurately records the amplitude (intensity) of the scattered X-rays, the phase information—the timing of the wave relative to others—is completely lost. Because both amplitude and phase are required to apply the Fourier transform that mathematically reconstructs the electron density map of the molecule, crystallographers must employ sophisticated methodologies to recover the missing phases. Techniques such as Multiple Isomorphous Replacement (MIR), which involves soaking heavy atoms into the crystal lattice, or Multi-wavelength Anomalous Dispersion (MAD), which exploits the quantum mechanical absorption properties of specific atoms like selenium, are routinely utilized to bypass this hurdle.\n\nThe most arduous bottleneck in the entire process, however, is often the crystallization itself. Proteins are highly dynamic, flexible entities that resist forming ordered, periodic lattices. Membrane proteins, which are critical pharmacological targets, are notoriously recalcitrant to crystallization because they possess both hydrophobic and hydrophilic domains, making them unstable when extracted from the lipid bilayer. \n\nIn recent years, the dominance of X-ray crystallography has been challenged by cryogenic electron microscopy (cryo-EM). Cryo-EM circumvents the need for crystallization entirely by rapidly freezing biomolecules in a thin layer of vitreous ice, preserving them in their native conformations. While crystallography still holds an edge in ultra-high resolution for small molecules, cryo-EM has revolutionized the structural analysis of massive, dynamic multi-protein complexes that defied crystallization for decades.",
             "questions": [
                 {
-                    "qId": "Q14",
+                    "qId": "Q11",
                     "type": "matching",
-                    "prompt": "Identify the bird: Famous for crafting hooks from twigs.",
-                    "correctAnswer": "New Caledonian crows",
-                    "explanation": "New Caledonian crows are famous for crafting hooks from twigs."
+                    "prompt": "Identify the technique: Utilizes heavy atoms soaked into the crystal lattice.",
+                    "correctAnswer": "Multiple Isomorphous Replacement (MIR)",
+                    "explanation": "The text states: 'Techniques such as Multiple Isomorphous Replacement (MIR), which involves soaking heavy atoms into the crystal lattice...'"
+                },
+                {
+                    "qId": "Q12",
+                    "type": "matching",
+                    "prompt": "Identify the technique: Rapidly freezes biomolecules in vitreous ice without needing a crystal.",
+                    "correctAnswer": "Cryogenic electron microscopy (cryo-EM)",
+                    "explanation": "Cryo-EM circumvents the need for crystallization entirely by rapidly freezing biomolecules in a thin layer of vitreous ice."
+                },
+                {
+                    "qId": "Q13",
+                    "type": "true-false-notgiven",
+                    "prompt": "X-ray detectors can directly record both the amplitude and the phase of the scattered waves.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The text explicitly states: 'While the detector accurately records the amplitude (intensity)... the phase information... is completely lost.'"
+                },
+                {
+                    "qId": "Q14",
+                    "type": "true-false-notgiven",
+                    "prompt": "Fourier transform is a mathematical tool used to convert diffraction data into an electron density map.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "The text mentions 'the Fourier transform that mathematically reconstructs the electron density map of the molecule'."
                 },
                 {
                     "qId": "Q15",
-                    "type": "matching",
-                    "prompt": "Identify the bird: Will re-hide its food if it was watched.",
-                    "correctAnswer": "scrub jay",
-                    "explanation": "If a scrub jay realizes another bird is observing it hide food, it will return to re-hide it."
+                    "type": "true-false-notgiven",
+                    "prompt": "Most membrane proteins have now been successfully crystallized using new lipid-based methods.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "The text states membrane proteins are notoriously recalcitrant to crystallization, but it does not mention 'new lipid-based methods' successfully crystallizing most of them."
                 },
                 {
                     "qId": "Q16",
-                    "type": "true-false-notgiven",
-                    "prompt": "Corvids require a large neocortex to perform complex cognitive tasks.",
-                    "correctAnswer": "FALSE",
-                    "explanation": "Research challenges the assumption that a large neocortex is essential."
+                    "type": "gap-fill",
+                    "prompt": "X-ray crystallography relies on the principles of wave interference and ___________ Law to determine structures.",
+                    "correctAnswer": "Bragg’s",
+                    "explanation": "The technique hinges on the principles of wave interference and Bragg’s Law."
                 },
                 {
                     "qId": "Q17",
-                    "type": "true-false-notgiven",
-                    "prompt": "New Caledonian crows will only use twigs found on the ground.",
-                    "correctAnswer": "NOT GIVEN",
-                    "explanation": "The text doesn't specify if they only use twigs from the ground."
+                    "type": "gap-fill",
+                    "prompt": "The MAD technique takes advantage of the quantum mechanical ___________ properties of specific atoms.",
+                    "correctAnswer": "absorption",
+                    "explanation": "Multi-wavelength Anomalous Dispersion (MAD), which exploits the quantum mechanical absorption properties of specific atoms."
                 },
                 {
                     "qId": "Q18",
-                    "type": "true-false-notgiven",
-                    "prompt": "Crows can communicate the identity of a dangerous human to other crows.",
-                    "correctAnswer": "TRUE",
-                    "explanation": "The aggressive behavior was passed on to other crows... demonstrating cultural transmission."
+                    "type": "multiple-choice",
+                    "prompt": "What is described as the most difficult bottleneck in X-ray crystallography?",
+                    "options": [
+                        "A. Generating the X-ray beam",
+                        "B. Solving the phase problem",
+                        "C. The crystallization process itself",
+                        "D. Applying the Fourier transform"
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "The text explicitly states: 'The most arduous bottleneck in the entire process, however, is often the crystallization itself.'"
                 },
                 {
                     "qId": "Q19",
-                    "type": "true-false-notgiven",
-                    "prompt": "Avian and mammalian brains have identical structures.",
-                    "correctAnswer": "FALSE",
-                    "explanation": "The avian brain structure differs significantly from the mammalian brain."
+                    "type": "multiple-choice",
+                    "prompt": "Why are membrane proteins particularly difficult to crystallize?",
+                    "options": [
+                        "A. They are too small to scatter X-rays effectively.",
+                        "B. They contain both water-repelling and water-attracting parts.",
+                        "C. They mutate rapidly during the crystallization process.",
+                        "D. They immediately freeze at room temperature."
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "The text explains they 'possess both hydrophobic and hydrophilic domains, making them unstable when extracted from the lipid bilayer.'"
                 },
                 {
                     "qId": "Q20",
-                    "type": "gap-fill",
-                    "prompt": "Corvids' ability to shape tools suggests an understanding of ___________.",
-                    "correctAnswer": "cause and effect",
-                    "explanation": "This behavior indicates a sophisticated understanding of cause and effect."
-                },
-                {
-                    "qId": "Q21",
-                    "type": "gap-fill",
-                    "prompt": "The University of Washington study involved researchers wearing ___________.",
-                    "correctAnswer": "distinct masks",
-                    "explanation": "Researchers wearing distinct masks."
-                },
-                {
-                    "qId": "Q22",
-                    "type": "gap-fill",
-                    "prompt": "Hiding food to eat it later is referred to as ___________ behavior.",
-                    "correctAnswer": "caching",
-                    "explanation": "Corvids engage in 'caching' behavior, hiding food to retrieve it later."
-                },
-                {
-                    "qId": "Q23",
                     "type": "multiple-choice",
-                    "prompt": "What does the scrub jay's re-hiding behavior indicate?",
+                    "prompt": "In what specific area does X-ray crystallography still generally outperform cryo-EM?",
                     "options": [
-                        "A. They are forgetful",
-                        "B. They possess 'theory of mind'",
-                        "C. They dislike their food",
-                        "D. They want to exercise"
-                    ],
-                    "correctAnswer": "B",
-                    "explanation": "This suggests they possess 'theory of mind'."
-                },
-                {
-                    "qId": "Q24",
-                    "type": "multiple-choice",
-                    "prompt": "According to the text, corvid intelligence rivals that of:",
-                    "options": [
-                        "A. Non-human primates",
-                        "B. Dolphins",
-                        "C. Dogs",
-                        "D. Elephants"
-                    ],
-                    "correctAnswer": "A",
-                    "explanation": "Corvid intelligence rivals that of some non-human primates."
-                },
-                {
-                    "qId": "Q25",
-                    "type": "multiple-choice",
-                    "prompt": "Which of the following is NOT a corvid mentioned in the text?",
-                    "options": [
-                        "A. Raven",
-                        "B. Magpie",
-                        "C. Pigeon",
-                        "D. Jay"
+                        "A. Studying massive multi-protein complexes",
+                        "B. Analyzing highly dynamic protein structures",
+                        "C. Achieving ultra-high resolution for small molecules",
+                        "D. Preparing samples rapidly without freezing"
                     ],
                     "correctAnswer": "C",
-                    "explanation": "Includes crows, ravens, jays, and magpies. Pigeons are not mentioned."
-                },
-                {
-                    "qId": "Q26",
-                    "type": "multiple-choice",
-                    "prompt": "The complex abilities of corvids show that high intelligence:",
-                    "options": [
-                        "A. Is unique to mammals",
-                        "B. Evolved only recently",
-                        "C. Depends entirely on tool use",
-                        "D. Can evolve through different neurological mechanisms"
-                    ],
-                    "correctAnswer": "D",
-                    "explanation": "High intelligence can evolve through completely different neurological mechanisms."
+                    "explanation": "The passage notes: 'While crystallography still holds an edge in ultra-high resolution for small molecules...'"
                 }
             ]
         },
         {
             "passageNumber": 3,
-            "title": "The Quest for Renewable Energy Storage",
-            "text": "As the global transition towards renewable energy accelerates, the fundamental challenge of intermittency becomes increasingly apparent. Solar panels generate power only when the sun shines, and wind turbines rely on unpredictable gusts. To maintain a stable and reliable electrical grid, energy must be stored when production exceeds demand and released when production falls short. Solving the energy storage problem is arguably the most critical technological hurdle of the 21st century.\n\nCurrently, lithium-ion batteries dominate the energy storage landscape. They are relatively lightweight, have a high energy density, and are widely used in everything from smartphones to electric vehicles (EVs). Furthermore, utility-scale lithium-ion battery parks are being deployed globally to stabilize power grids. However, lithium-ion technology is not without significant drawbacks. The mining of lithium and cobalt is associated with severe environmental degradation and human rights concerns. Additionally, these batteries degrade over time, losing their capacity to hold a full charge, and they carry a risk of thermal runaway, which can lead to dangerous fires.\n\nConsequently, scientists are urgently exploring alternative storage solutions. One promising avenue is the development of solid-state batteries. By replacing the liquid electrolyte found in conventional lithium-ion cells with a solid material, these batteries promise higher energy densities, faster charging times, and greatly enhanced safety due to a lower risk of flammability. Though still largely in the research and development phase, solid-state batteries could revolutionize both EVs and grid storage within the next decade.\n\nAnother approach relies on physics rather than chemistry: pumped-storage hydroelectricity (PSH). This century-old technology accounts for over 90% of global grid-scale energy storage. During periods of low electricity demand, excess power is used to pump water from a lower reservoir to an upper one. When demand peaks, the water is released back down through turbines to generate electricity. While PSH is highly efficient and long-lasting, its expansion is severely limited by geographical requirements; not every region has the necessary mountains and water resources.\n\nEmerging technologies like compressed air energy storage (CAES) and liquid air energy storage (LAES) offer geographical flexibility. CAES involves pumping air into underground caverns under high pressure, while LAES cools air until it liquefies. Both methods release the stored air to drive turbines when power is needed. As research progresses, a diverse portfolio of storage technologies will likely be required to secure a sustainable energy future.",
+            "title": "Marine Pharmacognosy: Chemical Ecology of the Abyss",
+            "text": "The terrestrial biosphere has long been the primary source of natural products for drug discovery, yielding staples like penicillin and paclitaxel. However, over the past few decades, pharmacologists have increasingly turned their attention to the oceans. The marine environment, particularly the benthic zones of coral reefs and the deep-sea floor, represents a fiercely competitive ecosystem. Because many marine invertebrates, such as sponges, tunicates, and soft corals, are sessile (immobile), they cannot flee from predators. Instead, they have evolved highly sophisticated chemical defense mechanisms, biosynthesizing complex secondary metabolites to deter predation, inhibit overgrowth by competing species, and resist pathogenic microbial infections.\n\nThese marine natural products frequently exhibit unprecedented structural scaffolds that are rarely, if ever, found in terrestrial organisms. Halichondrin B, originally isolated from the marine sponge *Halichondria okadai*, is a prime example. This massive, exceptionally complex polyether macrolide demonstrated astonishing anti-cancer properties by inhibiting tubulin polymerization, thereby halting cell division. However, marine pharmacognosy faces a monumental supply problem. Bioactive compounds are often present in trace amounts in the source organism. To extract just 300 milligrams of halichondrin B for initial clinical trials, researchers had to harvest over one metric ton of the rare sponge, raising severe ecological and conservation concerns.\n\nTo circumvent this ecological bottleneck, chemists must rely on total synthesis—the chemical construction of complex molecules from simple, commercially available precursors. The total synthesis of marine natural products is one of the most intellectually demanding endeavors in organic chemistry, often requiring over forty distinct synthetic steps with meticulously controlled stereochemistry. In the case of halichondrin B, the synthetic challenge led to the development of Eribulin, a truncated, simplified synthetic analog that retains the biological activity of the parent molecule but is significantly easier to manufacture. Eribulin is now a globally approved chemotherapeutic agent for metastatic breast cancer, proving that while the ocean provides the chemical blueprint, human synthetic ingenuity is required to render it therapeutically viable.",
             "questions": [
                 {
-                    "qId": "Q27",
+                    "qId": "Q21",
                     "type": "true-false-notgiven",
-                    "prompt": "Solar and wind power offer a constant and predictable supply of energy.",
+                    "prompt": "Terrestrial organisms have never produced medically useful secondary metabolites.",
                     "correctAnswer": "FALSE",
-                    "explanation": "The text highlights the fundamental challenge of intermittency for these sources."
+                    "explanation": "The text states the terrestrial biosphere has been a primary source, yielding staples like penicillin and paclitaxel."
+                },
+                {
+                    "qId": "Q22",
+                    "type": "true-false-notgiven",
+                    "prompt": "Marine invertebrates use chemical defenses primarily because they cannot run away from predators.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "The text explains that because they are sessile (immobile), they cannot flee, so they evolved chemical defense mechanisms."
+                },
+                {
+                    "qId": "Q23",
+                    "type": "true-false-notgiven",
+                    "prompt": "Halichondrin B stops cancer by causing cancer cells to explode.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "It stops cancer by 'inhibiting tubulin polymerization, thereby halting cell division,' not by making cells explode."
+                },
+                {
+                    "qId": "Q24",
+                    "type": "true-false-notgiven",
+                    "prompt": "Eribulin is currently being tested in Phase I clinical trials for lung cancer.",
+                    "correctAnswer": "NOT GIVEN",
+                    "explanation": "The text mentions it is an approved chemotherapeutic agent for metastatic breast cancer, but says nothing about Phase I trials for lung cancer."
+                },
+                {
+                    "qId": "Q25",
+                    "type": "gap-fill",
+                    "prompt": "Marine organisms produce complex ___________ metabolites to fight off predators and microbial infections.",
+                    "correctAnswer": "secondary",
+                    "explanation": "They have evolved highly sophisticated chemical defense mechanisms, biosynthesizing complex secondary metabolites."
+                },
+                {
+                    "qId": "Q26",
+                    "type": "gap-fill",
+                    "prompt": "Halichondrin B is classified chemically as a complex polyether ___________.",
+                    "correctAnswer": "macrolide",
+                    "explanation": "The text describes it as a 'massive, exceptionally complex polyether macrolide'."
+                },
+                {
+                    "qId": "Q27",
+                    "type": "gap-fill",
+                    "prompt": "Building complex molecules from simple precursors in a laboratory is known as ___________ synthesis.",
+                    "correctAnswer": "total",
+                    "explanation": "The text defines this as 'total synthesis—the chemical construction of complex molecules from simple, commercially available precursors.'"
                 },
                 {
                     "qId": "Q28",
-                    "type": "true-false-notgiven",
-                    "prompt": "Lithium-ion batteries are currently the most common form of battery storage.",
-                    "correctAnswer": "TRUE",
-                    "explanation": "They dominate the energy storage landscape."
+                    "type": "multiple-choice",
+                    "prompt": "What is the primary ecological issue faced by marine pharmacognosy?",
+                    "options": [
+                        "A. Extracting chemicals from the ocean pollutes the water.",
+                        "B. The chemicals are highly toxic to human researchers.",
+                        "C. Huge amounts of marine life must be harvested for tiny amounts of chemicals.",
+                        "D. Sponges reproduce too quickly when handled by scientists."
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "The text states: 'To extract just 300 milligrams... researchers had to harvest over one metric ton of the rare sponge, raising severe ecological and conservation concerns.'"
                 },
                 {
                     "qId": "Q29",
-                    "type": "true-false-notgiven",
-                    "prompt": "Solid-state batteries are currently cheaper to produce than lithium-ion batteries.",
-                    "correctAnswer": "NOT GIVEN",
-                    "explanation": "The text does not compare the production costs."
+                    "type": "multiple-choice",
+                    "prompt": "What is Eribulin in relation to Halichondrin B?",
+                    "options": [
+                        "A. It is the exact same molecule extracted from a different sponge.",
+                        "B. It is a truncated, simplified synthetic analog.",
+                        "C. It is an enzyme that destroys Halichondrin B.",
+                        "D. It is a precursor chemical used by sponges to make Halichondrin B."
+                    ],
+                    "correctAnswer": "B",
+                    "explanation": "The text defines Eribulin as 'a truncated, simplified synthetic analog that retains the biological activity of the parent molecule'."
                 },
                 {
                     "qId": "Q30",
-                    "type": "true-false-notgiven",
-                    "prompt": "Pumped-storage hydroelectricity is a completely new technology.",
-                    "correctAnswer": "FALSE",
-                    "explanation": "It is described as a 'century-old technology'."
-                },
+                    "type": "multiple-choice",
+                    "prompt": "Which of the following best summarizes the main idea of the passage?",
+                    "options": [
+                        "A. The ocean is rapidly running out of sponges due to overharvesting.",
+                        "B. Terrestrial drugs are completely obsolete compared to marine drugs.",
+                        "C. The ocean offers novel chemical blueprints that chemists must artificially recreate for mass use.",
+                        "D. Total synthesis is too complex to be used for pharmaceutical manufacturing."
+                    ],
+                    "correctAnswer": "C",
+                    "explanation": "The final sentence concludes that 'while the ocean provides the chemical blueprint, human synthetic ingenuity is required to render it therapeutically viable.'"
+                }
+            ]
+        },
+        {
+            "passageNumber": 4,
+            "title": "Thermodynamics and Kinetics of Stratospheric Ozone Depletion",
+            "text": "The stratospheric ozone layer serves as Earth's critical protective shield, absorbing the vast majority of the Sun's harmful ultraviolet (UV-B and UV-C) radiation. The continuous formation and destruction of ozone (O3) in the stratosphere is governed by the Chapman cycle, a series of natural photochemical reactions. Molecular oxygen (O2) is split by high-energy UV light into atomic oxygen, which then rapidly collides with another O2 molecule to form O3. Under unperturbed conditions, the rate of ozone creation equals the rate of its natural degradation, establishing a steady-state thermodynamic equilibrium.\n\nHowever, in the mid-20th century, the introduction of chlorofluorocarbons (CFCs)—anthropogenic compounds widely used as refrigerants, aerosol propellants, and blowing agents—drastically altered this equilibrium. CFCs are thermodynamically extraordinarily stable in the troposphere, allowing them to drift upward into the stratosphere over several decades without decomposing. Once above the protective ozone layer, they are finally subjected to intense UV radiation, which causes homolytic cleavage of the carbon-chlorine bond, releasing highly reactive chlorine radicals (Cl•).\n\nThe chemical kinetics of the subsequent destruction are devastatingly efficient. A single chlorine radical acts as a homogeneous catalyst in a chain reaction. It attacks an ozone molecule, forming chlorine monoxide (ClO) and oxygen gas. The ClO then reacts with a free oxygen atom, yielding another molecule of O2 and, crucially, regenerating the original chlorine radical. Because the radical is regenerated, it is not consumed in the reaction. A single chlorine atom can undergo this catalytic cycle up to 100,000 times before it is eventually sequestered in 'reservoir species' like hydrogen chloride (HCl) or chlorine nitrate (ClONO2).\n\nThe discovery of this catalytic destruction mechanism by Molina and Rowland, which eventually earned them the Nobel Prize in Chemistry, led directly to the 1987 Montreal Protocol. This landmark international treaty mandated the phase-out of CFCs in favor of hydrochlorofluorocarbons (HCFCs) and hydrofluorocarbons (HFCs), which possess carbon-hydrogen bonds making them susceptible to degradation in the lower atmosphere before they can reach the stratosphere. Consequently, atmospheric chemistry models predict a slow, but steady, recovery of the ozone layer over the next half-century.",
+            "questions": [
                 {
                     "qId": "Q31",
                     "type": "true-false-notgiven",
-                    "prompt": "Pumped-storage hydroelectricity can be implemented anywhere in the world.",
+                    "prompt": "The Chapman cycle only describes the creation, but not the destruction, of ozone.",
                     "correctAnswer": "FALSE",
-                    "explanation": "Its expansion is severely limited by geographical requirements."
+                    "explanation": "The text states the Chapman cycle is the 'continuous formation and destruction of ozone'."
                 },
                 {
                     "qId": "Q32",
-                    "type": "gap-fill",
-                    "prompt": "Mining materials like ___________ for batteries raises human rights concerns.",
-                    "correctAnswer": "cobalt",
-                    "explanation": "The mining of lithium and cobalt is associated with severe environmental degradation and human rights concerns."
+                    "type": "true-false-notgiven",
+                    "prompt": "CFCs easily break down in the lower atmosphere (troposphere).",
+                    "correctAnswer": "FALSE",
+                    "explanation": "The text notes that CFCs are 'thermodynamically extraordinarily stable in the troposphere, allowing them to drift upward'."
                 },
                 {
                     "qId": "Q33",
-                    "type": "gap-fill",
-                    "prompt": "Solid-state batteries replace the ___________ electrolyte with a solid material.",
-                    "correctAnswer": "liquid",
-                    "explanation": "By replacing the liquid electrolyte found in conventional lithium-ion cells with a solid material."
+                    "type": "true-false-notgiven",
+                    "prompt": "The homolytic cleavage of CFCs in the stratosphere is caused by UV radiation.",
+                    "correctAnswer": "TRUE",
+                    "explanation": "The text states they are 'subjected to intense UV radiation, which causes homolytic cleavage of the carbon-chlorine bond'."
                 },
                 {
                     "qId": "Q34",
-                    "type": "gap-fill",
-                    "prompt": "In PSH, water is pumped to a higher reservoir during times of ___________ electricity demand.",
-                    "correctAnswer": "low",
-                    "explanation": "During periods of low electricity demand, excess power is used to pump water."
+                    "type": "true-false-notgiven",
+                    "prompt": "Hydrogen chloride (HCl) aggressively attacks ozone molecules.",
+                    "correctAnswer": "FALSE",
+                    "explanation": "HCl is described as a 'reservoir species' where the chlorine atom is eventually sequestered, stopping the destructive cycle."
                 },
                 {
                     "qId": "Q35",
                     "type": "gap-fill",
-                    "prompt": "CAES technology pumps air into underground ___________.",
-                    "correctAnswer": "caverns",
-                    "explanation": "CAES involves pumping air into underground caverns."
+                    "prompt": "Under natural conditions, the formation and breakdown of ozone maintain a steady-state ___________ equilibrium.",
+                    "correctAnswer": "thermodynamic",
+                    "explanation": "The text states: 'establishing a steady-state thermodynamic equilibrium.'"
                 },
                 {
                     "qId": "Q36",
-                    "type": "multiple-choice",
-                    "prompt": "What is mentioned as a risk associated with lithium-ion batteries?",
-                    "options": [
-                        "A. Freezing at low temperatures",
-                        "B. Emitting toxic gases",
-                        "C. Thermal runaway leading to fires",
-                        "D. Creating magnetic interference"
-                    ],
-                    "correctAnswer": "C",
-                    "explanation": "They carry a risk of thermal runaway, which can lead to dangerous fires."
+                    "type": "gap-fill",
+                    "prompt": "Chlorine radicals act as a homogeneous ___________ in the ozone destruction cycle.",
+                    "correctAnswer": "catalyst",
+                    "explanation": "The passage says, 'A single chlorine radical acts as a homogeneous catalyst in a chain reaction.'"
                 },
                 {
                     "qId": "Q37",
-                    "type": "multiple-choice",
-                    "prompt": "What advantage do solid-state batteries have regarding safety?",
-                    "options": [
-                        "A. They never degrade",
-                        "B. They have a lower risk of flammability",
-                        "C. They are impossible to break",
-                        "D. They cool themselves down automatically"
-                    ],
-                    "correctAnswer": "B",
-                    "explanation": "Greatly enhanced safety due to a lower risk of flammability."
+                    "type": "gap-fill",
+                    "prompt": "The presence of ___________ bonds in HCFCs allows them to break down before reaching the stratosphere.",
+                    "correctAnswer": "carbon-hydrogen",
+                    "explanation": "The text mentions 'carbon-hydrogen bonds making them susceptible to degradation in the lower atmosphere'."
                 },
                 {
                     "qId": "Q38",
                     "type": "multiple-choice",
-                    "prompt": "How much of the global grid-scale energy storage is provided by PSH?",
+                    "prompt": "What happens to the chlorine radical after it reacts with ozone and a free oxygen atom?",
                     "options": [
-                        "A. Less than 10%",
-                        "B. Around 50%",
-                        "C. Exactly 75%",
-                        "D. Over 90%"
+                        "A. It permanently turns into chlorine monoxide.",
+                        "B. It breaks down into carbon and hydrogen.",
+                        "C. It is regenerated and can destroy more ozone.",
+                        "D. It instantly falls back to the Earth's surface."
                     ],
-                    "correctAnswer": "D",
-                    "explanation": "This century-old technology accounts for over 90% of global grid-scale energy storage."
+                    "correctAnswer": "C",
+                    "explanation": "The text states: 'yielding another molecule of O2 and, crucially, regenerating the original chlorine radical.'"
                 },
                 {
                     "qId": "Q39",
                     "type": "multiple-choice",
-                    "prompt": "LAES stores energy by doing what to the air?",
+                    "prompt": "Approximately how many ozone molecules can a single chlorine atom destroy?",
                     "options": [
-                        "A. Heating it",
-                        "B. Compressing it underground",
-                        "C. Cooling it until it liquefies",
-                        "D. Mixing it with water"
+                        "A. 100",
+                        "B. 1,000",
+                        "C. 100,000",
+                        "D. 1,000,000"
                     ],
                     "correctAnswer": "C",
-                    "explanation": "LAES cools air until it liquefies."
+                    "explanation": "A single chlorine atom can undergo this catalytic cycle 'up to 100,000 times'."
                 },
                 {
                     "qId": "Q40",
                     "type": "multiple-choice",
-                    "prompt": "According to the final paragraph, the future of sustainable energy storage will likely rely on:",
+                    "prompt": "What was the main outcome of the 1987 Montreal Protocol?",
                     "options": [
-                        "A. A single ultimate battery technology",
-                        "B. A diverse portfolio of storage technologies",
-                        "C. Only geography-based solutions like PSH",
-                        "D. Reducing global power consumption"
+                        "A. Banning all uses of chemistry in manufacturing.",
+                        "B. Mandating the phase-out of CFCs in favor of safer alternatives.",
+                        "C. Releasing massive amounts of artificial ozone into the sky.",
+                        "D. Funding the Nobel Prize for atmospheric science."
                     ],
                     "correctAnswer": "B",
-                    "explanation": "A diverse portfolio of storage technologies will likely be required to secure a sustainable energy future."
+                    "explanation": "The treaty 'mandated the phase-out of CFCs in favor of hydrochlorofluorocarbons (HCFCs) and hydrofluorocarbons (HFCs)'."
                 }
             ]
         }
